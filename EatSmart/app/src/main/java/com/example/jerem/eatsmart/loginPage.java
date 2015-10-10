@@ -15,6 +15,7 @@ public class loginPage extends AppCompatActivity {
     Context context;
     int duration;
     Toast fail;
+    LoginDataBaseAdapter loginDataBaseAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +26,8 @@ public class loginPage extends AppCompatActivity {
         text_fail = "Try Again"; //text of toast
         duration = Toast.LENGTH_SHORT; //duration of toast
         fail = Toast.makeText(context, text_fail, duration); //initialize toast
+        loginDataBaseAdapter=new LoginDataBaseAdapter(this);
+        loginDataBaseAdapter=loginDataBaseAdapter.open();
     }
     //Create onClick for login
     //  compare input strings from database
@@ -40,15 +43,27 @@ public class loginPage extends AppCompatActivity {
     public void logIn(View v){
         user_stored = login_user.getText().toString(); // get user input
         pass_stored = login_pass.getText().toString(); // get pass input
-        if (user_stored.compareTo("asd") == 0 && pass_stored.compareTo("123") == 0){ //compare string values
+        String storedPassword=loginDataBaseAdapter.getSinlgeEntry(user_stored);
+
+        // check if the Stored password matches with  Password entered by user
+        if(pass_stored.equals(storedPassword))
+        {
             to_home_customer = new Intent(this, home_customer.class); //initialize new activity
             startActivity(to_home_customer); //transfer activity
         }
-        else {
+        else
+        {
             fail.show(); //show toast
         }
-    }
 
+    }
+    public void signUp(View v) {
+        // TODO Auto-generated method stub
+
+        /// Create Intent for SignUpActivity  abd Start The Activity
+        Intent intentSignUP=new Intent(getApplicationContext(),SignUPActivity.class);
+        startActivity(intentSignUP);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

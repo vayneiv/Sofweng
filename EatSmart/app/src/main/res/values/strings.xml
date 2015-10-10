@@ -12,4 +12,5 @@
     <string name="title_activity_splash_screen">splash_screen</string>
     <string name="text_splash">SPLASH SCREEN</string>
     <string name="welcome_customer">WELCOME Mr. Customer</string>
+    <string name="title_activity_sign_up">SignUPActivity</string>
 </resources>
