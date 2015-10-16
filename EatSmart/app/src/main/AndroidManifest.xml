@@ -29,6 +29,15 @@
             android:label="@string/title_activity_sign_up"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity
+            android:name=".chooseSignUP"
+            android:label="@string/title_activity_choose_sign_up"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity android:name=".restaurantSignUp" >
+        </activity>
+        <activity android:name=".home_restaurant" >
+        </activity>
     </application>
 
 </manifest>

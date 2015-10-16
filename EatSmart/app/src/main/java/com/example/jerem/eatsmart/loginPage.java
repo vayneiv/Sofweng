@@ -11,11 +11,13 @@ import android.widget.*;
 public class loginPage extends AppCompatActivity {
     EditText login_user, login_pass;
     String user_stored, pass_stored, text_fail;
-    Intent to_home_customer;
+    Intent to_home_customer,to_home_restaurant;
     Context context;
     int duration;
     Toast fail;
     LoginDataBaseAdapter loginDataBaseAdapter;
+    RestauDataBaseAdapter restauDataBaseAdapter;
+    Button Debug;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +30,16 @@ public class loginPage extends AppCompatActivity {
         fail = Toast.makeText(context, text_fail, duration); //initialize toast
         loginDataBaseAdapter=new LoginDataBaseAdapter(this);
         loginDataBaseAdapter=loginDataBaseAdapter.open();
+        restauDataBaseAdapter=new RestauDataBaseAdapter(this);
+        restauDataBaseAdapter=restauDataBaseAdapter.open();
+        Debug=(Button)findViewById(R.id.button5);
+        Debug.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                loginDataBaseAdapter.clearDatabase();
+                restauDataBaseAdapter.clearDatabase();
+            }
+        });
     }
     //Create onClick for login
     //  compare input strings from database
@@ -43,12 +55,20 @@ public class loginPage extends AppCompatActivity {
     public void logIn(View v){
         user_stored = login_user.getText().toString(); // get user input
         pass_stored = login_pass.getText().toString(); // get pass input
-        String storedPassword=loginDataBaseAdapter.getSinlgeEntry(user_stored);
+        String storedVar_restau=restauDataBaseAdapter.getSingleEntry(user_stored);
+        String storedVar_user=loginDataBaseAdapter.getSingleEntry(user_stored);
 
         // check if the Stored password matches with  Password entered by user
-        if(pass_stored.equals(storedPassword))
+        if(pass_stored.equals(storedVar_restau))
+        {
+            to_home_restaurant = new Intent(this, home_restaurant.class); //initialize new activity
+            to_home_restaurant.putExtra("Username", user_stored);
+            startActivity(to_home_restaurant); //transfer activity
+        }
+        else if(pass_stored.equals(storedVar_user))
         {
             to_home_customer = new Intent(this, home_customer.class); //initialize new activity
+            to_home_customer.putExtra("Username", user_stored);
             startActivity(to_home_customer); //transfer activity
         }
         else
@@ -61,9 +81,12 @@ public class loginPage extends AppCompatActivity {
         // TODO Auto-generated method stub
 
         /// Create Intent for SignUpActivity  abd Start The Activity
-        Intent intentSignUP=new Intent(getApplicationContext(),SignUPActivity.class);
+        Intent intentSignUP=new Intent(getApplicationContext(),chooseSignUP.class);
         startActivity(intentSignUP);
     }
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -35,6 +35,7 @@ public class DataBaseHelper extends SQLiteOpenHelper
         _db.execSQL("DROP TABLE IF EXISTS " + "TEMPLATE");
         // Create a new one.
         onCreate(_db);
+
     }
 
 }

@@ -1,16 +1,36 @@
 package com.example.jerem.eatsmart;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class home_customer extends AppCompatActivity {
-
+    TextView welcMSG;
+    Bundle extras;
+    String userName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_customer);
+        if (savedInstanceState == null)
+        {
+        //fetching extra data passed with intents in a Bundle type variable
+            extras = getIntent().getExtras();
+            if(extras == null) {
+                userName= null;
+            }
+            else
+            {
+                userName= extras.getString("Username");
+            }
+        }
+        welcMSG=new TextView(this);
+
+        welcMSG=(TextView)findViewById(R.id.textView4);
+        welcMSG.setText("Welcome "+userName);
     }
 
     @Override
