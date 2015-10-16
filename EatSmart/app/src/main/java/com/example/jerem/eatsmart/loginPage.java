@@ -51,7 +51,6 @@ public class loginPage extends AppCompatActivity {
     //      save to database
     //          create buttons.
     //      return to login layout
-
     public void logIn(View v){
         user_stored = login_user.getText().toString(); // get user input
         pass_stored = login_pass.getText().toString(); // get pass input
