@@ -15,7 +15,7 @@ public class restaurantSignUp extends Activity
 {
     EditText editTextUserName,editTextPassword,editTextConfirmPassword;
     Button btnCreateAccount;
-    RestauDataBaseAdapter restauDataBaseAdapter;
+    LoginDataBaseAdapter loginDataBaseAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -23,8 +23,8 @@ public class restaurantSignUp extends Activity
         setContentView(R.layout.content_sign_up);
 
         // get Instance  of Database Adapter
-        restauDataBaseAdapter=new RestauDataBaseAdapter(this);
-        restauDataBaseAdapter=restauDataBaseAdapter.open();
+        loginDataBaseAdapter=new LoginDataBaseAdapter(this);
+        loginDataBaseAdapter=loginDataBaseAdapter.open();
 
         // Get References of Views
         editTextUserName=(EditText)findViewById(R.id.editTextUserName);
@@ -56,7 +56,7 @@ public class restaurantSignUp extends Activity
                 else
                 {
                     // Save the Data in Database
-                    restauDataBaseAdapter.insertEntry(userName, password);
+                    loginDataBaseAdapter.insertEntryrestau(userName, password);
                     Toast.makeText(getApplicationContext(), "Account Successfully Created ", Toast.LENGTH_LONG).show();
                     finish();
                 }
@@ -68,6 +68,6 @@ public class restaurantSignUp extends Activity
         // TODO Auto-generated method stub
         super.onDestroy();
 
-        restauDataBaseAdapter.close();
+        loginDataBaseAdapter.close();
     }
 }

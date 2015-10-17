@@ -3,6 +3,7 @@ package com.example.jerem.eatsmart;
 import android.content.*;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.*;
 import android.widget.*;
 //CURRENT UPDATE: Switching Activities
@@ -10,11 +11,12 @@ import android.widget.*;
 //  learn how to pass data to home_customer to indicate which customer from database (e.g. index of array)
 public class loginPage extends AppCompatActivity {
     EditText login_user, login_pass;
-    String user_stored, pass_stored, text_fail;
+    String user_stored, pass_stored, text_fail,text_deb;
     Intent to_home_customer,to_home_restaurant;
     Context context;
     int duration;
     Toast fail;
+    Toast deb;
     LoginDataBaseAdapter loginDataBaseAdapter;
     RestauDataBaseAdapter restauDataBaseAdapter;
     Button Debug;
@@ -28,16 +30,29 @@ public class loginPage extends AppCompatActivity {
         text_fail = "Try Again"; //text of toast
         duration = Toast.LENGTH_SHORT; //duration of toast
         fail = Toast.makeText(context, text_fail, duration); //initialize toast
+        deb=Toast.makeText(context,text_deb,duration);
         loginDataBaseAdapter=new LoginDataBaseAdapter(this);
         loginDataBaseAdapter=loginDataBaseAdapter.open();
-        restauDataBaseAdapter=new RestauDataBaseAdapter(this);
-        restauDataBaseAdapter=restauDataBaseAdapter.open();
         Debug=(Button)findViewById(R.id.button5);
         Debug.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                loginDataBaseAdapter.clearDatabase();
-                restauDataBaseAdapter.clearDatabase();
+                //loginDataBaseAdapter.clearDatabase();
+                //loginDataBaseAdapter.open();
+               /*user_stored = login_user.getText().toString(); // get user input
+                pass_stored = login_pass.getText().toString(); // get pass input
+                String storedVar_restau=restauDataBaseAdapter.getSingleEntry(user_stored);
+
+                // check if the Stored password matches with  Password entered by user
+                if(pass_stored.equals(storedVar_restau))
+                {
+                    deb.setText(storedVar_restau);
+                    deb.show();
+                }
+                else {
+                    fail.show(); //show toast
+                }*/
+                Toast.makeText(context, " "+loginDataBaseAdapter.debug(),duration).show();
             }
         });
     }
@@ -54,13 +69,13 @@ public class loginPage extends AppCompatActivity {
     public void logIn(View v){
         user_stored = login_user.getText().toString(); // get user input
         pass_stored = login_pass.getText().toString(); // get pass input
-        String storedVar_restau=restauDataBaseAdapter.getSingleEntry(user_stored);
-        String storedVar_user=loginDataBaseAdapter.getSingleEntry(user_stored);
-
+        String storedVar_restau=loginDataBaseAdapter.getSingleEntryrestau(user_stored);
+        String storedVar_user=loginDataBaseAdapter.getSingleEntrycusto(user_stored);
+        Log.i("Restau Name",storedVar_restau);
         // check if the Stored password matches with  Password entered by user
         if(pass_stored.equals(storedVar_restau))
         {
-            to_home_restaurant = new Intent(this, home_restaurant.class); //initialize new activity
+            to_home_restaurant = new Intent(this, home_restaurant.class);
             to_home_restaurant.putExtra("Username", user_stored);
             startActivity(to_home_restaurant); //transfer activity
         }
@@ -70,8 +85,7 @@ public class loginPage extends AppCompatActivity {
             to_home_customer.putExtra("Username", user_stored);
             startActivity(to_home_customer); //transfer activity
         }
-        else
-        {
+        else {
             fail.show(); //show toast
         }
 

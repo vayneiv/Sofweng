@@ -28,7 +28,7 @@ public class chooseSignUP extends AppCompatActivity {
     }
 
     public void restaurant(View v){
-        restoLogin= new Intent(this, SignUPActivity.class); //initialize new activity
+        restoLogin= new Intent(this, restaurantSignUp.class); //initialize new activity
         startActivity(restoLogin); //transfer activity
         finish();
     }
