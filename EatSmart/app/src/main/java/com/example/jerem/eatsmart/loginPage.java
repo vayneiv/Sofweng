@@ -33,28 +33,7 @@ public class loginPage extends AppCompatActivity {
         deb=Toast.makeText(context,text_deb,duration);
         loginDataBaseAdapter=new LoginDataBaseAdapter(this);
         loginDataBaseAdapter=loginDataBaseAdapter.open();
-        Debug=(Button)findViewById(R.id.button5);
-        Debug.setOnClickListener(new View.OnClickListener() {
 
-            public void onClick(View v) {
-                //loginDataBaseAdapter.clearDatabase();
-                //loginDataBaseAdapter.open();
-               /*user_stored = login_user.getText().toString(); // get user input
-                pass_stored = login_pass.getText().toString(); // get pass input
-                String storedVar_restau=restauDataBaseAdapter.getSingleEntry(user_stored);
-
-                // check if the Stored password matches with  Password entered by user
-                if(pass_stored.equals(storedVar_restau))
-                {
-                    deb.setText(storedVar_restau);
-                    deb.show();
-                }
-                else {
-                    fail.show(); //show toast
-                }*/
-                Toast.makeText(context, " "+loginDataBaseAdapter.debug(),duration).show();
-            }
-        });
     }
     //Create onClick for login
     //  compare input strings from database
