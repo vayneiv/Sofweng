@@ -5,10 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 public class home_customer extends AppCompatActivity {
-    TextView welcMSG;
+    TextView welcMSG, text_search;
     Bundle extras;
     String userName;
     @Override
@@ -28,11 +29,15 @@ public class home_customer extends AppCompatActivity {
             }
         }
         welcMSG=new TextView(this);
-
+        text_search=(TextView)findViewById(R.id.textView10);
         welcMSG=(TextView)findViewById(R.id.textView4);
         welcMSG.setText("Welcome "+userName);
     }
-
+    public void ifl_search(View v)
+    {
+        //button for IFL
+        text_search.setText("button is working");
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
