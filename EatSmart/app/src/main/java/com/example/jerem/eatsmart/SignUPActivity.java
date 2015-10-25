@@ -16,7 +16,7 @@ public class SignUPActivity extends Activity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_sign_up);
+        setContentView(R.layout.activity_sign_up);
 
         // get Instance  of Database Adapter
         loginDataBaseAdapter=new LoginDataBaseAdapter(this);

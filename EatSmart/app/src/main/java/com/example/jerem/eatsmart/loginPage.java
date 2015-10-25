@@ -24,13 +24,13 @@ public class loginPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
-        login_user = (EditText) findViewById(R.id.editText);// find id of user text field
+        login_user = (EditText) findViewById(R.id.editTextConfirmPassword);// find id of user text field
         login_pass = (EditText) findViewById(R.id.editText2);// find id of pass text field
         context = getApplicationContext(); //necessary for toast
         text_fail = "Try Again"; //text of toast
         duration = Toast.LENGTH_SHORT; //duration of toast
         fail = Toast.makeText(context, text_fail, duration); //initialize toast
-        deb=Toast.makeText(context,text_deb,duration);
+        deb=Toast.makeText(context, text_deb, duration);
         loginDataBaseAdapter=new LoginDataBaseAdapter(this);
         loginDataBaseAdapter=loginDataBaseAdapter.open();
 

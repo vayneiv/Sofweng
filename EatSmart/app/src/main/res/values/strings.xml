@@ -6,13 +6,14 @@
     <string name="title">eatSmart</string>
     <string name="username_text">USERNAME</string>
     <string name="password_text">PASSWORD</string>
+    <string name="confirm_password_text">CONFIRM PASSWORD</string>
     <string name="button_login">SIGN IN</string>
     <string name="button_sign_up">SIGN UP</string>
     <string name="title_activity_home_customer">home_customer</string>
     <string name="title_activity_splash_screen">splash_screen</string>
     <string name="text_splash">SPLASH SCREEN</string>
     <string name="welcome_customer">WELCOME Mr. Customer</string>
-    <string name="title_activity_sign_up">SignUPActivity</string>
+    <string name="title_activity_sign_up">CUSTOMER SIGN UP</string>
     <string name="title_activity_choose_sign_up">chooseSignUP</string>
     <string name="title_activity_restaurant_signup">restaurantSignup</string>
     <string name="action_search">SEARCH HERE</string>

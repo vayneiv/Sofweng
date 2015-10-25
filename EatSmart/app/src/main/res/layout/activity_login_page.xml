@@ -9,7 +9,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
+        android:id="@+id/editTextConfirmPassword"
         android:width="300dp"
         android:maxWidth="300dp"
         android:singleLine="true"
@@ -17,7 +17,7 @@
         android:inputType="text"
         android:minWidth="300dp"
         android:hint="@string/username_text"
-        android:background="#eeffea"
+        android:background="#ffffff"
         android:minHeight="40dp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
@@ -34,10 +34,10 @@
         android:inputType="text|textPassword"
         android:minWidth="300dp"
         android:hint="@string/password_text"
-        android:background="#eeffea"
+        android:background="#ffffff"
         android:layout_marginTop="32dp"
         android:minHeight="40dp"
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/editTextConfirmPassword"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -52,7 +52,7 @@
         android:layout_centerHorizontal="true"
         android:minWidth="150dp"
         android:textColor="#ff090b"
-        android:background="#fff7fc" />
+        android:background="#ffffff" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -70,7 +70,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
         android:src="@drawable/name_logo_transparentbg"
-        android:layout_above="@+id/editText"
+        android:layout_above="@+id/editTextConfirmPassword"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
