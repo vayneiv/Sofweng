@@ -2,6 +2,7 @@ package com.example.jerem.eatsmart;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.internal.view.*;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;

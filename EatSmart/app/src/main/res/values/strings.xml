@@ -15,9 +15,26 @@
     <string name="welcome_customer">WELCOME Mr. Customer</string>
     <string name="title_activity_sign_up">CUSTOMER SIGN UP</string>
     <string name="title_activity_choose_sign_up">chooseSignUP</string>
-    <string name="title_activity_restaurant_signup">restaurantSignup</string>
+    <string name="title_activity_restaurant_signup">RESTAURANT OWNER SIGN UP</string>
     <string name="action_search">SEARCH HERE</string>
     <string name="action_spinner">Filter</string>
+    <string name="hint_restaurant_name">RESTAURANT NAME</string>
+    <string name="hint_description">DESCRIPTION</string>
+    <string name="text_title_cuisine">CUISINE</string>
+    <string name="text_cuisine_1">CUISINE 1</string>
+    <string name="text_cuisine_2">CUISINE 2</string>
+    <string name="text_cuisine_3">CUISINE 3</string>
+    <string name="text_cuisine_4">CUISINE 4</string>
+    <string name="text_cuisine_5">CUISINE 5</string>
+    <string name="text_cuisine_6">CUISINE 6</string>
+    <string name="text_title_budget">BUDGET</string>
+    <string name="text_budget_1">BUDGET 1</string>
+    <string name="text_budget_2">BUDGET 2</string>
+    <string name="text_budget_3">BUDGET 3</string>
+    <string name="text_budget_4">BUDGET 4</string>
+    <string name="text_budget_5">BUDGET 5</string>
+    <string name="text_budget_6">BUDGET 6</string>
+    <string name="hint_location">LOCATION</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
