@@ -24,7 +24,7 @@ public class LoginDataBaseAdapter
     static final String DATABASE_CREATE_1 =
             "create table "+"restau"+
             "( " +"ID"+" integer primary key autoincrement,"+
-                    "USERNAME  text,PASSWORD text); ";
+                    "USERNAME  text,PASSWORD text,RESTAUNAME text,DESCRIPTION text,LOCATION text); ";
     // Variable to hold the database instance
     public  SQLiteDatabase db;
     // Context of the application using the database.
@@ -51,13 +51,20 @@ public class LoginDataBaseAdapter
         return db;
     }
 
-    public void insertEntryrestau(String userName,String password)
+    public void insertEntryrestau(String userName,
+                                  String password,
+                                  String RestauName,
+                                  String Description,
+                                  String Location)
     {
         Log.i(userName,"insertEntryrestau");
         ContentValues newValues = new ContentValues();
         // Assign values for each row.
         newValues.put("USERNAME", userName);
-        newValues.put("PASSWORD",password);
+        newValues.put("PASSWORD", password);
+        newValues.put("RESTAUNAME", RestauName);
+        newValues.put("DESCRIPTION",Description);
+        newValues.put("LOCATION", Location);
 
         // Insert the row into your table
         db.insert("restau", null, newValues);
@@ -66,7 +73,7 @@ public class LoginDataBaseAdapter
     public void insertEntrycusto(String userName,String password)
     {
         nos_calls += 1;
-        Log.i(userName,"insertEntrycusto");
+        Log.i(userName, "insertEntrycusto");
         ContentValues newValues = new ContentValues();
         // Assign values for each row.
         newValues.put("USERNAME", userName);
@@ -99,9 +106,50 @@ public class LoginDataBaseAdapter
         cursor.close();
         return returnVar;
     }
-    public int debug()
+    public String getrestauname(String userName)
     {
-        return nos_calls;
+    String returnVar;
+    Cursor cursor=db.query("restau", null, " USERNAME=?", new String[]{userName}, null, null, null);
+    if(cursor.getCount()<1) // UserName Not Exist
+    {
+        cursor.close();
+        returnVar="NOT EXIST";
+        return returnVar;
+    }
+    cursor.moveToFirst();
+    returnVar= cursor.getString(cursor.getColumnIndex("RESTAUNAME"));
+    cursor.close();
+    return returnVar;
+    }
+    public String getrestauloc(String userName)
+    {
+        String returnVar;
+        Cursor cursor=db.query("restau", null, " USERNAME=?", new String[]{userName}, null, null, null);
+        if(cursor.getCount()<1) // UserName Not Exist
+        {
+            cursor.close();
+            returnVar="NOT EXIST";
+            return returnVar;
+        }
+        cursor.moveToFirst();
+        returnVar= cursor.getString(cursor.getColumnIndex("LOCATION"));
+        cursor.close();
+        return returnVar;
+    }
+    public String getrestaudesc(String userName)
+    {
+        String returnVar;
+        Cursor cursor=db.query("restau", null, " USERNAME=?", new String[]{userName}, null, null, null);
+        if(cursor.getCount()<1) // UserName Not Exist
+        {
+            cursor.close();
+            returnVar="NOT EXIST";
+            return returnVar;
+        }
+        cursor.moveToFirst();
+        returnVar= cursor.getString(cursor.getColumnIndex("DESCRIPTION"));
+        cursor.close();
+        return returnVar;
     }
     public String getSingleEntrycusto(String userName)
     {
@@ -118,16 +166,18 @@ public class LoginDataBaseAdapter
         cursor.close();
         return returnVar;
     }
-    public void  updateEntry(String userName,String password,String table)
+    public void  updaterestaudesc(String userName,String description)
     {
         // Define the updated row content.
         ContentValues updatedValues = new ContentValues();
         // Assign values for each row.
         updatedValues.put("USERNAME", userName);
-        updatedValues.put("PASSWORD",password);
-
+        updatedValues.put("PASSWORD", getSingleEntryrestau(userName));
+        updatedValues.put("RESTAUNAME", getrestauname(userName));
+        updatedValues.put("DESCRIPTION",description);
+        updatedValues.put("LOCATION", getrestauloc(userName));
         String where="USERNAME = ?";
-        db.update(table,updatedValues, where, new String[]{userName});
+        db.update("restau",updatedValues, where, new String[]{userName});
     }
     public void clearDatabase() {
         close();

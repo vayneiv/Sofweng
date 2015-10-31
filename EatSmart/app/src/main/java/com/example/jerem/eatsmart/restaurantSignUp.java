@@ -62,7 +62,7 @@ public class restaurantSignUp extends Activity
                 else
                 {
                     // Save the Data in Database
-                    loginDataBaseAdapter.insertEntryrestau(userName, password);
+                    loginDataBaseAdapter.insertEntryrestau(userName, password,RestauName,Description,Location);
                     Toast.makeText(getApplicationContext(), "Account Successfully Created ", Toast.LENGTH_LONG).show();
                     finish();
                 }

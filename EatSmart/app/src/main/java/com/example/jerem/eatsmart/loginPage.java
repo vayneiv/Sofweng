@@ -18,7 +18,6 @@ public class loginPage extends AppCompatActivity {
     Toast fail;
     Toast deb;
     LoginDataBaseAdapter loginDataBaseAdapter;
-    RestauDataBaseAdapter restauDataBaseAdapter;
     Button Debug;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +76,9 @@ public class loginPage extends AppCompatActivity {
         startActivity(intentSignUP);
     }
 
+    public void debug(){
 
+    }
 
 
     @Override
