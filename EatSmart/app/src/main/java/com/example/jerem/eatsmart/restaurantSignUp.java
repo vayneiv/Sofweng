@@ -10,12 +10,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class restaurantSignUp extends Activity
 {
     EditText editTextUserName,editTextPassword,editTextConfirmPassword, editTextRestauName, editTextDescription, editTextLocation;
-    Button btnCreateAccount;
+    ImageButton btnCreateAccount;
     LoginDataBaseAdapter loginDataBaseAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -34,7 +35,7 @@ public class restaurantSignUp extends Activity
         editTextRestauName=(EditText)findViewById(R.id.editTextRestauName);
         editTextDescription=(EditText)findViewById(R.id.editTextDescription);
         editTextLocation=(EditText)findViewById(R.id.editTextLocation);
-        btnCreateAccount=(Button)findViewById(R.id.buttonCreateAccount);
+        btnCreateAccount=(ImageButton)findViewById(R.id.buttonCreateAccount);
         btnCreateAccount.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {

@@ -5,12 +5,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class SignUPActivity extends Activity
 {
     EditText editTextUserName,editTextPassword,editTextConfirmPassword;
-    Button btnCreateAccount;
+    ImageButton btnCreateAccount;
     LoginDataBaseAdapter loginDataBaseAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -27,7 +28,7 @@ public class SignUPActivity extends Activity
         editTextPassword=(EditText)findViewById(R.id.editTextPassword);
         editTextConfirmPassword=(EditText)findViewById(R.id.editTextConfirmPassword);
 
-        btnCreateAccount=(Button)findViewById(R.id.buttonCreateAccount);
+        btnCreateAccount=(ImageButton)findViewById(R.id.buttonCreateAccount);
         btnCreateAccount.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {

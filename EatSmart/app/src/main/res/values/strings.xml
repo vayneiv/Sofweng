@@ -14,7 +14,7 @@
     <string name="text_splash">SPLASH SCREEN</string>
     <string name="welcome_customer">WELCOME Mr. Customer</string>
     <string name="title_activity_sign_up">CUSTOMER SIGN UP</string>
-    <string name="title_activity_choose_sign_up">chooseSignUP</string>
+    <string name="title_activity_choose_sign_up">CHOOSE ACCOUNT TYPE</string>
     <string name="title_activity_restaurant_signup">RESTAURANT OWNER SIGN UP</string>
     <string name="action_search">SEARCH HERE</string>
     <string name="action_spinner">Filter</string>

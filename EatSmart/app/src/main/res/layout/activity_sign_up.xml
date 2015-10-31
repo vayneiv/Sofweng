@@ -7,15 +7,22 @@
     android:background="@drawable/customer_signup_bg"
     android:nestedScrollingEnabled="false">
 
-    <Button
+
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_sign_up"
         android:id="@+id/buttonCreateAccount"
-        android:textColor="#ff031c"
-        android:background="#ffffff"
-        android:layout_marginTop="24dp"
-        android:layout_below="@+id/editTextConfirmPassword"
+        android:clickable="true"
+        android:contentDescription="@string/button_sign_up"
+        android:src="@drawable/signup_bt"
+        android:maxHeight="120dp"
+        android:maxWidth="120dp"
+        android:minHeight="120dp"
+        android:minWidth="120dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:background="@null"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -55,9 +62,10 @@
         android:background="#ffffff"
         android:hint="@string/username_text"
         android:textAlignment="center"
+        android:singleLine="true"
         android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:singleLine="true" />
+        android:layout_alignLeft="@+id/editTextPassword"
+        android:layout_alignStart="@+id/editTextPassword" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -68,11 +76,10 @@
         android:background="#ffffff"
         android:hint="@string/password_text"
         android:textAlignment="center"
-        android:layout_below="@+id/editTextUserName"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="37dp"
         android:password="true"
-        android:singleLine="true" />
+        android:singleLine="true"
+        android:layout_below="@+id/editTextUserName"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -83,9 +90,8 @@
         android:background="#ffffff"
         android:hint="@string/confirm_password_text"
         android:textAlignment="center"
-        android:layout_below="@+id/editTextPassword"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="42dp"
         android:password="true"
-        android:singleLine="true" />
+        android:singleLine="true"
+        android:layout_below="@+id/editTextPassword"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

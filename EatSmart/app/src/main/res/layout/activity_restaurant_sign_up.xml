@@ -230,15 +230,23 @@
         </LinearLayout>
     </ScrollView>
 
-    <Button
-        android:id="@+id/buttonCreateAccount"
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_sign_up"
-        android:textColor="#ff031c"
-        android:background="#ffffff"
-        android:layout_gravity="center"
-        android:layout_below="@+id/scrollView"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/buttonCreateAccount"
+        android:layout_marginBottom="47dp"
+        android:clickable="true"
+        android:contentDescription="@string/button_sign_up"
+        android:src="@drawable/signup_bt"
+        android:maxHeight="120dp"
+        android:maxWidth="120dp"
+        android:minHeight="120dp"
+        android:minWidth="120dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@null"
+        android:layout_gravity="center_horizontal" />
 
 </LinearLayout>

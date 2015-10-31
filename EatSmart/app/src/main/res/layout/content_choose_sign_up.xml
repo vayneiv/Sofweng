@@ -8,29 +8,85 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_choose_sign_up"
-    tools:context="com.example.jerem.eatsmart.chooseSignUP">
+    tools:context="com.example.jerem.eatsmart.chooseSignUP"
+    android:background="@drawable/choose_acct_type">
 
-    <Button
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Consumer"
         android:id="@+id/button3"
-        android:layout_marginTop="141dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/button4"
-        android:layout_alignStart="@+id/button4"
-        android:layout_alignRight="@+id/button4"
-        android:layout_alignEnd="@+id/button4"
-        android:onClick="consumer"/>
+        android:clickable="true"
+        android:contentDescription="@string/welcome_customer"
+        android:src="@drawable/customer_bt"
+        android:maxHeight="120dp"
+        android:maxWidth="120dp"
+        android:minHeight="120dp"
+        android:minWidth="120dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:background="@null"
+        android:layout_gravity="center_horizontal"
+        android:layout_below="@+id/textView12"
+        android:layout_toLeftOf="@+id/button4"
+        android:layout_toStartOf="@+id/button4"
+        android:layout_marginTop="39dp" />
 
-    <Button
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Restaurant Owner"
         android:id="@+id/button4"
-        android:layout_marginTop="48dp"
-        android:layout_below="@+id/button3"
-        android:layout_centerHorizontal="true"
-        android:onClick="restaurant"/>
+        android:clickable="true"
+        android:contentDescription="@string/welcome_Restaurant"
+        android:src="@drawable/resto_owner_bt"
+        android:maxHeight="120dp"
+        android:maxWidth="120dp"
+        android:minHeight="120dp"
+        android:minWidth="120dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:background="@null"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignTop="@+id/button3"
+        android:layout_alignRight="@+id/textView12"
+        android:layout_alignEnd="@+id/textView12" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView4"
+        android:src="@drawable/name_logo_transparentbg"
+        android:maxHeight="100dp"
+        android:minWidth="100dp"
+        android:scaleType="fitCenter"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/button_sign_up"
+        android:id="@+id/textView11"
+        android:textColor="#ffffff"
+        android:singleLine="true"
+        android:typeface="sans"
+        android:hint="@string/username_text"
+        android:layout_alignBottom="@+id/imageView4"
+        android:layout_centerInParent="true"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/title_activity_choose_sign_up"
+        android:id="@+id/textView12"
+        android:textColor="#ffffff"
+        android:singleLine="true"
+        android:typeface="sans"
+        android:hint="@string/username_text"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
