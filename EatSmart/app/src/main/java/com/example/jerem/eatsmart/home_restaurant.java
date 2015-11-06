@@ -11,8 +11,7 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 public class home_restaurant extends AppCompatActivity {
-    TextView welcMSG;
-    EditText description,location,cuisine,price;
+    TextView welcMSG,description,location,cuisine,price;
     Bundle extras;
     String userName;
     LoginDataBaseAdapter loginDataBaseAdapter;
@@ -39,38 +38,18 @@ public class home_restaurant extends AppCompatActivity {
         welcMSG=new TextView(this);
         welcMSG=(TextView)findViewById(R.id.textView4);
         welcMSG.setText(loginDataBaseAdapter.getrestauname(userName));
-        description=new EditText(this);
-        description=(EditText)findViewById(R.id.editText);
+        description=new TextView(this);
+        description=(TextView)findViewById(R.id.textView13);
         description.setText(loginDataBaseAdapter.getrestaudesc(userName));
-        editdesc=description.getKeyListener();
-        description.setKeyListener(null);
-        cuisine=new EditText(this);
-        cuisine=(EditText)findViewById(R.id.editText3);
+        cuisine=new TextView(this);
+        cuisine=(TextView)findViewById(R.id.textView15);
         cuisine.setText("Not Implemented");
-        cuisine.setFocusable(false);
-        cuisine.setClickable(false);
-        price=new EditText(this);
-        price=(EditText)findViewById(R.id.editText4);
+        price=new TextView(this);
+        price=(TextView)findViewById(R.id.textView17);
         price.setText("Not Implemented");
-        price.setFocusable(false);
-        price.setClickable(false);
-        location=new EditText(this);
-        location=(EditText)findViewById(R.id.editText5);
+        location=new TextView(this);
+        location=(TextView)findViewById(R.id.textView18);
         location.setText(loginDataBaseAdapter.getrestauloc(userName));
-        location.setFocusable(false);
-        location.setClickable(false);
-        desc=new ToggleButton(this);
-        ToggleButton desc = (ToggleButton) findViewById(R.id.toggleButton);
-        desc.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                loginDataBaseAdapter.updaterestaudesc(userName,description.getText().toString());
-                if (isChecked) {
-                    description.setKeyListener(editdesc);
-                } else if(!isChecked) {
-                    description.setKeyListener(null);
-                }
-            }
-        });
     }
 
     @Override
