@@ -53,9 +53,28 @@
         <activity
             android:name=".details_restaurant"
             android:label="@string/title_activity_details_restaurant"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
-        <activity android:name=".restau_choose" >
+        <activity
+            android:name=".restau_choose"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".im_feeling_lucky"
+            android:label="@string/title_activity_im_feeling_lucky" >
+        </activity>
+        <activity
+            android:name=".filter"
+            android:label="@string/title_activity_filter" >
+        </activity>
+        <activity
+            android:name=".search"
+            android:label="@string/title_activity_search" >
+        </activity>
+        <activity
+            android:name=".search_result"
+            android:label="@string/title_activity_search_result" >
         </activity>
     </application>
 

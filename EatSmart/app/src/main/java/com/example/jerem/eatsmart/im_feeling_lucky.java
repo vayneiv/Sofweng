@@ -6,11 +6,24 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class im_feeling_lucky extends AppCompatActivity {
-
+    Bundle extras;
+    String userName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_im_feeling_lucky);
+        if (savedInstanceState == null)
+        {
+            //fetching extra data passed with intents in a Bundle type variable
+            extras = getIntent().getExtras();
+            if(extras == null) {
+                userName= null;
+            }
+            else
+            {
+                userName= extras.getString("Username");
+            }
+        }
     }
 
     @Override

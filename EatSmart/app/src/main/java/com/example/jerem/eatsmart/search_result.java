@@ -4,13 +4,36 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class search_result extends AppCompatActivity {
-
+    Bundle extras;
+    String userName, restauName;
+    TextView display_user, display_restau;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_result);
+        display_user = (TextView) findViewById(R.id.textView10);
+        display_restau = (TextView) findViewById(R.id.textView23);
+        if (savedInstanceState == null)
+        {
+            //fetching extra data passed with intents in a Bundle type variable
+            extras = getIntent().getExtras();
+            if(extras == null) {
+                userName= null;
+                restauName = null;
+            }
+            else
+            {
+                userName= extras.getString("Username");
+                restauName= extras.getString("Restau Name");
+            }
+        }
+        display_user.setText("User:" + userName);
+        display_restau.setText("User:" + restauName);
     }
 
     @Override

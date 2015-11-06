@@ -1,18 +1,45 @@
 package com.example.jerem.eatsmart;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 
 public class search extends AppCompatActivity {
-
+    Bundle extras;
+    String userName;
+    EditText entry;
+    Intent to_search_result;
+    String searchEntry;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        if (savedInstanceState == null)
+        {
+            //fetching extra data passed with intents in a Bundle type variable
+            extras = getIntent().getExtras();
+            if(extras == null) {
+                userName= null;
+            }
+            else
+            {
+                userName= extras.getString("Username");
+            }
+        }
+        entry = (EditText) findViewById(R.id.editText);
     }
-
+    public void to_search_result(View v)
+    {
+        searchEntry = entry.getText().toString();
+        to_search_result= new Intent(this, search_result.class);
+        to_search_result.putExtra("Username", userName);
+        to_search_result.putExtra("Restau Name", searchEntry);
+        startActivity(to_search_result); //transfer activity
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

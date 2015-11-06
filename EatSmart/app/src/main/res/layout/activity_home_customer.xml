@@ -14,24 +14,14 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/welcome_customer"
         android:id="@+id/textView4"
+        android:layout_marginTop="75dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="121dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Search"
-        android:id="@+id/textView10"
-        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageButton"
-        android:layout_marginBottom="47dp"
         android:clickable="true"
         android:contentDescription="@string/welcome_customer"
         android:src="@drawable/button_ifl"
@@ -41,8 +31,26 @@
         android:minWidth="120dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:background="@null"
-        android:onClick="ifl_search" />
+        android:onClick="to_ifl"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_filter"
+        android:id="@+id/button8"
+        android:layout_below="@+id/imageButton"
+        android:layout_centerHorizontal="true"
+        android:onClick="to_filter" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_search"
+        android:id="@+id/button10"
+        android:layout_below="@+id/button8"
+        android:layout_centerHorizontal="true"
+        android:onClick="to_search" />
 </RelativeLayout>

@@ -10,9 +10,10 @@ import android.view.View;
 import android.widget.TextView;
 
 public class home_customer extends AppCompatActivity {
-    TextView welcMSG, text_search;
+    TextView welcMSG;
     Bundle extras;
     String userName;
+    Intent to_ifl, to_filter, to_search;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,14 +31,26 @@ public class home_customer extends AppCompatActivity {
             }
         }
         welcMSG=new TextView(this);
-        text_search=(TextView)findViewById(R.id.textView10);
         welcMSG=(TextView)findViewById(R.id.textView4);
         welcMSG.setText("Welcome "+userName);
     }
-    public void ifl_search(View v)
+    public void to_ifl(View v)
     {
-        //button for IFL
-        text_search.setText("button is working");
+        to_ifl= new Intent(this, im_feeling_lucky.class);
+        to_ifl.putExtra("Username", userName);
+        startActivity(to_ifl); //transfer activity
+    }
+    public void to_filter(View v)
+    {
+        to_filter= new Intent(this, filter.class);
+        to_filter.putExtra("Username", userName);
+        startActivity(to_filter); //transfer activity
+    }
+    public void to_search(View v)
+    {
+        to_search= new Intent(this, search.class);
+        to_search.putExtra("Username", userName);
+        startActivity(to_search); //transfer activity
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
