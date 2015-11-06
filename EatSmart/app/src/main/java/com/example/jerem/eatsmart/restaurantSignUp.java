@@ -18,13 +18,13 @@ public class restaurantSignUp extends Activity
 {
     EditText editTextUserName,editTextPassword,editTextConfirmPassword, editTextRestauName, editTextDescription, editTextLocation;
     ImageButton btnCreateAccount;
-    Intent to_details_restaurant = new Intent(this,details_restaurant.class);
+    Intent to_details_restaurant;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_sign_up);
-
+        to_details_restaurant = new Intent(this, details_restaurant.class);
         // get Instance  of Database Adapter
         // Get References of Views
         editTextUserName=(EditText)findViewById(R.id.editTextUserName);
