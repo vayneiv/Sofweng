@@ -1,5 +1,6 @@
 package com.example.jerem.eatsmart;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -17,7 +18,7 @@ public class restaurantSignUp extends Activity
 {
     EditText editTextUserName,editTextPassword,editTextConfirmPassword, editTextRestauName, editTextDescription, editTextLocation;
     ImageButton btnCreateAccount;
-    LoginDataBaseAdapter loginDataBaseAdapter;
+    Intent to_details_restaurant = new Intent(this,details_restaurant.class);
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -25,16 +26,10 @@ public class restaurantSignUp extends Activity
         setContentView(R.layout.activity_restaurant_sign_up);
 
         // get Instance  of Database Adapter
-        loginDataBaseAdapter=new LoginDataBaseAdapter(this);
-        loginDataBaseAdapter=loginDataBaseAdapter.open();
-
         // Get References of Views
         editTextUserName=(EditText)findViewById(R.id.editTextUserName);
         editTextPassword=(EditText)findViewById(R.id.editTextPassword);
         editTextConfirmPassword=(EditText)findViewById(R.id.editTextConfirmPassword);
-        editTextRestauName=(EditText)findViewById(R.id.editTextRestauName);
-        editTextDescription=(EditText)findViewById(R.id.editTextDescription);
-        editTextLocation=(EditText)findViewById(R.id.editTextLocation);
         btnCreateAccount=(ImageButton)findViewById(R.id.buttonCreateAccount);
         btnCreateAccount.setOnClickListener(new View.OnClickListener() {
 
@@ -44,9 +39,6 @@ public class restaurantSignUp extends Activity
                 String userName=editTextUserName.getText().toString();
                 String password=editTextPassword.getText().toString();
                 String confirmPassword=editTextConfirmPassword.getText().toString();
-                String RestauName = editTextRestauName.getText().toString();
-                String Description = editTextDescription.getText().toString();
-                String Location = editTextLocation.getText().toString();
                 // check if any of the fields are vaccant
                 if(userName.equals("")||password.equals("")||confirmPassword.equals(""))//add other textfields and/or checkboxes
                 {
@@ -62,144 +54,19 @@ public class restaurantSignUp extends Activity
                 else
                 {
                     // Save the Data in Database
-                    loginDataBaseAdapter.insertEntryrestau(userName, password,RestauName,Description,Location);
+                    //loginDataBaseAdapter.insertEntryrestau(userName, password,RestauName,Description,Location);
                     Toast.makeText(getApplicationContext(), "Account Successfully Created ", Toast.LENGTH_LONG).show();
-                    finish();
+                    to_details_restaurant.putExtra("Username", userName);
+                    to_details_restaurant.putExtra("Password", password);
+                    startActivity(to_details_restaurant);
                 }
             }
         });
-    }
-    public void onCuisineChecked(View v) // for cuisine checkboxes
-    {
-        //standard way of handle cuisine checkbox entries. can be transferred to signup button
-        //reference:http://developer.android.com/guide/topics/ui/controls/checkbox.html
-        /*boolean cuisine_checked = ((CheckBox) v).isChecked();
-        switch(v.getId())
-        {
-            case R.id.checkboxCuisine1:
-                if (cuisine_checked)
-                {
-                    //save checkbox to database
-                }
-                else
-                {
-                    //remove from database
-                }break;
-            case R.id.checkboxCuisine2:
-                if (cuisine_checked)
-                {
-
-                }
-                else
-                {
-
-                }break;
-            case R.id.checkboxCuisine3:
-                if (cuisine_checked)
-                {
-
-                }
-                else
-                {
-
-                }break;
-            case R.id.checkboxCuisine4:
-                if (cuisine_checked)
-                {
-
-                }
-                else
-                {
-
-                }break;
-            case R.id.checkboxCuisine5:
-                if (cuisine_checked)
-                {
-
-                }
-                else
-                {
-
-                }break;
-            case R.id.checkboxCuisine6:
-                if (cuisine_checked)
-                {
-
-                }
-                else
-                {
-
-                }break;
-        }*/
-
-    }
-    public void onBudgetChecked(View v) // for budget checkboxes
-    {
-        //standard way of handle budget checkbox entries. can be transferred to signup button
-        /*boolean budget_checked = ((CheckBox) v).isChecked();
-        switch(v.getId())
-        {
-            case R.id.checkboxBudget1:
-                if (budget_checked)
-                {
-                    //save checkbox to database
-                }
-                else
-                {
-                    //remove from database
-                }break;
-            case R.id.checkboxBudget2:
-                if (budget_checked)
-                {
-
-                }
-                else
-                {
-
-                }break;
-            case R.id.checkboxBudget3:
-                if (budget_checked)
-                {
-
-                }
-                else
-                {
-
-                }break;
-            case R.id.checkboxBudget4:
-                if (budget_checked)
-                {
-
-                }
-                else
-                {
-
-                }break;
-            case R.id.checkboxBudget5:
-                if (budget_checked)
-                {
-
-                }
-                else
-                {
-
-                }break;
-            case R.id.checkboxBudget6:
-                if (budget_checked)
-                {
-
-                }
-                else
-                {
-
-                }break;
-        }*/
     }
     @Override
     protected void onDestroy() {
         // TODO Auto-generated method stub
         super.onDestroy();
 
-        loginDataBaseAdapter.close();
     }
 }

@@ -24,7 +24,22 @@ public class LoginDataBaseAdapter
     static final String DATABASE_CREATE_1 =
             "create table "+"restau"+
             "( " +"ID"+" integer primary key autoincrement,"+
-                    "USERNAME  text,PASSWORD text,RESTAUNAME text,DESCRIPTION text,LOCATION text); ";
+                    "USERNAME  text," +
+                    "PASSWORD text," +
+                    "RESTAUNAME text," +
+                    "DESCRIPTION text," +
+                    "Cafe INTEGER DEFAULT 0," +
+                    "Buffet INTEGER DEFAULT 0," +
+                    "Dessert INTEGER DEFAULT 0," +
+                    "Bar INTEGER DEFAULT 0," +
+                    "Grill INTEGER DEFAULT 0," +
+                    "Lutong_bahay INTEGER DEFAULT 0," +
+                    "fast_food INTEGER DEFAULT 0," +
+                    "Veg INTEGER DEFAULT 0," +
+                    "Fine_dining INTEGER DEFAULT 0," +
+                    "LOCATION integer,"+
+                    "price interger"+
+                    "image BLOB); ";
     // Variable to hold the database instance
     public  SQLiteDatabase db;
     // Context of the application using the database.
@@ -55,7 +70,18 @@ public class LoginDataBaseAdapter
                                   String password,
                                   String RestauName,
                                   String Description,
-                                  String Location)
+                                  boolean Cafe,
+                                  boolean Buffet,
+                                  boolean Dessert,
+                                  boolean Bar,
+                                  boolean Grill,
+                                  boolean Lutong_bahay,
+                                  boolean fast_food,
+                                  boolean Veg,
+                                  boolean Fine_dining,
+                                  int LOCATION,
+                                  int price,
+                                  byte []image)
     {
         Log.i(userName,"insertEntryrestau");
         ContentValues newValues = new ContentValues();
@@ -64,7 +90,18 @@ public class LoginDataBaseAdapter
         newValues.put("PASSWORD", password);
         newValues.put("RESTAUNAME", RestauName);
         newValues.put("DESCRIPTION",Description);
-        newValues.put("LOCATION", Location);
+        newValues.put("Cafe",Cafe);
+        newValues.put("Buffet",Buffet);
+        newValues.put("Dessert",Dessert);
+        newValues.put("Bar",Bar);
+        newValues.put("Grill",Grill);
+        newValues.put("Lutong_bahay",Lutong_bahay);
+        newValues.put("fast_food",fast_food);
+        newValues.put("Veg",Veg);
+        newValues.put("Fine_dining",Fine_dining);
+        newValues.put("LOCATION",LOCATION);
+        newValues.put("price",price);
+        newValues.put("image",image);
 
         // Insert the row into your table
         db.insert("restau", null, newValues);

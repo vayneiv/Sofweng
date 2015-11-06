@@ -53,7 +53,7 @@ public class loginPage extends AppCompatActivity {
         // check if the Stored password matches with  Password entered by user
         if(pass_stored.equals(storedVar_restau))
         {
-            to_home_restaurant = new Intent(this, home_restaurant.class);
+            to_home_restaurant = new Intent(this, restau_choose.class);
             to_home_restaurant.putExtra("Username", user_stored);
             startActivity(to_home_restaurant); //transfer activity
         }
