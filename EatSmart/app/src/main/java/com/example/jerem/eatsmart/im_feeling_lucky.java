@@ -5,18 +5,18 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class to_filter extends AppCompatActivity {
+public class im_feeling_lucky extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_to_filter);
+        setContentView(R.layout.activity_im_feeling_lucky);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_to_filter, menu);
+        getMenuInflater().inflate(R.menu.menu_im_feeling_lucky, menu);
         return true;
     }
 
