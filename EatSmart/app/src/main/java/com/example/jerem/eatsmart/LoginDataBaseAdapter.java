@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
 
 public class LoginDataBaseAdapter
 {
@@ -429,6 +430,32 @@ public class LoginDataBaseAdapter
         updatedValues.put("image",image);
         String where="USERNAME = ?";
         db.update("restau",updatedValues, where, new String[]{userName});
+    }
+    public ArrayList<String> getList(){
+        ArrayList<String> returnVar= new ArrayList<String>();
+        Cursor cursor =  db.query("restau", new String[]{"USERNAME package"}, null, null, null, null, null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast())
+        {
+            String Restau = cursor.getString(cursor.getColumnIndex("USERNAME"));
+            int pack = cursor.getInt(cursor.getColumnIndex("package"));
+            if(pack==1) {
+                returnVar.add(Restau);
+            }else if(pack==1) {
+                returnVar.add(Restau);
+                returnVar.add(Restau);
+            }else if(pack==1) {
+                returnVar.add(Restau);
+                returnVar.add(Restau);
+                returnVar.add(Restau);
+                returnVar.add(Restau);
+            }else{
+
+            }
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return returnVar;
     }
     public void clearDatabase() {
         close();

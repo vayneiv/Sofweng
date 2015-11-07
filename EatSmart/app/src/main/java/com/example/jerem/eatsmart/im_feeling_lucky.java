@@ -6,14 +6,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 public class im_feeling_lucky extends AppCompatActivity {
     Bundle extras;
+    LoginDataBaseAdapter loginDataBaseAdapter;
     String userName, filter_entry_1;
     TextView user, entry;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_im_feeling_lucky);
+        loginDataBaseAdapter=new LoginDataBaseAdapter(this);
+        loginDataBaseAdapter=loginDataBaseAdapter.open();
         if (savedInstanceState == null)
         {
             //fetching extra data passed with intents in a Bundle type variable
@@ -40,7 +46,14 @@ public class im_feeling_lucky extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_im_feeling_lucky, menu);
         return true;
     }
-
+    public String IFL(){
+        ArrayList<String> choice;
+        String result;
+        Random r = new Random();
+        choice=loginDataBaseAdapter.getList();
+        result=choice.get(r.nextInt(choice.size()+1));
+        return result;
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
