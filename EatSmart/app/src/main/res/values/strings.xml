@@ -11,6 +11,7 @@
     <string name="button_sign_up">SIGN UP</string>
     <string name="button_filter">FILTER</string>
     <string name="button_search">SEARCH</string>
+    <string name="button_get_entry">GET SAMPLE ENTRY</string>
     <string name="title_activity_home_customer">home_customer</string>
     <string name="title_activity_splash_screen">splash_screen</string>
     <string name="text_splash">SPLASH SCREEN</string>

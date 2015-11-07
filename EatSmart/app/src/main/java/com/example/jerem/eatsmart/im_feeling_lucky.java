@@ -4,10 +4,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class im_feeling_lucky extends AppCompatActivity {
     Bundle extras;
-    String userName;
+    String userName, filter_entry_1;
+    TextView user, entry;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,12 +20,18 @@ public class im_feeling_lucky extends AppCompatActivity {
             extras = getIntent().getExtras();
             if(extras == null) {
                 userName= null;
+                filter_entry_1 = null;
             }
             else
             {
                 userName= extras.getString("Username");
+                filter_entry_1 = extras.getString("Filter Entry 1");
             }
         }
+        user = (TextView) findViewById(R.id.textView34);
+        entry = (TextView) findViewById(R.id.textView35);
+        user.setText("User: " + userName);
+        entry.setText("Entry: " + filter_entry_1);
     }
 
     @Override
