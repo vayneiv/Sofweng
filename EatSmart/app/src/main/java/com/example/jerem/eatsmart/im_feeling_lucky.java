@@ -12,8 +12,8 @@ import java.util.Random;
 public class im_feeling_lucky extends AppCompatActivity {
     Bundle extras;
     LoginDataBaseAdapter loginDataBaseAdapter;
-    String userName, filter_entry_1;
-    TextView user, entry;
+    String userName, filter_entry_1,cat_1,cat_2,cat_3,cat_4,cat_5,cat_6,cat_7,cat_8,cat_9;
+    TextView user, entry,cate_1,cate_2,cate_3,cate_4,cate_5,cate_6,cate_7,cate_8,cate_9;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,17 +27,52 @@ public class im_feeling_lucky extends AppCompatActivity {
             if(extras == null) {
                 userName= null;
                 filter_entry_1 = null;
+                cat_1 = null;
+                cat_2 = null;
+                cat_3 = null;
+                cat_4 = null;
+                cat_5 = null;
+                cat_6 = null;
+                cat_7 = null;
+                cat_8 = null;
+                cat_9 = null;
             }
             else
             {
                 userName= extras.getString("Username");
                 filter_entry_1 = extras.getString("Filter Entry 1");
+                cat_1 = extras.getString("Category1");
+                cat_2 = extras.getString("Category2");
+                cat_3 = extras.getString("Category3");
+                cat_4 = extras.getString("Category4");
+                cat_5 = extras.getString("Category5");
+                cat_6 = extras.getString("Category6");
+                cat_7 = extras.getString("Category7");
+                cat_8 = extras.getString("Category8");
+                cat_9 = extras.getString("Category9");
             }
         }
         user = (TextView) findViewById(R.id.textView34);
         entry = (TextView) findViewById(R.id.textView35);
+        cate_1 = (TextView) findViewById(R.id.textView38);
+        cate_2 = (TextView) findViewById(R.id.textView39);
+        cate_3 = (TextView) findViewById(R.id.textView40);
+        cate_4 = (TextView) findViewById(R.id.textView41);
+        cate_5 = (TextView) findViewById(R.id.textView42);
+        cate_6 = (TextView) findViewById(R.id.textView43);
+        cate_7 = (TextView) findViewById(R.id.textView44);
+        cate_8 = (TextView) findViewById(R.id.textView45);
+        cate_9 = (TextView) findViewById(R.id.textView46);
         user.setText("User: " + userName);
-        entry.setText("Entry: " + filter_entry_1);
+        cate_1.setText("" + cat_1);
+        cate_2.setText("" + cat_2);
+        cate_3.setText("" + cat_3);
+        cate_4.setText("" + cat_4);
+        cate_5.setText("" + cat_5);
+        cate_6.setText("" + cat_6);
+        cate_7.setText("" + cat_7);
+        cate_8.setText("" + cat_8);
+        cate_9.setText("" + cat_9);
     }
 
     @Override
