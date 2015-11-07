@@ -132,4 +132,23 @@
         android:id="@+id/textView48"
         android:layout_below="@+id/textView47"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/hint_location"
+        android:id="@+id/textView50"
+        android:layout_below="@+id/textView48"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/textView51"
+        android:layout_below="@+id/textView50"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

@@ -42,6 +42,12 @@
     <string name="text_budget_5">BUDGET 5</string>
     <string name="text_budget_6">BUDGET 6</string>
     <string name="hint_location">LOCATION</string>
+    <string name="text_location_1">Manila</string>
+    <string name="text_location_2">Pasig</string>
+    <string name="text_location_3">Makati</string>
+    <string name="text_location_4">San Juan</string>
+    <string name="text_location_5">Pasay</string>
+    <string name="text_location_6">Taguig</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 

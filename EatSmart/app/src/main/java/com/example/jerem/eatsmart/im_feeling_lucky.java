@@ -12,8 +12,8 @@ import java.util.Random;
 public class im_feeling_lucky extends AppCompatActivity {
     Bundle extras;
     LoginDataBaseAdapter loginDataBaseAdapter;
-    String userName, filter_entry_1,cat_1,cat_2,cat_3,cat_4,cat_5,cat_6,cat_7,cat_8,cat_9, budget;
-    TextView user, entry,cate_1,cate_2,cate_3,cate_4,cate_5,cate_6,cate_7,cate_8,cate_9, text_budget;
+    String userName,cat_1,cat_2,cat_3,cat_4,cat_5,cat_6,cat_7,cat_8,cat_9, budget, location;
+    TextView user, cate_1,cate_2,cate_3,cate_4,cate_5,cate_6,cate_7,cate_8,cate_9, text_budget,text_location;
     int budget_db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,6 @@ public class im_feeling_lucky extends AppCompatActivity {
             extras = getIntent().getExtras();
             if(extras == null) {
                 userName= null;
-                filter_entry_1 = null;
                 cat_1 = null;
                 cat_2 = null;
                 cat_3 = null;
@@ -39,11 +38,11 @@ public class im_feeling_lucky extends AppCompatActivity {
                 cat_8 = null;
                 cat_9 = null;
                 budget = null;
+                location = null;
             }
             else
             {
                 userName= extras.getString("Username");
-                filter_entry_1 = extras.getString("Filter Entry 1");
                 cat_1 = extras.getString("Category1");
                 cat_2 = extras.getString("Category2");
                 cat_3 = extras.getString("Category3");
@@ -54,10 +53,10 @@ public class im_feeling_lucky extends AppCompatActivity {
                 cat_8 = extras.getString("Category8");
                 cat_9 = extras.getString("Category9");
                 budget = extras.getString("Budget");
+                location = extras.getString("Location");
             }
         }
         user = (TextView) findViewById(R.id.textView34);
-        entry = (TextView) findViewById(R.id.textView35);
         cate_1 = (TextView) findViewById(R.id.textView38);
         cate_2 = (TextView) findViewById(R.id.textView39);
         cate_3 = (TextView) findViewById(R.id.textView40);
@@ -68,6 +67,7 @@ public class im_feeling_lucky extends AppCompatActivity {
         cate_8 = (TextView) findViewById(R.id.textView45);
         cate_9 = (TextView) findViewById(R.id.textView46);
         text_budget = (TextView)findViewById(R.id.textView48);
+        text_location = (TextView)findViewById(R.id.textView51);
         user.setText("User: " + userName);
         cate_1.setText("" + cat_1);
         cate_2.setText("" + cat_2);
@@ -80,6 +80,7 @@ public class im_feeling_lucky extends AppCompatActivity {
         cate_9.setText("" + cat_9);
         getBudgetIndex();
         text_budget.setText("" + budget + " budget_db: " + budget_db);
+        text_location.setText("" + location);
     }
     public void getBudgetIndex()
     {

@@ -13,24 +13,25 @@ import android.widget.RadioGroup;
 
 public class filter extends AppCompatActivity {
     Bundle extras;
-    String userName, sample, budget;
+    String userName, budget, location;
     Intent resultIntent;
     CheckBox cat_1,cat_2,cat_3,cat_4,cat_5,cat_6,cat_7,cat_8,cat_9;
-    RadioGroup radioGroupBudget;
+    RadioGroup radioGroupBudget, radioGroupLocation;
     RadioButton radioBudget, radioLocation;
     boolean isBudget, isLocation;
-    int checkedId;
-    static int entry_1;
+    int checkedIdBudget, checkedIdLocation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter);
-        entry_1 = 1;
-        sample = null;
         budget = null;
-        checkedId = -1;
+        location = null;
+        checkedIdBudget = -1;
+        checkedIdLocation = -1;
         radioGroupBudget = (RadioGroup)findViewById(R.id.radioGroup5);
+        radioGroupLocation = (RadioGroup)findViewById(R.id.radioGroup6);
         radioBudget = (RadioButton)radioGroupBudget.findViewById(radioGroupBudget.getCheckedRadioButtonId());
+        radioLocation = (RadioButton)radioGroupLocation.findViewById(radioGroupLocation.getCheckedRadioButtonId());
         if (savedInstanceState == null)
         {
             //fetching extra data passed with intents in a Bundle type variable
@@ -86,21 +87,31 @@ public class filter extends AppCompatActivity {
     }
     public void budget()
     {
-        checkedId = radioGroupBudget.getCheckedRadioButtonId();
-        if (checkedId == -1)
+        checkedIdBudget = radioGroupBudget.getCheckedRadioButtonId();
+        if (checkedIdBudget == -1)
         {
             budget = null;
         }
         else
         {
-            radioBudget = (RadioButton)radioGroupBudget.findViewById(checkedId);
+            radioBudget = (RadioButton)radioGroupBudget.findViewById(checkedIdBudget);
             budget = radioBudget.getText().toString();
         }
         resultIntent.putExtra("Budget", budget);
     }
-    public void get_entry(View v)
+    public void location()
     {
-        sample = "sample string";
+        checkedIdLocation = radioGroupLocation.getCheckedRadioButtonId();
+        if (checkedIdLocation == -1)
+        {
+            location = null;
+        }
+        else
+        {
+            radioLocation = (RadioButton)radioGroupLocation.findViewById(checkedIdLocation);
+            location = radioLocation.getText().toString();
+        }
+        resultIntent.putExtra("Location", location);
     }
     @Override
     public void onBackPressed()
@@ -108,7 +119,7 @@ public class filter extends AppCompatActivity {
         resultIntent = new Intent();
         category();
         budget();
-        resultIntent.putExtra("Filter Entry 1", sample);
+        location();
         setResult(Activity.RESULT_OK, resultIntent);
         finish();
     }
