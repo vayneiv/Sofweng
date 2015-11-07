@@ -6,9 +6,9 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,7 +21,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-public class details_restaurant extends AppCompatActivity {
+public class resto_edit extends AppCompatActivity {
+
     private static int RESULT_LOAD_IMAGE = 1;
     Bundle extras;
     EditText desc;
@@ -30,6 +31,7 @@ public class details_restaurant extends AppCompatActivity {
     Button sel_Image;
     String userName,password;
     Uri selectedImage;
+    int pack;
     RadioGroup pricerg,locrg;
     int price;
     int loc;
@@ -37,7 +39,7 @@ public class details_restaurant extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_details_restaurant);
+        setContentView(R.layout.activity_resto_edit);
         loginDataBaseAdapter=new LoginDataBaseAdapter(this);
         loginDataBaseAdapter=loginDataBaseAdapter.open();
         if (savedInstanceState == null)
@@ -47,34 +49,36 @@ public class details_restaurant extends AppCompatActivity {
             if(extras == null) {
                 userName= null;
                 password=null;
+                pack=1;
             }
             else
             {
                 userName= extras.getString("Username");
                 password=extras.getString("Password");
+                pack=extras.getInt("package");
             }
         }
-        desc=(EditText)findViewById(R.id.editText6);
-        Cafe=(RadioButton)findViewById(R.id.radioButton5);
-        Buffet=(RadioButton)findViewById(R.id.radioButton26);
-        Dessert=(RadioButton)findViewById(R.id.radioButton6);
-        Bar=(RadioButton)findViewById(R.id.radioButton16);
-        Grill=(RadioButton)findViewById(R.id.radioButton23);
-        Lutong_Bahay=(RadioButton)findViewById(R.id.radioButton27);
-        Fast_food=(RadioButton)findViewById(R.id.radioButton28);
-        Veg=(RadioButton)findViewById(R.id.radioButton25);
-        Fine_dining=(RadioButton)findViewById(R.id.radioButton24);
-        pricerg=(RadioGroup)findViewById(R.id.radioGroup3);
-        locrg=(RadioGroup)findViewById(R.id.radioGroup);
+        desc=(EditText)findViewById(R.id.editText3);
+        Cafe=(RadioButton)findViewById(R.id.radioButton7);
+        Buffet=(RadioButton)findViewById(R.id.radioButton8);
+        Dessert=(RadioButton)findViewById(R.id.radioButton9);
+        Bar=(RadioButton)findViewById(R.id.radioButton10);
+        Grill=(RadioButton)findViewById(R.id.radioButton11);
+        Lutong_Bahay=(RadioButton)findViewById(R.id.radioButton12);
+        Fast_food=(RadioButton)findViewById(R.id.radioButton20);
+        Veg=(RadioButton)findViewById(R.id.radioButton21);
+        Fine_dining=(RadioButton)findViewById(R.id.radioButton22);
+        pricerg=(RadioGroup)findViewById(R.id.radioGroup2);
+        locrg=(RadioGroup)findViewById(R.id.radioGroup4);
 
-        sel_Image=(Button)findViewById(R.id.button6);
+        sel_Image=(Button)findViewById(R.id.button12);
         sel_Image.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(i, RESULT_LOAD_IMAGE);
             }
         });
-        next=(ImageButton)findViewById(R.id.imageButton2);
+        next=(ImageButton)findViewById(R.id.imageButton7);
         next.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -90,56 +94,56 @@ public class details_restaurant extends AppCompatActivity {
                 boolean Vegis = Veg.isChecked();
                 boolean Fine_diningis = Fine_dining.isChecked();
                 byte[] image=convertImageToByte(selectedImage);
-                if(pricerg.getCheckedRadioButtonId()==R.id.radioButton13){
+                if(pricerg.getCheckedRadioButtonId()==R.id.radioButton29){
                     price=1;
-                } else if(pricerg.getCheckedRadioButtonId()==R.id.radioButton14){
+                } else if(pricerg.getCheckedRadioButtonId()==R.id.radioButton30){
                     price=2;
-                } else if(pricerg.getCheckedRadioButtonId()==R.id.radioButton15){
+                } else if(pricerg.getCheckedRadioButtonId()==R.id.radioButton31){
                     price=3;
-                } else if(pricerg.getCheckedRadioButtonId()==R.id.radioButton17){
+                } else if(pricerg.getCheckedRadioButtonId()==R.id.radioButton32){
                     price=4;
                 } else{
                     price=0;
                 }
-                if(locrg.getCheckedRadioButtonId()==R.id.radioButton){
+                if(locrg.getCheckedRadioButtonId()==R.id.radioButton33){
                     loc=1;
-                } else if(locrg.getCheckedRadioButtonId()==R.id.radioButton2){
+                } else if(locrg.getCheckedRadioButtonId()==R.id.radioButton34){
                     loc=2;
-                } else if(locrg.getCheckedRadioButtonId()==R.id.radioButton3){
+                } else if(locrg.getCheckedRadioButtonId()==R.id.radioButton35){
                     loc=3;
-                } else if(locrg.getCheckedRadioButtonId()==R.id.radioButton4){
+                } else if(locrg.getCheckedRadioButtonId()==R.id.radioButton36){
                     loc=4;
-                } else if(locrg.getCheckedRadioButtonId()==R.id.radioButton18){
+                } else if(locrg.getCheckedRadioButtonId()==R.id.radioButton37){
                     loc=5;
-                } else if(locrg.getCheckedRadioButtonId()==R.id.radioButton19) {
+                } else if(locrg.getCheckedRadioButtonId()==R.id.radioButton38) {
                     loc = 6;
                 } else{
                     loc=0;
                 }
                 loginDataBaseAdapter.updaterestau(userName,
-                                                       password,
-                                                       null,
-                                                       description,
-                                                       Cafeis,
-                                                       Buffetis,
-                                                       Dessertis,
-                                                       Baris,
-                                                       Grillis,
-                                                       Lutong_Bahayis,
-                                                       Fast_foodis,
-                                                       Vegis,
-                                                       Fine_diningis,
-                                                       loc,
-                                                       price,
-                                                        1,
-                                                       image);
+                                                        password,
+                                                        null,
+                                                        description,
+                                                        Cafeis,
+                                                        Buffetis,
+                                                        Dessertis,
+                                                        Baris,
+                                                        Grillis,
+                                                        Lutong_Bahayis,
+                                                        Fast_foodis,
+                                                        Vegis,
+                                                        Fine_diningis,
+                                                        loc,
+                                                        price,
+                                                        pack,
+                                                        image);
                 finish();
             }
         });
 
 
 
-        }
+    }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
@@ -174,34 +178,4 @@ public class details_restaurant extends AppCompatActivity {
         super.onDestroy();
 
     }
-    public void radio1toggle(){
-        Cafe.toggle();
-    }
-    public void radio2toggle(){
-        Dessert.toggle();
-    }
-    public void radio3toggle(){
-       Bar.toggle();
-    }
-    public void radio4toggle(){
-        Grill.toggle();
-    }
-    public void radio5toggle(){
-        Fine_dining.toggle();
-    }
-    public void radio6toggle(){
-        Veg.toggle();
-    }
-    public void radio7toggle(){
-        Buffet.toggle();
-    }
-    public void radio8toggle(){
-        Fast_food.toggle();
-    }
-    public void radio9toggle(){
-        Lutong_Bahay.toggle();
-    }
-
-    }
-
-
+}

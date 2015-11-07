@@ -55,6 +55,7 @@ public class loginPage extends AppCompatActivity {
         {
             to_home_restaurant = new Intent(this, restau_choose.class);
             to_home_restaurant.putExtra("Username", user_stored);
+            to_home_restaurant.putExtra("Password", pass_stored);
             startActivity(to_home_restaurant); //transfer activity
         }
         else if(pass_stored.equals(storedVar_user))

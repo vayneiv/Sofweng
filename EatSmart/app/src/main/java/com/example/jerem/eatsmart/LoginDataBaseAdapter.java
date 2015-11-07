@@ -9,11 +9,13 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import java.io.ByteArrayInputStream;
+
 public class LoginDataBaseAdapter
 {
     public static int nos_calls=0;
     static final String DATABASE_NAME = "login.db";
-    static final int DATABASE_VERSION = 1;
+    static final int DATABASE_VERSION = 2;
     public static final int NAME_COLUMN = 1;
     // TODO: Create public field for each column in your table.
     // SQL Statement to create a new database.
@@ -39,6 +41,7 @@ public class LoginDataBaseAdapter
                     "Fine_dining INTEGER DEFAULT 0," +
                     "LOCATION integer,"+
                     "price interger"+
+                    "package integer"+
                     "image BLOB); ";
     // Variable to hold the database instance
     public  SQLiteDatabase db;
@@ -81,6 +84,7 @@ public class LoginDataBaseAdapter
                                   boolean Fine_dining,
                                   int LOCATION,
                                   int price,
+                                  int pack,
                                   byte []image)
     {
         Log.i(userName,"insertEntryrestau");
@@ -101,6 +105,7 @@ public class LoginDataBaseAdapter
         newValues.put("Fine_dining",Fine_dining);
         newValues.put("LOCATION",LOCATION);
         newValues.put("price",price);
+        newValues.put("package",pack);
         newValues.put("image",image);
 
         // Insert the row into your table
@@ -158,18 +163,198 @@ public class LoginDataBaseAdapter
     cursor.close();
     return returnVar;
     }
-    public String getrestauloc(String userName)
+    public int getCafe(String userName)
     {
-        String returnVar;
+        int returnVar;
         Cursor cursor=db.query("restau", null, " USERNAME=?", new String[]{userName}, null, null, null);
         if(cursor.getCount()<1) // UserName Not Exist
         {
             cursor.close();
-            returnVar="NOT EXIST";
+            returnVar=0;
             return returnVar;
         }
         cursor.moveToFirst();
-        returnVar= cursor.getString(cursor.getColumnIndex("LOCATION"));
+        returnVar= cursor.getInt(cursor.getColumnIndex("Cafe"));
+        cursor.close();
+        return returnVar;
+    }
+    public int getBuffet(String userName)
+    {
+        int returnVar;
+        Cursor cursor=db.query("restau", null, " USERNAME=?", new String[]{userName}, null, null, null);
+        if(cursor.getCount()<1) // UserName Not Exist
+        {
+            cursor.close();
+            returnVar=0;
+            return returnVar;
+        }
+        cursor.moveToFirst();
+        returnVar= cursor.getInt(cursor.getColumnIndex("Buffet"));
+        cursor.close();
+        return returnVar;
+    }
+    public int getDessert(String userName)
+    {
+        int returnVar;
+        Cursor cursor=db.query("restau", null, " USERNAME=?", new String[]{userName}, null, null, null);
+        if(cursor.getCount()<1) // UserName Not Exist
+        {
+            cursor.close();
+            returnVar=0;
+            return returnVar;
+        }
+        cursor.moveToFirst();
+        returnVar= cursor.getInt(cursor.getColumnIndex("Dessert"));
+        cursor.close();
+        return returnVar;
+    }
+    public int getBar(String userName)
+    {
+        int returnVar;
+        Cursor cursor=db.query("restau", null, " USERNAME=?", new String[]{userName}, null, null, null);
+        if(cursor.getCount()<1) // UserName Not Exist
+        {
+            cursor.close();
+            returnVar=0;
+            return returnVar;
+        }
+        cursor.moveToFirst();
+        returnVar= cursor.getInt(cursor.getColumnIndex("Bar"));
+        cursor.close();
+        return returnVar;
+    }
+    public int getGrill(String userName)
+    {
+        int returnVar;
+        Cursor cursor=db.query("restau", null, " USERNAME=?", new String[]{userName}, null, null, null);
+        if(cursor.getCount()<1) // UserName Not Exist
+        {
+            cursor.close();
+            returnVar=0;
+            return returnVar;
+        }
+        cursor.moveToFirst();
+        returnVar= cursor.getInt(cursor.getColumnIndex("Grill"));
+        cursor.close();
+        return returnVar;
+    }
+    public int getLutong_bahay(String userName)
+    {
+        int returnVar;
+        Cursor cursor=db.query("restau", null, " USERNAME=?", new String[]{userName}, null, null, null);
+        if(cursor.getCount()<1) // UserName Not Exist
+        {
+            cursor.close();
+            returnVar=0;
+            return returnVar;
+        }
+        cursor.moveToFirst();
+        returnVar= cursor.getInt(cursor.getColumnIndex("Lutong_bahay"));
+        cursor.close();
+        return returnVar;
+    }
+    public int getfast_food(String userName)
+    {
+        int returnVar;
+        Cursor cursor=db.query("restau", null, " USERNAME=?", new String[]{userName}, null, null, null);
+        if(cursor.getCount()<1) // UserName Not Exist
+        {
+            cursor.close();
+            returnVar=0;
+            return returnVar;
+        }
+        cursor.moveToFirst();
+        returnVar= cursor.getInt(cursor.getColumnIndex("fast_food"));
+        cursor.close();
+        return returnVar;
+    }
+    public int getveg(String userName)
+    {
+        int returnVar;
+        Cursor cursor=db.query("restau", null, " USERNAME=?", new String[]{userName}, null, null, null);
+        if(cursor.getCount()<1) // UserName Not Exist
+        {
+            cursor.close();
+            returnVar=0;
+            return returnVar;
+        }
+        cursor.moveToFirst();
+        returnVar= cursor.getInt(cursor.getColumnIndex("Veg"));
+        cursor.close();
+        return returnVar;
+    }
+    public int getFine_dining(String userName)
+    {
+        int returnVar;
+        Cursor cursor=db.query("restau", null, " USERNAME=?", new String[]{userName}, null, null, null);
+        if(cursor.getCount()<1) // UserName Not Exist
+        {
+            cursor.close();
+            returnVar=0;
+            return returnVar;
+        }
+        cursor.moveToFirst();
+        returnVar= cursor.getInt(cursor.getColumnIndex("Fine_dining"));
+        cursor.close();
+        return returnVar;
+    }
+    public int getrestauloc(String userName)
+    {
+        int returnVar;
+        Cursor cursor=db.query("restau", null, " USERNAME=?", new String[]{userName}, null, null, null);
+        if(cursor.getCount()<1) // UserName Not Exist
+        {
+            cursor.close();
+            returnVar=0;
+            return returnVar;
+        }
+        cursor.moveToFirst();
+        returnVar= cursor.getInt(cursor.getColumnIndex("LOCATION"));
+        cursor.close();
+        return returnVar;
+    }
+    public int getrestauprice(String userName)
+    {
+        int returnVar;
+        Cursor cursor=db.query("restau", null, " USERNAME=?", new String[]{userName}, null, null, null);
+        if(cursor.getCount()<1) // UserName Not Exist
+        {
+            cursor.close();
+            returnVar=0;
+            return returnVar;
+        }
+        cursor.moveToFirst();
+        returnVar= cursor.getInt(cursor.getColumnIndex("price"));
+        cursor.close();
+        return returnVar;
+    }
+    public int getrestapack(String userName)
+    {
+        int returnVar;
+        Cursor cursor=db.query("restau", null, " USERNAME=?", new String[]{userName}, null, null, null);
+        if(cursor.getCount()<1) // UserName Not Exist
+        {
+            cursor.close();
+            returnVar=0;
+            return returnVar;
+        }
+        cursor.moveToFirst();
+        returnVar= cursor.getInt(cursor.getColumnIndex("package"));
+        cursor.close();
+        return returnVar;
+    }
+    public byte[] getimage(String userName)
+    {
+        byte[] returnVar;
+        Cursor cursor=db.query("restau", null, " USERNAME=?", new String[]{userName}, null, null, null);
+        if(cursor.getCount()<1) // UserName Not Exist
+        {
+            cursor.close();
+            returnVar=null;
+            return returnVar;
+        }
+        cursor.moveToFirst();
+        returnVar = cursor.getBlob(cursor.getColumnIndex("image"));
         cursor.close();
         return returnVar;
     }
@@ -203,16 +388,45 @@ public class LoginDataBaseAdapter
         cursor.close();
         return returnVar;
     }
-    public void  updaterestaudesc(String userName,String description)
+    public void  updaterestau(String userName,
+                                  String password,
+                                  String RestauName,
+                                  String Description,
+                                  boolean Cafe,
+                                  boolean Buffet,
+                                  boolean Dessert,
+                                  boolean Bar,
+                                  boolean Grill,
+                                  boolean Lutong_bahay,
+                                  boolean fast_food,
+                                  boolean Veg,
+                                  boolean Fine_dining,
+                                  int LOCATION,
+                                  int price,
+                                  int pack,
+                                  byte []image)
     {
         // Define the updated row content.
         ContentValues updatedValues = new ContentValues();
         // Assign values for each row.
+
         updatedValues.put("USERNAME", userName);
-        updatedValues.put("PASSWORD", getSingleEntryrestau(userName));
-        updatedValues.put("RESTAUNAME", getrestauname(userName));
-        updatedValues.put("DESCRIPTION",description);
-        updatedValues.put("LOCATION", getrestauloc(userName));
+        updatedValues.put("PASSWORD", password);
+        updatedValues.put("RESTAUNAME", RestauName);
+        updatedValues.put("DESCRIPTION",Description);
+        updatedValues.put("Cafe",Cafe);
+        updatedValues.put("Buffet",Buffet);
+        updatedValues.put("Dessert",Dessert);
+        updatedValues.put("Bar",Bar);
+        updatedValues.put("Grill",Grill);
+        updatedValues.put("Lutong_bahay",Lutong_bahay);
+        updatedValues.put("fast_food",fast_food);
+        updatedValues.put("Veg",Veg);
+        updatedValues.put("Fine_dining",Fine_dining);
+        updatedValues.put("LOCATION",LOCATION);
+        updatedValues.put("price",price);
+        updatedValues.put("package",pack);
+        updatedValues.put("image",image);
         String where="USERNAME = ?";
         db.update("restau",updatedValues, where, new String[]{userName});
     }
