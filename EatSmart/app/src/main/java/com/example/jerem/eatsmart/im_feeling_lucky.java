@@ -12,14 +12,16 @@ import java.util.Random;
 public class im_feeling_lucky extends AppCompatActivity {
     Bundle extras;
     LoginDataBaseAdapter loginDataBaseAdapter;
-    String userName, filter_entry_1,cat_1,cat_2,cat_3,cat_4,cat_5,cat_6,cat_7,cat_8,cat_9;
-    TextView user, entry,cate_1,cate_2,cate_3,cate_4,cate_5,cate_6,cate_7,cate_8,cate_9;
+    String userName, filter_entry_1,cat_1,cat_2,cat_3,cat_4,cat_5,cat_6,cat_7,cat_8,cat_9, budget;
+    TextView user, entry,cate_1,cate_2,cate_3,cate_4,cate_5,cate_6,cate_7,cate_8,cate_9, text_budget;
+    int budget_db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_im_feeling_lucky);
         loginDataBaseAdapter=new LoginDataBaseAdapter(this);
         loginDataBaseAdapter=loginDataBaseAdapter.open();
+        budget_db = 0;
         if (savedInstanceState == null)
         {
             //fetching extra data passed with intents in a Bundle type variable
@@ -36,6 +38,7 @@ public class im_feeling_lucky extends AppCompatActivity {
                 cat_7 = null;
                 cat_8 = null;
                 cat_9 = null;
+                budget = null;
             }
             else
             {
@@ -50,6 +53,7 @@ public class im_feeling_lucky extends AppCompatActivity {
                 cat_7 = extras.getString("Category7");
                 cat_8 = extras.getString("Category8");
                 cat_9 = extras.getString("Category9");
+                budget = extras.getString("Budget");
             }
         }
         user = (TextView) findViewById(R.id.textView34);
@@ -63,6 +67,7 @@ public class im_feeling_lucky extends AppCompatActivity {
         cate_7 = (TextView) findViewById(R.id.textView44);
         cate_8 = (TextView) findViewById(R.id.textView45);
         cate_9 = (TextView) findViewById(R.id.textView46);
+        text_budget = (TextView)findViewById(R.id.textView48);
         user.setText("User: " + userName);
         cate_1.setText("" + cat_1);
         cate_2.setText("" + cat_2);
@@ -73,8 +78,35 @@ public class im_feeling_lucky extends AppCompatActivity {
         cate_7.setText("" + cat_7);
         cate_8.setText("" + cat_8);
         cate_9.setText("" + cat_9);
+        getBudgetIndex();
+        text_budget.setText("" + budget + " budget_db: " + budget_db);
     }
-
+    public void getBudgetIndex()
+    {
+        if (budget == null)
+        {
+            budget_db = 0;
+        }
+        else
+        {
+            if (budget.equals("0-100"))
+            {
+                budget_db = 1;
+            }
+            else if (budget.equals("101-500"))
+            {
+                budget_db = 2;
+            }
+            else if (budget.equals("501-1000"))
+            {
+                budget_db = 3;
+            }
+            else if (budget.equals("1000+"))
+            {
+                budget_db = 4;
+            }
+        }
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

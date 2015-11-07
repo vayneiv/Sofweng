@@ -13,7 +13,7 @@ import android.widget.TextView;
 public class home_customer extends AppCompatActivity {
     TextView welcMSG;
     Bundle extras;
-    String userName, filter_entry_1,cat_1,cat_2,cat_3,cat_4,cat_5,cat_6,cat_7,cat_8,cat_9;
+    String userName, filter_entry_1,cat_1,cat_2,cat_3,cat_4,cat_5,cat_6,cat_7,cat_8,cat_9,budget;
     Intent to_ifl, to_filter, to_search;
     static int requestCode;
     @Override
@@ -23,7 +23,7 @@ public class home_customer extends AppCompatActivity {
         requestCode = 1;
         if (savedInstanceState == null)
         {
-        //fetching extra data passed with intents in a Bundle type variable
+            //fetching extra data passed with intents in a Bundle type variable
             extras = getIntent().getExtras();
             if(extras == null) {
                 userName= null;
@@ -43,6 +43,7 @@ public class home_customer extends AppCompatActivity {
         to_ifl.putExtra("Username", userName);
         to_ifl.putExtra("Filter Entry 1", filter_entry_1);
         putCategory();
+        to_ifl.putExtra("Budget", budget);
         startActivity(to_ifl); //transfer activity
     }
     public void putCategory()
@@ -56,6 +57,7 @@ public class home_customer extends AppCompatActivity {
         to_ifl.putExtra("Category7", cat_7);
         to_ifl.putExtra("Category8", cat_8);
         to_ifl.putExtra("Category9", cat_9);
+
     }
     public void to_filter(View v)
     {
@@ -86,6 +88,7 @@ public class home_customer extends AppCompatActivity {
                 cat_7 = to_filter.getStringExtra("Category7");
                 cat_8 = to_filter.getStringExtra("Category8");
                 cat_9 = to_filter.getStringExtra("Category9");
+                budget = to_filter.getStringExtra("Budget");
             }
         }
     }

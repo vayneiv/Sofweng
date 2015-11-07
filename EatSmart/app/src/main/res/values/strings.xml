@@ -35,10 +35,10 @@
     <string name="text_cuisine_8">Buffet</string>
     <string name="text_cuisine_9">Fast Food</string>
     <string name="text_title_budget">BUDGET</string>
-    <string name="text_budget_1">BUDGET 1</string>
-    <string name="text_budget_2">BUDGET 2</string>
-    <string name="text_budget_3">BUDGET 3</string>
-    <string name="text_budget_4">BUDGET 4</string>
+    <string name="text_budget_1">0-100</string>
+    <string name="text_budget_2">101-500</string>
+    <string name="text_budget_3">501-1000</string>
+    <string name="text_budget_4">1000+</string>
     <string name="text_budget_5">BUDGET 5</string>
     <string name="text_budget_6">BUDGET 6</string>
     <string name="hint_location">LOCATION</string>

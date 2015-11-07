@@ -8,12 +8,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 public class filter extends AppCompatActivity {
     Bundle extras;
-    String userName, sample;
+    String userName, sample, budget;
     Intent resultIntent;
     CheckBox cat_1,cat_2,cat_3,cat_4,cat_5,cat_6,cat_7,cat_8,cat_9;
+    RadioGroup radioGroupBudget;
+    RadioButton radioBudget, radioLocation;
+    boolean isBudget, isLocation;
+    int checkedId;
     static int entry_1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +27,10 @@ public class filter extends AppCompatActivity {
         setContentView(R.layout.activity_filter);
         entry_1 = 1;
         sample = null;
-
+        budget = null;
+        checkedId = -1;
+        radioGroupBudget = (RadioGroup)findViewById(R.id.radioGroup5);
+        radioBudget = (RadioButton)radioGroupBudget.findViewById(radioGroupBudget.getCheckedRadioButtonId());
         if (savedInstanceState == null)
         {
             //fetching extra data passed with intents in a Bundle type variable
@@ -44,6 +53,7 @@ public class filter extends AppCompatActivity {
         cat_8 =(CheckBox) findViewById(R.id.checkBox8);
         cat_9 =(CheckBox) findViewById(R.id.checkBox9);
     }
+
     public void category()
     {
         if (cat_1.isChecked()){
@@ -74,6 +84,20 @@ public class filter extends AppCompatActivity {
             resultIntent.putExtra("Category9", "fast food");
         }
     }
+    public void budget()
+    {
+        checkedId = radioGroupBudget.getCheckedRadioButtonId();
+        if (checkedId == -1)
+        {
+            budget = null;
+        }
+        else
+        {
+            radioBudget = (RadioButton)radioGroupBudget.findViewById(checkedId);
+            budget = radioBudget.getText().toString();
+        }
+        resultIntent.putExtra("Budget", budget);
+    }
     public void get_entry(View v)
     {
         sample = "sample string";
@@ -83,6 +107,7 @@ public class filter extends AppCompatActivity {
     {
         resultIntent = new Intent();
         category();
+        budget();
         resultIntent.putExtra("Filter Entry 1", sample);
         setResult(Activity.RESULT_OK, resultIntent);
         finish();
