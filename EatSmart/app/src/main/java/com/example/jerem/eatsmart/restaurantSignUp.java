@@ -59,6 +59,7 @@ public class restaurantSignUp extends Activity
                     to_details_restaurant.putExtra("Username", userName);
                     to_details_restaurant.putExtra("Password", password);
                     startActivity(to_details_restaurant);
+                    finish();
                 }
             }
         });

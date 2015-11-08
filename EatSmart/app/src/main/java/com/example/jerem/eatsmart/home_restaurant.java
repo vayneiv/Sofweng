@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.KeyListener;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,6 +34,10 @@ public class home_restaurant extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_restaurant);
         edit = new Intent(this,resto_edit.class);
+
+        loginDataBaseAdapter=new LoginDataBaseAdapter(this);
+        loginDataBaseAdapter=loginDataBaseAdapter.open();
+        Log.i("test","test");
         if (savedInstanceState == null)
         {
             //fetching extra data passed with booleanents in a Bundle type variable
@@ -50,7 +55,8 @@ public class home_restaurant extends AppCompatActivity {
             }
         }
         image=(ImageView)findViewById(R.id.imageView6);
-        image.setImageBitmap(BitmapFactory.decodeByteArray(loginDataBaseAdapter.getimage(userName), 0,loginDataBaseAdapter.getimage(userName).length));
+        image.invalidate();
+        image.setImageBitmap(loginDataBaseAdapter.getimage(userName));
         loginDataBaseAdapter=new LoginDataBaseAdapter(this);
         loginDataBaseAdapter=loginDataBaseAdapter.open();
         description=new TextView(this);
@@ -110,14 +116,11 @@ public class home_restaurant extends AppCompatActivity {
             resto_loc=" ";
         }
         location.setText(resto_loc);
-        Save = (Button) findViewById(R.id.button9);
+        Save = (Button) findViewById(R.id.button7);
         Save.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                edit.putExtra("Username", userName);
-                edit.putExtra("Password", password);
-                edit.putExtra("package",pack);
-                startActivity(edit); //transfer activity
-                finish();
+
+                image.setImageBitmap(loginDataBaseAdapter.getimage(userName));
             }
         });
     }

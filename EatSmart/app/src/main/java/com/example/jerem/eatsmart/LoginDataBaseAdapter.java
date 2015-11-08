@@ -7,6 +7,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import java.io.ByteArrayInputStream;
@@ -16,7 +18,7 @@ public class LoginDataBaseAdapter
 {
     public static int nos_calls=0;
     static final String DATABASE_NAME = "login.db";
-    static final int DATABASE_VERSION = 2;
+    static final int DATABASE_VERSION = 6;
     public static final int NAME_COLUMN = 1;
     // TODO: Create public field for each column in your table.
     // SQL Statement to create a new database.
@@ -41,8 +43,8 @@ public class LoginDataBaseAdapter
                     "Veg INTEGER DEFAULT 0," +
                     "Fine_dining INTEGER DEFAULT 0," +
                     "LOCATION integer,"+
-                    "price interger"+
-                    "package integer"+
+                    "price integer,"+
+                    "package integer,"+
                     "image BLOB); ";
     // Variable to hold the database instance
     public  SQLiteDatabase db;
@@ -344,20 +346,23 @@ public class LoginDataBaseAdapter
         cursor.close();
         return returnVar;
     }
-    public byte[] getimage(String userName)
+    public Bitmap getimage(String userName)
     {
         byte[] returnVar;
+        Bitmap img = null;
         Cursor cursor=db.query("restau", null, " USERNAME=?", new String[]{userName}, null, null, null);
         if(cursor.getCount()<1) // UserName Not Exist
         {
             cursor.close();
-            returnVar=null;
-            return returnVar;
+            img=null;
+            return img;
         }
         cursor.moveToFirst();
         returnVar = cursor.getBlob(cursor.getColumnIndex("image"));
         cursor.close();
-        return returnVar;
+        BitmapFactory.decodeByteArray(returnVar, 0, returnVar.length);
+        Log.i("Image Accessed", "Image Accessed");
+        return img;
     }
     public String getrestaudesc(String userName)
     {
