@@ -2,6 +2,7 @@ package com.example.jerem.eatsmart;
 
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.media.Rating;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.KeyListener;
@@ -13,8 +14,12 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.ToggleButton;
+
+import java.util.ArrayList;
 
 public class home_restaurant extends AppCompatActivity {
     TextView welcMSG,description,location,cuisine,price;
@@ -29,6 +34,9 @@ public class home_restaurant extends AppCompatActivity {
     KeyListener editdesc;
     Intent edit;
     ImageView image;
+    LinearLayout Rate;
+    ArrayList<Integer> Ratings;
+    ArrayList<String> Comments;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,15 +53,14 @@ public class home_restaurant extends AppCompatActivity {
             if(extras == null) {
                 userName= null;
                 password=null;
-                pack=1;
             }
             else
             {
                 userName= extras.getString("Username");
                 password=extras.getString("Password");
-                pack=extras.getInt("package");
             }
         }
+        Rate=(LinearLayout)findViewById(R.id.linearlayout1);
         welcMSG=(TextView)findViewById(R.id.textView54);
         welcMSG.setText(loginDataBaseAdapter.getrestauname(userName));
         image=(ImageView)findViewById(R.id.imageView6);
@@ -118,11 +125,27 @@ public class home_restaurant extends AppCompatActivity {
             resto_loc=" ";
         }
         location.setText(resto_loc);
+        Ratings=loginDataBaseAdapter.Retrieve_Rate(userName);
+        Comments=loginDataBaseAdapter.Retrieve_Comments(userName);
+        final int no_of_custo =loginDataBaseAdapter.Retrieve_Comments(userName).size();
+        for (int i=0;i<no_of_custo;i+=3){
+            final TextView Header=new TextView(this);
+            Header.setText("Customer"+(i+1));
+            Rate.addView(Header);
+            final RatingBar Rating=new RatingBar(this);
+            Rating.setRating(Ratings.get(i));
+            Rate.addView(Rating);
+            final TextView Comment=new TextView(this);
+            Comment.setText("Comments" +Comments.get(i));
+            Rate.addView(Comment);
+        }
         Save = (Button) findViewById(R.id.button7);
         Save.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
-                image.setImageBitmap(loginDataBaseAdapter.getimage(userName));
+                edit.putExtra("Username", userName);
+                edit.putExtra("Password", password);
+                startActivity(edit); //transfer activity
+                finish();
             }
         });
     }

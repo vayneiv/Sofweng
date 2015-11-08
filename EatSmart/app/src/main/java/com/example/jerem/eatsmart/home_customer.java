@@ -13,7 +13,18 @@ import android.widget.TextView;
 public class home_customer extends AppCompatActivity {
     TextView welcMSG;
     Bundle extras;
-    String userName, cat_1,cat_2,cat_3,cat_4,cat_5,cat_6,cat_7,cat_8,cat_9,budget, location;
+    String userName;
+    boolean cat_1;
+    boolean cat_2;
+    boolean cat_3;
+    boolean cat_4;
+    boolean cat_5;
+    boolean cat_6;
+    boolean cat_7;
+    boolean cat_8;
+    boolean cat_9;
+    int budget;
+    int location;
     Intent to_ifl, to_filter, to_search;
     static int requestCode;
     @Override
@@ -78,17 +89,17 @@ public class home_customer extends AppCompatActivity {
         {
             if (resultCode == Activity.RESULT_OK)
             {
-                cat_1 = to_filter.getStringExtra("Category1");
-                cat_2 = to_filter.getStringExtra("Category2");
-                cat_3 = to_filter.getStringExtra("Category3");
-                cat_4 = to_filter.getStringExtra("Category4");
-                cat_5 = to_filter.getStringExtra("Category5");
-                cat_6 = to_filter.getStringExtra("Category6");
-                cat_7 = to_filter.getStringExtra("Category7");
-                cat_8 = to_filter.getStringExtra("Category8");
-                cat_9 = to_filter.getStringExtra("Category9");
-                budget = to_filter.getStringExtra("Budget");
-                location = to_filter.getStringExtra("Location");
+                cat_1=to_filter.getBooleanExtra("Cafe", false);
+                cat_2=to_filter.getBooleanExtra("Buffet", false);
+                cat_3=to_filter.getBooleanExtra("Dessert",false);
+                cat_4=to_filter.getBooleanExtra("Bar",false);
+                cat_5=to_filter.getBooleanExtra("Grill",false);
+                cat_6=to_filter.getBooleanExtra("Lutong_Bahay",false);
+                cat_7=to_filter.getBooleanExtra("Fast_food",false);
+                cat_8=to_filter.getBooleanExtra("Veg",false);
+                cat_9=to_filter.getBooleanExtra("Fine_dining",false);
+                budget=to_filter.getIntExtra("Price",0);
+                location=to_filter.getIntExtra("Location",0);
             }
         }
     }

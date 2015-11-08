@@ -15,12 +15,15 @@ public class rate_and_comment extends AppCompatActivity {
     EditText editComment;
     RatingBar ratingBar;
     TextView display_rate_and_comment;
+    LoginDataBaseAdapter loginDataBaseAdapter;
     float rate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate_and_comment);
         rate = 0;
+        loginDataBaseAdapter=new LoginDataBaseAdapter(this);
+        loginDataBaseAdapter=loginDataBaseAdapter.open();
         if (savedInstanceState == null)
         {
             //fetching extra data passed with intents in a Bundle type variable
@@ -44,6 +47,7 @@ public class rate_and_comment extends AppCompatActivity {
         comment = editComment.getText().toString();
         rate = ratingBar.getRating();
         display_rate_and_comment.setText("Rate: " + rate + "\n" + "Comment: " + comment);
+        loginDataBaseAdapter.newRateComment(restauName,comment,rate);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

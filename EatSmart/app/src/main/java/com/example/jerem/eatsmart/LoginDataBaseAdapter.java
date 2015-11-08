@@ -18,7 +18,7 @@ public class LoginDataBaseAdapter
 {
     public static int nos_calls=0;
     static final String DATABASE_NAME = "login.db";
-    static final int DATABASE_VERSION = 6;
+    static final int DATABASE_VERSION = 7;
     public static final int NAME_COLUMN = 1;
     // TODO: Create public field for each column in your table.
     // SQL Statement to create a new database.
@@ -26,6 +26,10 @@ public class LoginDataBaseAdapter
             "create table "+"LOGIN"+
             "( " +"ID"+" integer primary key autoincrement,"
                     +"USERNAME  text,PASSWORD text); ";
+    static final String DATABASE_CREATE_2 =
+            "create table "+"Rate_Comment"+
+                    "( " +"ID"+" integer primary key autoincrement,"
+                    +"RestoName  text,Comment text,Rate Real); ";
     static final String DATABASE_CREATE_1 =
             "create table "+"restau"+
             "( " +"ID"+" integer primary key autoincrement,"+
@@ -72,6 +76,68 @@ public class LoginDataBaseAdapter
         return db;
     }
 
+    public void newRateComment(String Resto_name, String Comment, double rate){
+        ContentValues newValues=new ContentValues();
+        newValues.put("RestoName",Resto_name);
+        newValues.put("Comment",Comment);
+        newValues.put("Rate",rate);
+        db.insert("Rate_Comment",null,newValues);
+    }
+
+    public ArrayList<String> Retrieve_Comments(String Resto_name){
+        ArrayList<String> returnVar= new ArrayList<String>();
+        Cursor cursor =  db.query("Rate_Comment", new String[]{"USERNAME Comment"}, null, null, null, null, null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast())
+        {
+            String Restau = cursor.getString(cursor.getColumnIndex("USERNAME"));
+            if(Restau==Resto_name) {
+                returnVar.add(cursor.getString(cursor.getColumnIndex("Comment")));
+            }else{
+
+            }
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return returnVar;
+    }
+    public ArrayList<Integer> Retrieve_Rate(String Resto_name){
+    ArrayList<Integer> returnVar= new ArrayList<Integer>();
+    Cursor cursor =  db.query("Rate_Comment", new String[]{"USERNAME Rate"}, null, null, null, null, null);
+    cursor.moveToFirst();
+        while(!cursor.isAfterLast())
+        {
+            String Restau = cursor.getString(cursor.getColumnIndex("USERNAME"));
+            if(Restau==Resto_name) {
+                returnVar.add(cursor.getInt(cursor.getColumnIndex("Rate")));
+            }else{
+
+            }
+            cursor.moveToNext();
+        }
+    cursor.close();
+    return returnVar;
+}
+    public double Retrieve_Total_Rate(String Resto_name){
+        Integer ctr=0;
+            double returnVar=0;
+        Cursor cursor =  db.query("Rate_Comment", new String[]{"USERNAME Rate"}, null, null, null, null, null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast())
+        {
+            String Restau = cursor.getString(cursor.getColumnIndex("USERNAME"));
+            if(Restau==Resto_name) {
+                returnVar+=(cursor.getInt(cursor.getColumnIndex("Rate")));
+                ctr++;
+            }else{
+
+            }
+            cursor.moveToNext();
+        }
+            returnVar=Math.ceil(returnVar / ctr);
+        cursor.close();
+        return returnVar;
+    }
     public void insertEntryrestau(String userName,
                                   String password,
                                   String RestauName,
@@ -436,26 +502,69 @@ public class LoginDataBaseAdapter
         String where="USERNAME = ?";
         db.update("restau",updatedValues, where, new String[]{userName});
     }
-    public ArrayList<String> getList(){
+    public ArrayList<String> getList(boolean Cafe,
+                                     boolean Buffet,
+                                     boolean Dessert,
+                                     boolean Bar,
+                                     boolean Grill,
+                                     boolean Lutong_bahay,
+                                     boolean fast_food,
+                                     boolean Veg,
+                                     boolean Fine_dining,
+                                     int LOCATION,
+                                     int price){
         ArrayList<String> returnVar= new ArrayList<String>();
-        Cursor cursor =  db.query("restau", new String[]{"USERNAME package"}, null, null, null, null, null);
+        Cursor cursor =  db.query("restau", new String[]{"USERNAME Cafe Buffet Dessert Bar Grill Lutong_bahay fast_food Veg Fine_dining LOCATION price package"}, null, null, null, null, null);
         cursor.moveToFirst();
         while(!cursor.isAfterLast())
         {
             String Restau = cursor.getString(cursor.getColumnIndex("USERNAME"));
+            int Cafeis = cursor.getInt(cursor.getColumnIndex("Cafe"));
+            int Buffetis = cursor.getInt(cursor.getColumnIndex("Buffet"));
+            int Dessertis = cursor.getInt(cursor.getColumnIndex("Dessert"));
+            int Baris = cursor.getInt(cursor.getColumnIndex("Bar"));
+            int Grillis = cursor.getInt(cursor.getColumnIndex("Grill"));
+            int Lutong_bahay_is = cursor.getInt(cursor.getColumnIndex("Lutong_bahay"));
+            int fast_food_is = cursor.getInt(cursor.getColumnIndex("fast_food"));
+            int Vegis = cursor.getInt(cursor.getColumnIndex("Veg"));
+            int Fine_dining_is = cursor.getInt(cursor.getColumnIndex("fine_dining"));
+            int Locationis = cursor.getInt(cursor.getColumnIndex("LOCATION"));
+            int priceis = cursor.getInt(cursor.getColumnIndex("price"));
             int pack = cursor.getInt(cursor.getColumnIndex("package"));
-            if(pack==1) {
-                returnVar.add(Restau);
-            }else if(pack==1) {
-                returnVar.add(Restau);
-                returnVar.add(Restau);
-            }else if(pack==1) {
-                returnVar.add(Restau);
-                returnVar.add(Restau);
-                returnVar.add(Restau);
-                returnVar.add(Restau);
-            }else{
+            if((Cafeis==1)&&(Cafe)) {
+                if ((Buffetis == 1) && (Buffet)) {
+                    if ((Dessertis == 1) && (Dessert)) {
+                        if ((Baris == 1) && (Bar)) {
+                            if ((Grillis == 1) && (Grill)) {
+                                if ((Lutong_bahay_is == 1) && (Lutong_bahay)) {
+                                    if ((fast_food_is == 1) && (fast_food)) {
+                                        if ((Vegis == 1) && (Veg)) {
+                                            if ((Fine_dining_is == 1) && (Fine_dining)) {
+                                                if (Locationis == LOCATION)  {
+                                                    if (priceis == price) {
+                                                        if(pack==1) {
+                                                            returnVar.add(Restau);
+                                                        }else if(pack==1) {
+                                                            returnVar.add(Restau);
+                                                            returnVar.add(Restau);
+                                                        }else if(pack==1) {
+                                                            returnVar.add(Restau);
+                                                            returnVar.add(Restau);
+                                                            returnVar.add(Restau);
+                                                            returnVar.add(Restau);
+                                                        }else{
 
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
             cursor.moveToNext();
         }

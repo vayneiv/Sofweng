@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -15,10 +16,11 @@ public class filter extends AppCompatActivity {
     Bundle extras;
     String userName, budget, location;
     Intent resultIntent;
-    CheckBox cat_1,cat_2,cat_3,cat_4,cat_5,cat_6,cat_7,cat_8,cat_9;
+    CheckBox Cafe,Buffet,Bar,Grill,Lutong_Bahay,Dessert,Fast_food,Veg,Fine_dining,price1,price2,price3,price4,loc11,loc12,loc13,loc14,loc15,loc16;
     RadioGroup radioGroupBudget, radioGroupLocation;
     RadioButton radioBudget, radioLocation;
-    boolean isBudget, isLocation;
+    int price;
+    int loc;
     int checkedIdBudget, checkedIdLocation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,83 +45,162 @@ public class filter extends AppCompatActivity {
             {
                 userName= extras.getString("Username");
             }
-        }
-        cat_1 =(CheckBox) findViewById(R.id.checkBox);
-        cat_2 =(CheckBox) findViewById(R.id.checkBox2);
-        cat_3 =(CheckBox) findViewById(R.id.checkBox3);
-        cat_4 =(CheckBox) findViewById(R.id.checkBox4);
-        cat_5 =(CheckBox) findViewById(R.id.checkBox5);
-        cat_6 =(CheckBox) findViewById(R.id.checkBox6);
-        cat_7 =(CheckBox) findViewById(R.id.checkBox7);
-        cat_8 =(CheckBox) findViewById(R.id.checkBox8);
-        cat_9 =(CheckBox) findViewById(R.id.checkBox9);
-    }
-
-    public void category()
-    {
-        if (cat_1.isChecked()){
-            resultIntent.putExtra("Category1", "cafe");
-        }
-        if (cat_2.isChecked()){
-            resultIntent.putExtra("Category2", "dessert");
-        }
-        if (cat_3.isChecked()){
-            resultIntent.putExtra("Category3", "lutong bahay");
-        }
-        if (cat_4.isChecked()){
-            resultIntent.putExtra("Category4", "bar");
-        }
-        if (cat_5.isChecked()){
-            resultIntent.putExtra("Category5", "grill");
-        }
-        if (cat_6.isChecked()){
-            resultIntent.putExtra("Category6", "fine dining");
-        }
-        if (cat_7.isChecked()){
-            resultIntent.putExtra("Category7", "veg");
-        }
-        if (cat_8.isChecked()){
-            resultIntent.putExtra("Category8", "buffet");
-        }
-        if (cat_9.isChecked()){
-            resultIntent.putExtra("Category9", "fast food");
-        }
-    }
-    public void budget()
-    {
-        checkedIdBudget = radioGroupBudget.getCheckedRadioButtonId();
-        if (checkedIdBudget == -1)
-        {
-            budget = null;
-        }
-        else
-        {
-            radioBudget = (RadioButton)radioGroupBudget.findViewById(checkedIdBudget);
-            budget = radioBudget.getText().toString();
-        }
-        resultIntent.putExtra("Budget", budget);
-    }
-    public void location()
-    {
-        checkedIdLocation = radioGroupLocation.getCheckedRadioButtonId();
-        if (checkedIdLocation == -1)
-        {
-            location = null;
-        }
-        else
-        {
-            radioLocation = (RadioButton)radioGroupLocation.findViewById(checkedIdLocation);
-            location = radioLocation.getText().toString();
-        }
-        resultIntent.putExtra("Location", location);
+        }Cafe=(CheckBox)findViewById(R.id.checkBox);
+        Buffet=(CheckBox)findViewById(R.id.checkBox2);
+        Dessert=(CheckBox)findViewById(R.id.checkBox3);
+        Bar=(CheckBox)findViewById(R.id.checkBox4);
+        Grill=(CheckBox)findViewById(R.id.checkBox5);
+        Lutong_Bahay=(CheckBox)findViewById(R.id.checkBox6);
+        Fast_food=(CheckBox)findViewById(R.id.checkBox7);
+        Veg=(CheckBox)findViewById(R.id.checkBox8);
+        Fine_dining=(CheckBox)findViewById(R.id.checkBox9);
+        price1=(CheckBox)findViewById(R.id.checkBox33);
+        price1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                price=1;
+                price1.setChecked(true);
+                price2.setChecked(false);
+                price3.setChecked(false);
+                price4.setChecked(false);
+            }
+        });
+        price2=(CheckBox)findViewById(R.id.checkBox34);
+        price2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                price=2;
+                price1.setChecked(false);
+                price2.setChecked(true);
+                price3.setChecked(false);
+                price4.setChecked(false);
+            }
+        });
+        price3=(CheckBox)findViewById(R.id.checkBox35);
+        price3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                price=3;
+                price1.setChecked(false);
+                price2.setChecked(false);
+                price3.setChecked(true);
+                price4.setChecked(false);
+            }
+        });
+        price4=(CheckBox)findViewById(R.id.checkBox36);
+        price4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                price=4;
+                price1.setChecked(false);
+                price2.setChecked(false);
+                price3.setChecked(false);
+                price4.setChecked(true);
+            }
+        });
+        loc11=(CheckBox)findViewById(R.id.checkBox37);
+        loc11.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                loc=1;
+                loc11.setChecked(true);
+                loc12.setChecked(false);
+                loc13.setChecked(false);
+                loc14.setChecked(false);
+                loc15.setChecked(false);
+                loc16.setChecked(false);
+            }
+        });
+        loc12=(CheckBox)findViewById(R.id.checkBox38);
+        loc12.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                loc=2;
+                loc11.setChecked(false);
+                loc12.setChecked(true);
+                loc13.setChecked(false);
+                loc14.setChecked(false);
+                loc15.setChecked(false);
+                loc16.setChecked(false);
+            }
+        });
+        loc13=(CheckBox)findViewById(R.id.checkBox39);
+        loc13.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                loc=3;
+                loc11.setChecked(false);
+                loc12.setChecked(false);
+                loc13.setChecked(true);
+                loc14.setChecked(false);
+                loc15.setChecked(false);
+                loc16.setChecked(false);
+            }
+        });
+        loc14=(CheckBox)findViewById(R.id.checkBox40);
+        loc14.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                loc=4;
+                loc11.setChecked(false);
+                loc12.setChecked(false);
+                loc13.setChecked(false);
+                loc14.setChecked(true);
+                loc15.setChecked(false);
+                loc16.setChecked(false);
+            }
+        });
+        loc15=(CheckBox)findViewById(R.id.checkBox41);
+        loc15.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                loc=5;
+                loc11.setChecked(false);
+                loc12.setChecked(false);
+                loc13.setChecked(false);
+                loc14.setChecked(false);
+                loc15.setChecked(true);
+                loc16.setChecked(false);
+            }
+        });
+        loc16=(CheckBox)findViewById(R.id.checkBox42);
+        loc16.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                loc=6;
+                loc11.setChecked(false);
+                loc12.setChecked(false);
+                loc13.setChecked(false);
+                loc14.setChecked(false);
+                loc15.setChecked(false);
+                loc16.setChecked(true);
+            }
+        });
     }
     @Override
     public void onBackPressed()
     {
+        boolean Cafeis = Cafe.isChecked();
+        boolean Buffetis = Buffet.isChecked();
+        boolean Dessertis = Dessert.isChecked();
+        boolean Baris = Bar.isChecked();
+        boolean Grillis = Grill.isChecked();
+        boolean Lutong_Bahayis = Lutong_Bahay.isChecked();
+        boolean Fast_foodis = Fast_food.isChecked();
+        boolean Vegis = Veg.isChecked();
+        boolean Fine_diningis = Fine_dining.isChecked();
         resultIntent = new Intent();
-        category();
-        budget();
-        location();
+        resultIntent.putExtra("Cafe",Cafeis);
+        resultIntent.putExtra("Buffet", Buffetis);
+        resultIntent.putExtra("Dessert",Dessertis);
+        resultIntent.putExtra("Bar",Baris);
+        resultIntent.putExtra("Grill",Grillis);
+        resultIntent.putExtra("Lutong_Bahay",Lutong_Bahayis);
+        resultIntent.putExtra("Fast_food",Fast_foodis);
+        resultIntent.putExtra("Veg",Vegis);
+        resultIntent.putExtra("Fine_dining",Fine_diningis);
+        resultIntent.putExtra("Price",price);
+        resultIntent.putExtra("Location",loc);
         setResult(Activity.RESULT_OK, resultIntent);
         finish();
     }

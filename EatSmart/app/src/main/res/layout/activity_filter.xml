@@ -13,195 +13,289 @@
         android:text="@string/title_activity_filter_options"
         android:id="@+id/textView33"
         android:gravity="center"
-        android:layout_marginTop="44dp"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/imageView11"
         android:layout_centerHorizontal="true" />
-
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/text_title_cuisine"
-        android:id="@+id/textView36"
-        android:gravity="center"
+        android:text="Category"
+        android:id="@+id/textView10"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#000000"
         android:layout_below="@+id/textView33"
         android:layout_centerHorizontal="true" />
 
-    <TableLayout
+    <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:rowCount="3"
+        android:id="@+id/gridLayout3"
+        android:layout_gravity="center_horizontal"
+        android:layout_below="@+id/textView10"
+        android:layout_centerHorizontal="true">
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cafe"
+            android:id="@+id/checkBox"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:allowUndo="true"
+            android:enabled="true"
+            android:clickable="true"
+            android:textColor="#000000" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dessert"
+            android:id="@+id/checkBox2"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:allowUndo="true"
+            android:enabled="true"
+            android:clickable="true"
+            android:textColor="#000000" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bar"
+            android:id="@+id/checkBox3"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:allowUndo="true"
+            android:enabled="true"
+            android:clickable="true"
+            android:textColor="#000000" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Grill"
+            android:id="@+id/checkBox4"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:textColor="#000000"
+            android:elegantTextHeight="false"
+            android:enabled="true"
+            android:allowUndo="true"
+            android:clickable="true" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fine Dining"
+            android:id="@+id/checkBox5"
+            android:layout_row="1"
+            android:layout_column="2"
+            android:allowUndo="true"
+            android:enabled="true"
+            android:clickable="true"
+            android:textColor="#000000" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Veg"
+            android:id="@+id/checkBox6"
+            android:layout_row="2"
+            android:layout_column="0"
+            android:allowUndo="true"
+            android:enabled="true"
+            android:clickable="true"
+            android:textColor="#000000" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Buffet"
+            android:id="@+id/checkBox7"
+            android:layout_row="2"
+            android:layout_column="1"
+            android:allowUndo="true"
+            android:enabled="true"
+            android:clickable="true"
+            android:textColor="#000000" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lutong Bahay"
+            android:id="@+id/checkBox8"
+            android:layout_row="0"
+            android:layout_column="2"
+            android:allowUndo="true"
+            android:clickable="true"
+            android:enabled="true"
+            android:textColor="#000000" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fast Food"
+            android:id="@+id/checkBox9"
+            android:layout_row="2"
+            android:layout_column="2"
+            android:allowUndo="true"
+            android:enabled="true"
+            android:clickable="true"
+            android:textColor="#000000" />
+    </GridLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Budget"
+        android:id="@+id/textView36"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#000000"
+        android:layout_below="@+id/gridLayout3"
+        android:layout_centerHorizontal="true" />
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_below="@+id/textView36"
         android:layout_centerHorizontal="true"
-        android:id="@+id/tableLayout">
-        <TableRow>
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_cuisine_1"
-                android:id="@+id/checkBox"
-                android:checked="false" />
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_cuisine_2"
-                android:id="@+id/checkBox2"
-                 />
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_cuisine_3"
-                android:id="@+id/checkBox3"
-                 />
-        </TableRow>
-        <TableRow>
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_cuisine_4"
-                android:id="@+id/checkBox4"
-                 />
+        android:id="@+id/gridLayout4"
+        android:columnCount="2"
+        android:rowCount="2">
 
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_cuisine_5"
-                android:id="@+id/checkBox5"
-                 />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="P501-P1000"
+            android:id="@+id/checkBox33"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:allowUndo="true"
+            android:textColor="#000000" />
 
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_cuisine_6"
-                android:id="@+id/checkBox6"
-                />
-        </TableRow>
-        <TableRow>
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_cuisine_7"
-                android:id="@+id/checkBox7"
-                 />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="P101-P500"
+            android:id="@+id/checkBox34"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:allowUndo="true"
+            android:textColor="#000000" />
 
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_cuisine_8"
-                android:id="@+id/checkBox8"
-                 />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="P0-P100"
+            android:id="@+id/checkBox35"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:allowUndo="true"
+            android:textColor="#000000" />
 
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_cuisine_9"
-                android:id="@+id/checkBox9"
-                 />
-        </TableRow>
-    </TableLayout>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="P1000 above"
+            android:id="@+id/checkBox36"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:allowUndo="true"
+            android:textColor="#000000" />
+    </GridLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/text_title_budget"
+        android:text="Location"
         android:id="@+id/textView37"
-        android:layout_below="@+id/tableLayout"
-        android:layout_centerHorizontal="true" />
+        android:textColor="#000000"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/gridLayout4"
+        android:layout_alignRight="@+id/textView10"
+        android:layout_alignEnd="@+id/textView10" />
 
-    <RadioGroup
+    <GridLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/radioGroup5"
-        android:orientation="horizontal"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:columnCount="4"
+        android:rowCount="3"
         android:layout_below="@+id/textView37"
         android:layout_centerHorizontal="true">
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/text_budget_1"
-            android:id="@+id/radioButton39"
-             />
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/text_budget_2"
-            android:id="@+id/radioButton40"
 
-            />
-        <RadioButton
+        <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/text_budget_3"
-            android:id="@+id/radioButton41"
-             />
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/text_budget_4"
-            android:id="@+id/radioButton42"
-            />
-    </RadioGroup>
+            android:text="Manila"
+            android:id="@+id/checkBox37"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:allowUndo="true"
+            android:textColor="#000000" />
 
-    <TextView
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pasig"
+            android:id="@+id/checkBox38"
+            android:layout_row="0"
+            android:layout_column="2"
+            android:allowUndo="true"
+            android:textColor="#000000" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Makati"
+            android:id="@+id/checkBox39"
+            android:layout_row="0"
+            android:layout_column="3"
+            android:allowUndo="true"
+            android:textColor="#000000" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="San Juan"
+            android:id="@+id/checkBox40"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:allowUndo="true"
+            android:textColor="#000000" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pasay"
+            android:id="@+id/checkBox41"
+            android:layout_row="1"
+            android:layout_column="2"
+            android:allowUndo="true"
+            android:textColor="#000000" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Taguig"
+            android:id="@+id/checkBox42"
+            android:layout_row="1"
+            android:layout_column="3"
+            android:allowUndo="true"
+            android:textColor="#000000" />
+    </GridLayout>
+
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/hint_location"
-        android:id="@+id/textView49"
-        android:layout_below="@+id/radioGroup5"
-        android:layout_centerHorizontal="true" />
-
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView49"
+        android:id="@+id/imageView11"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/radioGroup6">
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/text_location_1"
-            android:id="@+id/radioButton43"
-             />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/text_location_2"
-            android:id="@+id/radioButton44"
-             />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/text_location_3"
-            android:id="@+id/radioButton45"
-            />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/text_location_4"
-            android:id="@+id/radioButton46"
-             />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/text_location_5"
-            android:id="@+id/radioButton47"
-             />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/text_location_6"
-            android:id="@+id/radioButton48"
-             />
-    </RadioGroup>
-
-
+        android:src="@drawable/name_logo_transparentbg" />
 
 
 </RelativeLayout>

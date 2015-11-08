@@ -19,6 +19,7 @@ public class DataBaseHelper extends SQLiteOpenHelper
     {
         _db.execSQL(LoginDataBaseAdapter.DATABASE_CREATE);
         _db.execSQL(LoginDataBaseAdapter.DATABASE_CREATE_1);
+        _db.execSQL(LoginDataBaseAdapter.DATABASE_CREATE_2);
 
     }
     // Called when there is a database version mismatch meaning that the version
@@ -29,6 +30,7 @@ public class DataBaseHelper extends SQLiteOpenHelper
         // Log the version upgrade.
         _db.execSQL("DROP TABLE IF EXISTS " + "LOGIN");
         _db.execSQL("DROP TABLE IF EXISTS " + "restau");
+        _db.execSQL("DROP TABLE IF EXISTS " + "Rate_Comment");
 
         // create new tables
         onCreate(_db);
