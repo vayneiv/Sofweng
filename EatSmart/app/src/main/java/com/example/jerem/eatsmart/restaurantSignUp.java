@@ -27,10 +27,10 @@ public class restaurantSignUp extends Activity
         to_details_restaurant = new Intent(this, details_restaurant.class);
         // get Instance  of Database Adapter
         // Get References of Views
-        editTextUserName=(EditText)findViewById(R.id.editTextUserName);
-        editTextPassword=(EditText)findViewById(R.id.editTextPassword);
-        editTextConfirmPassword=(EditText)findViewById(R.id.editTextConfirmPassword);
-        btnCreateAccount=(ImageButton)findViewById(R.id.buttonCreateAccount);
+        editTextUserName=(EditText)findViewById(R.id.editText5);
+        editTextPassword=(EditText)findViewById(R.id.editText8);
+        editTextConfirmPassword=(EditText)findViewById(R.id.editText9);
+        btnCreateAccount=(ImageButton)findViewById(R.id.imageButton7);
         btnCreateAccount.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {

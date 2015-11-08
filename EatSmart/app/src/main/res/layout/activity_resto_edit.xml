@@ -11,7 +11,7 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageButton7"
+        android:id="@+id/imageButton6"
         android:src="@drawable/signup_bt"
         android:background="#00ffffff"
         android:maxHeight="120dp"
@@ -27,13 +27,14 @@
     <ImageView
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:id="@+id/imageView9"
+        android:id="@+id/imageView8"
         android:foreground="#00ffffff"
         android:scaleType="fitXY"
         android:background="#ffffff"
         android:src="@drawable/signin_bg"
         android:nestedScrollingEnabled="false"
         android:longClickable="true"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -41,23 +42,22 @@
         android:layout_height="wrap_content"
         android:text="Select Image"
         android:id="@+id/button12"
-        android:layout_below="@+id/imageView9"
+        android:layout_below="@+id/imageView8"
         android:layout_centerHorizontal="true" />
 
     <ScrollView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/scrollView3"
-        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/imageButton6"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/button12"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/imageButton7">
+        android:layout_below="@+id/button12">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -66,7 +66,8 @@
                 android:id="@+id/textView22"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"
+                android:textColor="#ffffff" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -74,7 +75,8 @@
                 android:id="@+id/editText3"
                 android:layout_above="@+id/textView3"
                 android:layout_centerHorizontal="true"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"
+                android:textColor="#ffffff" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -85,7 +87,8 @@
                 android:layout_above="@+id/editText7"
                 android:layout_alignRight="@+id/textView3"
                 android:layout_alignEnd="@+id/textView3"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"
+                android:textColor="#ffffff" />
 
             <GridLayout
                 android:layout_width="wrap_content"
@@ -98,115 +101,114 @@
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center_horizontal" >
 
-                <RadioButton
+                <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Cafe"
-                    android:id="@+id/radioButton7"
+                    android:id="@+id/checkBox14"
                     android:layout_row="0"
                     android:layout_column="0"
                     android:allowUndo="true"
                     android:enabled="true"
                     android:clickable="true"
-                    android:onClick="radio1toggle" />
+                    android:textColor="#ffffff" />
 
-                <RadioButton
+                <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Dessert"
-                    android:id="@+id/radioButton8"
+                    android:id="@+id/checkBox15"
                     android:layout_row="0"
                     android:layout_column="1"
                     android:allowUndo="true"
                     android:enabled="true"
                     android:clickable="true"
-                    android:onClick="radio2toggle" />
+                    android:textColor="#ffffff" />
 
-                <RadioButton
+                <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/bar"
-                    android:id="@+id/radioButton9"
+                    android:id="@+id/checkBox16"
                     android:layout_row="1"
                     android:layout_column="0"
                     android:allowUndo="true"
                     android:enabled="true"
                     android:clickable="true"
-                    android:onClick="radio3toggle" />
+                    android:textColor="#ffffff" />
 
-                <RadioButton
+                <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Grill"
-                    android:id="@+id/radioButton10"
+                    android:id="@+id/checkBox17"
                     android:layout_row="1"
                     android:layout_column="1"
                     android:textColor="#ffffff"
                     android:elegantTextHeight="false"
                     android:enabled="true"
                     android:allowUndo="true"
-                    android:clickable="true"
-                    android:onClick="radio4toggle" />
+                    android:clickable="true" />
 
-                <RadioButton
+                <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Fine Dining"
-                    android:id="@+id/radioButton11"
+                    android:id="@+id/checkBox18"
                     android:layout_row="1"
                     android:layout_column="2"
                     android:allowUndo="true"
                     android:enabled="true"
                     android:clickable="true"
-                    android:onClick="radio5toggle" />
+                    android:textColor="#ffffff" />
 
-                <RadioButton
+                <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Veg"
-                    android:id="@+id/radioButton12"
+                    android:id="@+id/checkBox19"
                     android:layout_row="2"
                     android:layout_column="0"
                     android:allowUndo="true"
                     android:enabled="true"
                     android:clickable="true"
-                    android:onClick="radio6toggle" />
+                    android:textColor="#ffffff" />
 
-                <RadioButton
+                <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Buffet"
-                    android:id="@+id/radioButton20"
+                    android:id="@+id/checkBox20"
                     android:layout_row="2"
                     android:layout_column="1"
                     android:allowUndo="true"
                     android:enabled="true"
                     android:clickable="true"
-                    android:onClick="radio7toggle" />
+                    android:textColor="#ffffff" />
 
-                <RadioButton
+                <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Lutong Bahay"
-                    android:id="@+id/radioButton21"
+                    android:id="@+id/checkBox21"
                     android:layout_row="0"
                     android:layout_column="2"
                     android:allowUndo="true"
                     android:clickable="true"
                     android:enabled="true"
-                    android:onClick="radio9toggle" />
+                    android:textColor="#ffffff" />
 
-                <RadioButton
+                <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Fast Food"
-                    android:id="@+id/radioButton22"
+                    android:id="@+id/checkBox22"
                     android:layout_row="2"
                     android:layout_column="2"
                     android:allowUndo="true"
                     android:enabled="true"
                     android:clickable="true"
-                    android:onClick="radio8toggle" />
+                    android:textColor="#ffffff" />
             </GridLayout>
 
             <TextView
@@ -220,62 +222,51 @@
                 android:layout_alignStart="@+id/imageButton2"
                 android:layout_gravity="center_horizontal" />
 
-            <RadioGroup
+            <GridLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/radioGroup2"
-                android:layout_above="@+id/textView31"
-                android:layout_alignTop="@+id/imageButton2"
-                android:layout_alignLeft="@+id/imageButton2"
-                android:layout_alignStart="@+id/imageButton2"
-                android:layout_marginTop="0dp"
-                android:layout_gravity="center_horizontal"
-                android:clickable="true" >
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal" >
 
-                <GridLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_horizontal"
-                    android:columnCount="2"
-                    android:rowCount="2" >
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="P501-P1000"
+                    android:id="@+id/checkBox23"
+                    android:layout_row="1"
+                    android:layout_column="0"
+                    android:allowUndo="true"
+                    android:textColor="#ffffff" />
 
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="P0-P100"
-                        android:id="@+id/radioButton29"
-                        android:layout_row="0"
-                        android:layout_column="0"
-                        android:allowUndo="true" />
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="P101-P500"
+                    android:id="@+id/checkBox24"
+                    android:layout_row="0"
+                    android:layout_column="1"
+                    android:allowUndo="true"
+                    android:textColor="#ffffff" />
 
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="P101-P500"
-                        android:id="@+id/radioButton30"
-                        android:layout_row="0"
-                        android:layout_column="1"
-                        android:allowUndo="true" />
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="P0-P100"
+                    android:id="@+id/checkBox25"
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:allowUndo="true"
+                    android:textColor="#ffffff" />
 
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="P501-P1000"
-                        android:id="@+id/radioButton31"
-                        android:layout_row="1"
-                        android:layout_column="0"
-                        android:allowUndo="true" />
-
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="P1000 above"
-                        android:id="@+id/radioButton32"
-                        android:layout_row="1"
-                        android:layout_column="1"
-                        android:allowUndo="true" />
-                </GridLayout>
-            </RadioGroup>
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="P1000 above"
+                    android:id="@+id/checkBox26"
+                    android:layout_row="1"
+                    android:layout_column="1"
+                    android:allowUndo="true"
+                    android:textColor="#ffffff" />
+            </GridLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -287,77 +278,73 @@
                 android:layout_alignStart="@+id/textView13"
                 android:layout_gravity="center_horizontal" />
 
-            <RadioGroup
+            <GridLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/radioGroup4"
-                android:layout_alignParentBottom="true"
-                android:layout_alignRight="@+id/imageView5"
-                android:layout_alignEnd="@+id/imageView5"
-                android:layout_gravity="center_horizontal" >
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:columnCount="4"
+                android:rowCount="3" >
 
-                <GridLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_horizontal"
-                    android:columnCount="4"
-                    android:rowCount="3" >
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Manila"
+                    android:id="@+id/checkBox27"
+                    android:layout_row="0"
+                    android:layout_column="1"
+                    android:allowUndo="true"
+                    android:textColor="#ffffff" />
 
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Manila"
-                        android:id="@+id/radioButton33"
-                        android:layout_row="0"
-                        android:layout_column="1"
-                        android:allowUndo="true" />
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pasig"
+                    android:id="@+id/checkBox28"
+                    android:layout_row="0"
+                    android:layout_column="2"
+                    android:allowUndo="true"
+                    android:textColor="#ffffff" />
 
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Pasig"
-                        android:id="@+id/radioButton34"
-                        android:layout_row="0"
-                        android:layout_column="2"
-                        android:allowUndo="true" />
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Makati"
+                    android:id="@+id/checkBox29"
+                    android:layout_row="0"
+                    android:layout_column="3"
+                    android:allowUndo="true"
+                    android:textColor="#ffffff" />
 
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Makati"
-                        android:id="@+id/radioButton35"
-                        android:layout_row="0"
-                        android:layout_column="3"
-                        android:allowUndo="true" />
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="San Juan"
+                    android:id="@+id/checkBox30"
+                    android:layout_row="1"
+                    android:layout_column="1"
+                    android:allowUndo="true"
+                    android:textColor="#ffffff" />
 
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="San Juan"
-                        android:id="@+id/radioButton36"
-                        android:layout_row="1"
-                        android:layout_column="1"
-                        android:allowUndo="true" />
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pasay"
+                    android:id="@+id/checkBox31"
+                    android:layout_row="1"
+                    android:layout_column="2"
+                    android:allowUndo="true"
+                    android:textColor="#ffffff" />
 
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Pasay"
-                        android:id="@+id/radioButton37"
-                        android:layout_row="1"
-                        android:layout_column="2"
-                        android:allowUndo="true" />
-
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Taguig"
-                        android:id="@+id/radioButton38"
-                        android:layout_row="1"
-                        android:layout_column="3"
-                        android:allowUndo="true" />
-                </GridLayout>
-            </RadioGroup>
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Taguig"
+                    android:id="@+id/checkBox32"
+                    android:layout_row="1"
+                    android:layout_column="3"
+                    android:allowUndo="true"
+                    android:textColor="#ffffff" />
+            </GridLayout>
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

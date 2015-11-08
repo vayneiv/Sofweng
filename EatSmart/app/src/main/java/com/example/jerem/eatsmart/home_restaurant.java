@@ -54,6 +54,8 @@ public class home_restaurant extends AppCompatActivity {
                 pack=extras.getInt("package");
             }
         }
+        welcMSG=(TextView)findViewById(R.id.textView54);
+        welcMSG.setText(loginDataBaseAdapter.getrestauname(userName));
         image=(ImageView)findViewById(R.id.imageView6);
         image.invalidate();
         image.setImageBitmap(loginDataBaseAdapter.getimage(userName));

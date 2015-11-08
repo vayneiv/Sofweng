@@ -28,7 +28,7 @@ import java.io.InputStream;
 public class details_restaurant extends AppCompatActivity {
     private static int RESULT_LOAD_IMAGE = 1;
     Bundle extras;
-    EditText desc;
+    EditText desc,res_name;
     CheckBox Cafe,Buffet,Bar,Grill,Lutong_Bahay,Dessert,Fast_food,Veg,Fine_dining,price1,price2,price3,price4,loc11,loc12,loc13,loc14,loc15,loc16;
     ImageButton next;
     Button sel_Image;
@@ -59,6 +59,7 @@ public class details_restaurant extends AppCompatActivity {
                 password=extras.getString("Password");
             }
         }
+        res_name=(EditText)findViewById(R.id.editText4);
         desc=(EditText)findViewById(R.id.editText6);
         Cafe=(CheckBox)findViewById(R.id.radioButton5);
         Buffet=(CheckBox)findViewById(R.id.radioButton26);
@@ -206,6 +207,7 @@ public class details_restaurant extends AppCompatActivity {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 String description = desc.getText().toString();
+                String resto_name = res_name.getText().toString();
                 boolean Cafeis = Cafe.isChecked();
                 boolean Buffetis = Buffet.isChecked();
                 boolean Dessertis = Dessert.isChecked();
@@ -222,7 +224,7 @@ public class details_restaurant extends AppCompatActivity {
 
                 loginDataBaseAdapter.insertEntryrestau(userName,
                                                         password,
-                                                        null,
+                                                        resto_name,
                                                         description,
                                                         Cafeis,
                                                         Buffetis,
