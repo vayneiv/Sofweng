@@ -80,6 +80,10 @@
         </activity>
         <activity android:name=".resto_edit" >
         </activity>
+        <activity
+            android:name=".rate_and_comment"
+            android:label="@string/title_activity_rate_and_comment" >
+        </activity>
     </application>
 
 </manifest>

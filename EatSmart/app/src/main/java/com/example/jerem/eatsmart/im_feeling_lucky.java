@@ -1,9 +1,11 @@
 package com.example.jerem.eatsmart;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -12,8 +14,9 @@ import java.util.Random;
 public class im_feeling_lucky extends AppCompatActivity {
     Bundle extras;
     LoginDataBaseAdapter loginDataBaseAdapter;
-    String userName,cat_1,cat_2,cat_3,cat_4,cat_5,cat_6,cat_7,cat_8,cat_9, budget, location;
+    String userName,cat_1,cat_2,cat_3,cat_4,cat_5,cat_6,cat_7,cat_8,cat_9, budget, location, restauName;
     TextView user, cate_1,cate_2,cate_3,cate_4,cate_5,cate_6,cate_7,cate_8,cate_9, text_budget,text_location;
+    Intent to_search_result;
     int budget_db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +25,7 @@ public class im_feeling_lucky extends AppCompatActivity {
         loginDataBaseAdapter=new LoginDataBaseAdapter(this);
         loginDataBaseAdapter=loginDataBaseAdapter.open();
         budget_db = 0;
+        restauName = null;
         if (savedInstanceState == null)
         {
             //fetching extra data passed with intents in a Bundle type variable
@@ -81,6 +85,15 @@ public class im_feeling_lucky extends AppCompatActivity {
         getBudgetIndex();
         text_budget.setText("" + budget + " budget_db: " + budget_db);
         text_location.setText("" + location);
+    }
+    public void to_search_result(View v)
+    {
+        restauName = "sample restaurant name"; // create method to get random restaurant name
+        to_search_result = new Intent(this, search_result.class);
+        to_search_result.putExtra("Username", userName);
+        to_search_result.putExtra("Restaurant Name", restauName);
+        startActivity(to_search_result);
+        finish();
     }
     public void getBudgetIndex()
     {

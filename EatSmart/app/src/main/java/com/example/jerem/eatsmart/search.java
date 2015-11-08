@@ -37,8 +37,9 @@ public class search extends AppCompatActivity {
         searchEntry = entry.getText().toString();
         to_search_result= new Intent(this, search_result.class);
         to_search_result.putExtra("Username", userName);
-        to_search_result.putExtra("Restau Name", searchEntry);
+        to_search_result.putExtra("Restaurant Name", searchEntry);
         startActivity(to_search_result); //transfer activity
+        finish();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

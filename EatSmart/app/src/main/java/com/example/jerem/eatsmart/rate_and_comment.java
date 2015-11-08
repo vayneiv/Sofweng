@@ -1,26 +1,26 @@
 package com.example.jerem.eatsmart;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-public class search_result extends AppCompatActivity {
+public class rate_and_comment extends AppCompatActivity {
     Bundle extras;
-    String userName, restauName;
-    TextView display_user, display_restau;
-    Intent to_rate_and_comment;
+    String userName, restauName, comment;
+    EditText editComment;
+    RatingBar ratingBar;
+    TextView display_rate_and_comment;
+    float rate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_result);
-        display_user = (TextView) findViewById(R.id.textView10);
-        display_restau = (TextView) findViewById(R.id.textView23);
+        setContentView(R.layout.activity_rate_and_comment);
+        rate = 0;
         if (savedInstanceState == null)
         {
             //fetching extra data passed with intents in a Bundle type variable
@@ -35,20 +35,20 @@ public class search_result extends AppCompatActivity {
                 restauName= extras.getString("Restaurant Name");
             }
         }
-        display_user.setText("User:" + userName);
-        display_restau.setText("Restaurant Name: " + "\n" + restauName);
+        editComment = (EditText)findViewById(R.id.editText4);
+        ratingBar = (RatingBar)findViewById(R.id.ratingBar);
+        display_rate_and_comment = (TextView)findViewById(R.id.textView59);
     }
-    public void to_rate_and_comment(View v)
+    public void send(View v)
     {
-        to_rate_and_comment = new Intent(this, rate_and_comment.class);
-        to_rate_and_comment.putExtra("Username", userName);
-        to_rate_and_comment.putExtra("Restaurant Name", restauName);
-        startActivity(to_rate_and_comment);
+        comment = editComment.getText().toString();
+        rate = ratingBar.getRating();
+        display_rate_and_comment.setText("Rate: " + rate + "\n" + "Comment: " + comment);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_search_result, menu);
+        getMenuInflater().inflate(R.menu.menu_rate_and_comment, menu);
         return true;
     }
 
