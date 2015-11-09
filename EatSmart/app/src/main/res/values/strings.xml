@@ -147,7 +147,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_details_restaurant">details_restaurant</string>
-    <string name="bar">Bar</string>
     <string name="title_activity_im_feeling_lucky">im_feeling_lucky</string>
     <string name="title_activity_filter">filter</string>
     <string name="title_activity_search">search</string>
