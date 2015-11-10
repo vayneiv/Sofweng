@@ -514,7 +514,7 @@ public class LoginDataBaseAdapter
                                      int LOCATION,
                                      int price){
         ArrayList<String> returnVar= new ArrayList<String>();
-        Cursor cursor =  db.query("restau", new String[]{"USERNAME Cafe Buffet Dessert Bar Grill Lutong_bahay fast_food Veg Fine_dining LOCATION price package"}, null, null, null, null, null);
+        Cursor cursor =  db.query("restau", new String[]{"USERNAME", "Cafe", "Buffet", "Dessert", "Bar", "Grill", "Lutong_bahay", "fast_food", "Veg", "Fine_dining", "LOCATION", "price", "package"}, null, null, null, null, null);
         cursor.moveToFirst();
         while(!cursor.isAfterLast())
         {
