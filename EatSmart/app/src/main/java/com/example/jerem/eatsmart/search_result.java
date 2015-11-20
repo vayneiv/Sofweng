@@ -44,7 +44,7 @@ public class search_result extends AppCompatActivity {
             }
         }
         display_restau.setText("Restaurant Name: " + "\n" + restauName);
-        image=(ImageView)findViewById(R.id.imageView6);
+        image=(ImageView)findViewById(R.id.imageView3);
         image.invalidate();
         image.setImageBitmap(loginDataBaseAdapter.getimage(restauName));
         description=new TextView(this);

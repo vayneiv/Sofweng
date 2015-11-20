@@ -18,7 +18,7 @@ public class LoginDataBaseAdapter
 {
     public static int nos_calls=0;
     static final String DATABASE_NAME = "login.db";
-    static final int DATABASE_VERSION = 7;
+    static final int DATABASE_VERSION = 9;
     public static final int NAME_COLUMN = 1;
     // TODO: Create public field for each column in your table.
     // SQL Statement to create a new database.
@@ -514,8 +514,9 @@ public class LoginDataBaseAdapter
                                      int LOCATION,
                                      int price){
         ArrayList<String> returnVar= new ArrayList<String>();
-        Cursor cursor =  db.query("restau", new String[]{"USERNAME", "Cafe", "Buffet", "Dessert", "Bar", "Grill", "Lutong_bahay", "fast_food", "Veg", "Fine_dining", "LOCATION", "price", "package"}, null, null, null, null, null);
+        Cursor cursor =  db.query("restau", null, null, null, null, null, null);
         cursor.moveToFirst();
+        Log.i("Price", String.valueOf(price));
         while(!cursor.isAfterLast())
         {
             String Restau = cursor.getString(cursor.getColumnIndex("USERNAME"));
@@ -527,33 +528,49 @@ public class LoginDataBaseAdapter
             int Lutong_bahay_is = cursor.getInt(cursor.getColumnIndex("Lutong_bahay"));
             int fast_food_is = cursor.getInt(cursor.getColumnIndex("fast_food"));
             int Vegis = cursor.getInt(cursor.getColumnIndex("Veg"));
-            int Fine_dining_is = cursor.getInt(cursor.getColumnIndex("fine_dining"));
+            int Fine_dining_is = cursor.getInt(cursor.getColumnIndex("Fine_dining"));
             int Locationis = cursor.getInt(cursor.getColumnIndex("LOCATION"));
             int priceis = cursor.getInt(cursor.getColumnIndex("price"));
             int pack = cursor.getInt(cursor.getColumnIndex("package"));
-            if((Cafeis==1)&&(Cafe)) {
-                if ((Buffetis == 1) && (Buffet)) {
-                    if ((Dessertis == 1) && (Dessert)) {
-                        if ((Baris == 1) && (Bar)) {
-                            if ((Grillis == 1) && (Grill)) {
-                                if ((Lutong_bahay_is == 1) && (Lutong_bahay)) {
-                                    if ((fast_food_is == 1) && (fast_food)) {
-                                        if ((Vegis == 1) && (Veg)) {
-                                            if ((Fine_dining_is == 1) && (Fine_dining)) {
+            Log.i("Restau Name",Restau);
+            Log.i("priceis", String.valueOf(priceis));
+            if(((Cafeis==1)&&(Cafe))||((Cafeis==0)&&(!Cafe))){
+                if (((Buffetis == 1) && (Buffet)) ||((Buffetis==0)&&(!Buffet))){
+                    Log.i("Ok","Ok");
+                    if (((Dessertis == 1) && (Dessert))||((Dessertis==0)&&(!Dessert))) {
+                        Log.i("Ok1","Ok1");
+                        if (((Baris == 1) && (Bar))||((Baris==0)&&(!Bar))) {
+                            Log.i("Ok2","Ok2");
+                            if (((Grillis == 1) && (Grill))||((Grillis==0)&&(!Grill))) {
+                                Log.i("Ok3","Ok3");
+                                if (((Lutong_bahay_is == 1) && (Lutong_bahay))||((Lutong_bahay_is==0)&&(!Lutong_bahay))) {
+                                    Log.i("Ok4","Ok4");
+                                    if (((fast_food_is == 1) && (fast_food))||((fast_food_is==0)&&(!fast_food))) {
+                                        Log.i("Ok5","Ok5");
+                                        if (((Vegis == 1) && (Veg))||((Vegis==0)&&(!Veg))) {
+                                            Log.i("Ok6","Ok6");
+                                           if (((Fine_dining_is == 1) && (Fine_dining))||((Fine_dining_is==0)&&(!Fine_dining))) {
+                                               Log.i("Ok7","Ok7");
                                                 if (Locationis == LOCATION)  {
+                                                    Log.i("Ok8","Ok8");
                                                     if (priceis == price) {
+                                                        Log.i("Ok9","Ok9");
                                                         if(pack==1) {
                                                             returnVar.add(Restau);
-                                                        }else if(pack==1) {
+                                                            Log.i("Restau Name",Restau);
+                                                        }else if(pack==2) {
                                                             returnVar.add(Restau);
                                                             returnVar.add(Restau);
-                                                        }else if(pack==1) {
+                                                            Log.i("Restau Name", Restau);
+                                                        }else if(pack==3) {
                                                             returnVar.add(Restau);
                                                             returnVar.add(Restau);
                                                             returnVar.add(Restau);
                                                             returnVar.add(Restau);
+                                                            Log.i("Restau Name", Restau);
                                                         }else{
-
+                                                            returnVar.add(Restau);
+                                                            Log.i("Restau Name",Restau);
                                                         }
                                                     }
                                                 }
@@ -567,6 +584,9 @@ public class LoginDataBaseAdapter
                 }
             }
             cursor.moveToNext();
+        }
+        if (returnVar.isEmpty()){
+            returnVar.add("None");
         }
         cursor.close();
         return returnVar;

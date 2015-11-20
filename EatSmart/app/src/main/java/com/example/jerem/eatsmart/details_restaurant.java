@@ -74,7 +74,7 @@ public class details_restaurant extends AppCompatActivity {
         price1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                price=1;
+                price=3;
                 price1.setChecked(true);
                 price2.setChecked(false);
                 price3.setChecked(false);
@@ -96,7 +96,7 @@ public class details_restaurant extends AppCompatActivity {
         price3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                price=3;
+                price=1;
                 price1.setChecked(false);
                 price2.setChecked(false);
                 price3.setChecked(true);

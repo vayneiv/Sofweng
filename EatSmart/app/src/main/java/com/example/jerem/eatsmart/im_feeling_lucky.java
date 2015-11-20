@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 
 public class im_feeling_lucky extends AppCompatActivity {
@@ -39,11 +40,10 @@ public class im_feeling_lucky extends AppCompatActivity {
         loginDataBaseAdapter=loginDataBaseAdapter.open();
         budget_db = 0;
         restauName = null;
-        if (savedInstanceState == null)
-        {
+        if (savedInstanceState == null) {
             //fetching extra data passed with intents in a Bundle type variable
             extras = getIntent().getExtras();
-            if(extras == null) {
+            if (extras == null) {
                 cat_1 = false;
                 cat_2 = false;
                 cat_3 = false;
@@ -55,33 +55,34 @@ public class im_feeling_lucky extends AppCompatActivity {
                 cat_9 = false;
                 budget = 0;
                 location = 0;
-            }
-            else
-            {
-                cat_1=extras.getBoolean("Cafe", false);
-                cat_2=extras.getBoolean("Buffet", false);
-                cat_3=extras.getBoolean("Dessert",false);
-                cat_4=extras.getBoolean("Bar",false);
-                cat_5=extras.getBoolean("Grill",false);
-                cat_6=extras.getBoolean("Lutong_Bahay",false);
-                cat_7=extras.getBoolean("Fast_food",false);
-                cat_8=extras.getBoolean("Veg",false);
-                cat_9=extras.getBoolean("Fine_dining",false);
-                budget=extras.getInt("Price",0);
-                location=extras.getInt("Location",0);
+            } else {
+                cat_1 = extras.getBoolean("Cafe", cat_1);
+                cat_2 = extras.getBoolean("Buffet", cat_2);
+                cat_3 = extras.getBoolean("Dessert", cat_3);
+                cat_4 = extras.getBoolean("Bar", cat_4);
+                cat_5 = extras.getBoolean("Grill", cat_5);
+                cat_6 = extras.getBoolean("Lutong_Bahay", cat_6);
+                cat_7 = extras.getBoolean("Fast_food", cat_7);
+                cat_8 = extras.getBoolean("Veg", cat_8);
+                cat_9 = extras.getBoolean("Fine_dining", cat_9);
+                budget = extras.getInt("Price", budget);
+                location = extras.getInt("Location", location);
             }
         }
         restauName=IFL();
         Resto_name=new TextView(this);
-        Resto_name=(TextView)findViewById(R.id.textView13);
-        Resto_name.setText(restauName);
-        image=(ImageView)findViewById(R.id.imageView6);
-        image.invalidate();
-        image.setImageBitmap(loginDataBaseAdapter.getimage(restauName));
+        Resto_name=(TextView)findViewById(R.id.textView34);
+        image=(ImageView)findViewById(R.id.imageView13);
+        if(restauName.equals("None")){
+            Resto_name.setText("None");
+        }else {
+            Resto_name.setText(restauName);
+            image.invalidate();
+            image.setImageBitmap(loginDataBaseAdapter.getimage(restauName));
+        }
     }
     public void to_search_result(View v)
     {
-        restauName = "sample restaurant name"; // create method to get random restaurant name
         to_search_result = new Intent(this, search_result.class);
         to_search_result.putExtra("Username", userName);
         to_search_result.putExtra("Restaurant Name", restauName);
@@ -94,12 +95,17 @@ public class im_feeling_lucky extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_im_feeling_lucky, menu);
         return true;
     }
-    public String IFL(){
+    public String IFL() {
         ArrayList<String> choice;
         String result;
         Random r = new Random();
-        choice=loginDataBaseAdapter.getList(cat_1,cat_2,cat_3,cat_4,cat_5,cat_6,cat_7,cat_8,cat_9,location,budget);
-        result=choice.get(r.nextInt(choice.size()+1));
+        choice = loginDataBaseAdapter.getList(cat_1, cat_2, cat_3, cat_4, cat_5, cat_6, cat_7, cat_8, cat_9, location, budget);
+        if (choice.equals( "None")){
+            result = "None";
+        }else
+        {
+            result = choice.get(r.nextInt(choice.size() ));
+        }
         return result;
     }
     @Override

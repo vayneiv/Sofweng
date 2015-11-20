@@ -53,21 +53,21 @@ public class home_customer extends AppCompatActivity {
         to_ifl= new Intent(this, im_feeling_lucky.class);
         to_ifl.putExtra("Username", userName);
         putCategory();
-        to_ifl.putExtra("Budget", budget);
+        to_ifl.putExtra("Price", budget);
         to_ifl.putExtra("Location", location);
         startActivity(to_ifl); //transfer activity
     }
     public void putCategory()
     {
-        to_ifl.putExtra("Category1", cat_1);
-        to_ifl.putExtra("Category2", cat_2);
-        to_ifl.putExtra("Category3", cat_3);
-        to_ifl.putExtra("Category4", cat_4);
-        to_ifl.putExtra("Category5", cat_5);
-        to_ifl.putExtra("Category6", cat_6);
-        to_ifl.putExtra("Category7", cat_7);
-        to_ifl.putExtra("Category8", cat_8);
-        to_ifl.putExtra("Category9", cat_9);
+        to_ifl.putExtra("Cafe", cat_1);
+        to_ifl.putExtra("Buffet", cat_2);
+        to_ifl.putExtra("Dessert", cat_3);
+        to_ifl.putExtra("Bar", cat_4);
+        to_ifl.putExtra("Grill", cat_5);
+        to_ifl.putExtra("Lutong_Bahay", cat_6);
+        to_ifl.putExtra("Fast_food", cat_7);
+        to_ifl.putExtra("Veg", cat_8);
+        to_ifl.putExtra("Fine_dining", cat_9);
 
     }
     public void to_filter(View v)
@@ -89,17 +89,17 @@ public class home_customer extends AppCompatActivity {
         {
             if (resultCode == Activity.RESULT_OK)
             {
-                cat_1=to_filter.getBooleanExtra("Cafe", false);
-                cat_2=to_filter.getBooleanExtra("Buffet", false);
-                cat_3=to_filter.getBooleanExtra("Dessert",false);
-                cat_4=to_filter.getBooleanExtra("Bar",false);
-                cat_5=to_filter.getBooleanExtra("Grill",false);
-                cat_6=to_filter.getBooleanExtra("Lutong_Bahay",false);
-                cat_7=to_filter.getBooleanExtra("Fast_food",false);
-                cat_8=to_filter.getBooleanExtra("Veg",false);
-                cat_9=to_filter.getBooleanExtra("Fine_dining",false);
-                budget=to_filter.getIntExtra("Price",0);
-                location=to_filter.getIntExtra("Location",0);
+                cat_1=to_filter.getBooleanExtra("Cafe", cat_1);
+                cat_2=to_filter.getBooleanExtra("Buffet", cat_2);
+                cat_3=to_filter.getBooleanExtra("Dessert",cat_3);
+                cat_4=to_filter.getBooleanExtra("Bar",cat_4);
+                cat_5=to_filter.getBooleanExtra("Grill",cat_5);
+                cat_6=to_filter.getBooleanExtra("Lutong_Bahay",cat_6);
+                cat_7=to_filter.getBooleanExtra("Fast_food",cat_7);
+                cat_8=to_filter.getBooleanExtra("Veg",cat_8);
+                cat_9=to_filter.getBooleanExtra("Fine_dining",cat_9);
+                budget=to_filter.getIntExtra("Price",budget);
+                location=to_filter.getIntExtra("Location",location);
             }
         }
     }

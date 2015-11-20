@@ -9,21 +9,17 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class restau_choose extends AppCompatActivity {
+public class true_home_restau extends AppCompatActivity {
 
-    Button profile;
-    ImageButton craving,starving,hungry;
-    ImageView image;
-    Intent resto_profile;
+    Button profile,packages;
+    Intent resto_profile,resto_packages;
     Bundle extras;
     String userName,password;
     LoginDataBaseAdapter loginDataBaseAdapter;
-    TextView resto_pack;
-    int pack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_restau_choose);
+        setContentView(R.layout.activity_true_home_restau);
         loginDataBaseAdapter=new LoginDataBaseAdapter(this);
         loginDataBaseAdapter=loginDataBaseAdapter.open();
         if (savedInstanceState == null)
@@ -41,33 +37,23 @@ public class restau_choose extends AppCompatActivity {
             }
         }
         resto_profile = new Intent(this,home_restaurant.class);
-        pack=loginDataBaseAdapter.getrestapack(userName);
-        resto_pack=(TextView)findViewById(R.id.textView27);
-        if(pack==1){
-            resto_pack.setText("CRAVING");
-        }else if(pack==2){
-            resto_pack.setText("STARVING");
-        }else if(pack==3){
-            resto_pack.setText("HUNGRY");
-        }else {
-            resto_pack.setText("ERROR");
-        }
-        craving = (ImageButton)findViewById(R.id.imageButton3);
-        craving.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                pack=1;
-            }
-        });
-        starving = (ImageButton)findViewById(R.id.imageButton4);
-        starving.setOnClickListener(new View.OnClickListener() {
+        profile = (Button)findViewById(R.id.button16);
+        profile.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                pack=2;
+                resto_profile.putExtra("Username", userName);
+                resto_profile.putExtra("Password", password);
+                startActivity(resto_profile); //transfer activity
+                finish();
             }
         });
-        hungry = (ImageButton)findViewById(R.id.imageButton5);
-        hungry.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                pack=3;
+        resto_packages=new Intent(this,restau_choose.class);
+        packages = (Button)findViewById(R.id.button17);
+        packages.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                resto_packages.putExtra("Username", userName);
+                resto_packages.putExtra("Password", password);
+                startActivity(resto_packages); //transfer activity
+                finish();
             }
         });
     }

@@ -84,6 +84,8 @@
             android:name=".rate_and_comment"
             android:label="@string/title_activity_rate_and_comment" >
         </activity>
+        <activity android:name=".true_home_restau" >
+        </activity>
     </application>
 
 </manifest>
