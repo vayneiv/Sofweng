@@ -26,6 +26,7 @@ public class im_feeling_lucky extends AppCompatActivity {
     boolean cat_7;
     boolean cat_8;
     boolean cat_9;
+    boolean no_cat;
     int budget;
     int location;
     TextView Resto_name;
@@ -98,8 +99,14 @@ public class im_feeling_lucky extends AppCompatActivity {
     public String IFL() {
         ArrayList<String> choice;
         String result;
+        if ((cat_1)&&(cat_2)&&(cat_3)&&(cat_4)&&(cat_5)&&(cat_6)&&(cat_7)&&(cat_8)&&(cat_9)){
+            no_cat=true;
+        }
+        else{
+            no_cat=false;
+        }
         Random r = new Random();
-        choice = loginDataBaseAdapter.getList(cat_1, cat_2, cat_3, cat_4, cat_5, cat_6, cat_7, cat_8, cat_9, location, budget);
+        choice = loginDataBaseAdapter.getList(cat_1, cat_2, cat_3, cat_4, cat_5, cat_6, cat_7, cat_8, cat_9,no_cat, location, budget);
         if (choice.equals( "None")){
             result = "None";
         }else

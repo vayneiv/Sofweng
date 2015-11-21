@@ -80,8 +80,8 @@ public class LoginDataBaseAdapter
         ContentValues newValues=new ContentValues();
         newValues.put("RestoName",Resto_name);
         newValues.put("Comment",Comment);
-        newValues.put("Rate",rate);
-        db.insert("Rate_Comment",null,newValues);
+        newValues.put("Rate", rate);
+        db.insert("Rate_Comment", null, newValues);
     }
 
     public ArrayList<String> Retrieve_Comments(String Resto_name){
@@ -511,6 +511,7 @@ public class LoginDataBaseAdapter
                                      boolean fast_food,
                                      boolean Veg,
                                      boolean Fine_dining,
+                                     boolean no_cat,
                                      int LOCATION,
                                      int price){
         ArrayList<String> returnVar= new ArrayList<String>();
@@ -534,43 +535,69 @@ public class LoginDataBaseAdapter
             int pack = cursor.getInt(cursor.getColumnIndex("package"));
             Log.i("Restau Name",Restau);
             Log.i("priceis", String.valueOf(priceis));
-            if(((Cafeis==1)&&(Cafe))||((Cafeis==0)&&(!Cafe))){
-                if (((Buffetis == 1) && (Buffet)) ||((Buffetis==0)&&(!Buffet))){
-                    Log.i("Ok","Ok");
-                    if (((Dessertis == 1) && (Dessert))||((Dessertis==0)&&(!Dessert))) {
-                        Log.i("Ok1","Ok1");
-                        if (((Baris == 1) && (Bar))||((Baris==0)&&(!Bar))) {
-                            Log.i("Ok2","Ok2");
-                            if (((Grillis == 1) && (Grill))||((Grillis==0)&&(!Grill))) {
-                                Log.i("Ok3","Ok3");
-                                if (((Lutong_bahay_is == 1) && (Lutong_bahay))||((Lutong_bahay_is==0)&&(!Lutong_bahay))) {
-                                    Log.i("Ok4","Ok4");
-                                    if (((fast_food_is == 1) && (fast_food))||((fast_food_is==0)&&(!fast_food))) {
-                                        Log.i("Ok5","Ok5");
-                                        if (((Vegis == 1) && (Veg))||((Vegis==0)&&(!Veg))) {
-                                            Log.i("Ok6","Ok6");
-                                           if (((Fine_dining_is == 1) && (Fine_dining))||((Fine_dining_is==0)&&(!Fine_dining))) {
-                                               Log.i("Ok7","Ok7");
-                                                if (Locationis == LOCATION)  {
-                                                    Log.i("Ok8","Ok8");
-                                                    if (priceis == price) {
-                                                        Log.i("Ok9","Ok9");
-                                                        if(pack==1) {
-                                                            returnVar.add(Restau);
-                                                            Log.i("Restau Name",Restau);
-                                                        }else if(pack==2) {
-                                                            returnVar.add(Restau);
-                                                            returnVar.add(Restau);
-                                                            Log.i("Restau Name", Restau);
-                                                        }else if(pack==3) {
-                                                            returnVar.add(Restau);
-                                                            returnVar.add(Restau);
-                                                            returnVar.add(Restau);
-                                                            returnVar.add(Restau);
-                                                            Log.i("Restau Name", Restau);
-                                                        }else{
-                                                            returnVar.add(Restau);
-                                                            Log.i("Restau Name",Restau);
+            if(no_cat){
+                if ((Locationis == LOCATION)||(LOCATION==0))  {
+                    Log.i("Ok8","Ok8");
+                    if ((priceis == price)||(price==0)) {
+                        Log.i("Ok9","Ok9");
+                        if(pack==1) {
+                            returnVar.add(Restau);
+                            Log.i("Restau Name",Restau);
+                        }else if(pack==2) {
+                            returnVar.add(Restau);
+                            returnVar.add(Restau);
+                            Log.i("Restau Name", Restau);
+                        }else if(pack==3) {
+                            returnVar.add(Restau);
+                            returnVar.add(Restau);
+                            returnVar.add(Restau);
+                            returnVar.add(Restau);
+                            Log.i("Restau Name", Restau);
+                        }else{
+                            returnVar.add(Restau);
+                            Log.i("Restau Name",Restau);
+                        }
+                    }
+                }
+            }else {
+                if (((Cafeis == 1) && (Cafe)) || ((Cafeis == 0) && (!Cafe))) {
+                    if (((Buffetis == 1) && (Buffet)) || ((Buffetis == 0) && (!Buffet))) {
+                        Log.i("Ok", "Ok");
+                        if (((Dessertis == 1) && (Dessert)) || ((Dessertis == 0) && (!Dessert))) {
+                            Log.i("Ok1", "Ok1");
+                            if (((Baris == 1) && (Bar)) || ((Baris == 0) && (!Bar))) {
+                                Log.i("Ok2", "Ok2");
+                                if (((Grillis == 1) && (Grill)) || ((Grillis == 0) && (!Grill))) {
+                                    Log.i("Ok3", "Ok3");
+                                    if (((Lutong_bahay_is == 1) && (Lutong_bahay)) || ((Lutong_bahay_is == 0) && (!Lutong_bahay))) {
+                                        Log.i("Ok4", "Ok4");
+                                        if (((fast_food_is == 1) && (fast_food)) || ((fast_food_is == 0) && (!fast_food))) {
+                                            Log.i("Ok5", "Ok5");
+                                            if (((Vegis == 1) && (Veg)) || ((Vegis == 0) && (!Veg))) {
+                                                Log.i("Ok6", "Ok6");
+                                                if (((Fine_dining_is == 1) && (Fine_dining)) || ((Fine_dining_is == 0) && (!Fine_dining))) {
+                                                    Log.i("Ok7", "Ok7");
+                                                    if ((Locationis == LOCATION) || (LOCATION == 0)) {
+                                                        Log.i("Ok8", "Ok8");
+                                                        if ((priceis == price) || (price == 0)) {
+                                                            Log.i("Ok9", "Ok9");
+                                                            if (pack == 1) {
+                                                                returnVar.add(Restau);
+                                                                Log.i("Restau Name", Restau);
+                                                            } else if (pack == 2) {
+                                                                returnVar.add(Restau);
+                                                                returnVar.add(Restau);
+                                                                Log.i("Restau Name", Restau);
+                                                            } else if (pack == 3) {
+                                                                returnVar.add(Restau);
+                                                                returnVar.add(Restau);
+                                                                returnVar.add(Restau);
+                                                                returnVar.add(Restau);
+                                                                Log.i("Restau Name", Restau);
+                                                            } else {
+                                                                returnVar.add(Restau);
+                                                                Log.i("Restau Name", Restau);
+                                                            }
                                                         }
                                                     }
                                                 }
