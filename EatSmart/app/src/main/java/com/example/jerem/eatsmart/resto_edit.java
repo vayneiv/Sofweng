@@ -30,7 +30,7 @@ import java.io.InputStream;
 public class resto_edit extends AppCompatActivity {
     private static int RESULT_LOAD_IMAGE = 1;
     Bundle extras;
-    EditText desc;
+    EditText desc,contact;
     CheckBox Cafe,Buffet,Bar,Grill,Lutong_Bahay,Dessert,Fast_food,Veg,Fine_dining,price1,price2,price3,price4,loc11,loc12,loc13,loc14,loc15,loc16;
     ImageButton next;
     Button sel_Image;
@@ -63,6 +63,7 @@ public class resto_edit extends AppCompatActivity {
                 password=extras.getString("Password");
             }
         }
+        contact=(EditText)findViewById(R.id.editText11);
         desc=(EditText)findViewById(R.id.editText3);
         Cafe=(CheckBox)findViewById(R.id.checkBox14);
         Buffet=(CheckBox)findViewById(R.id.checkBox15);
@@ -93,6 +94,7 @@ public class resto_edit extends AppCompatActivity {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 String description = desc.getText().toString();
+                String contactno=contact.getText().toString();
                 boolean Cafeis = Cafe.isChecked();
                 boolean Buffetis = Buffet.isChecked();
                 boolean Dessertis = Dessert.isChecked();
@@ -124,6 +126,7 @@ public class resto_edit extends AppCompatActivity {
                         loc,
                         price,
                         1,
+                        contactno,
                         img);
                 finish();
             }

@@ -49,6 +49,7 @@ public class LoginDataBaseAdapter
                     "LOCATION integer,"+
                     "price integer,"+
                     "package integer,"+
+                    "contact,"+
                     "image BLOB); ";
     // Variable to hold the database instance
     public  SQLiteDatabase db;
@@ -154,6 +155,7 @@ public class LoginDataBaseAdapter
                                   int LOCATION,
                                   int price,
                                   int pack,
+                                  String contact,
                                   byte []image)
     {
         Log.i(userName,"insertEntryrestau");
@@ -175,6 +177,7 @@ public class LoginDataBaseAdapter
         newValues.put("LOCATION",LOCATION);
         newValues.put("price",price);
         newValues.put("package",pack);
+        newValues.put("contact",contact);
         newValues.put("image",image);
 
         // Insert the row into your table
@@ -232,6 +235,21 @@ public class LoginDataBaseAdapter
     cursor.close();
     return returnVar;
     }
+    public String getrestaucontact(String userName)
+{
+    String returnVar;
+    Cursor cursor=db.query("restau", null, " USERNAME=?", new String[]{userName}, null, null, null);
+    if(cursor.getCount()<1) // UserName Not Exist
+    {
+        cursor.close();
+        returnVar="NOT EXIST";
+        return returnVar;
+    }
+    cursor.moveToFirst();
+    returnVar= cursor.getString(cursor.getColumnIndex("contact"));
+    cursor.close();
+    return returnVar;
+}
     public int getCafe(String userName)
     {
         int returnVar;

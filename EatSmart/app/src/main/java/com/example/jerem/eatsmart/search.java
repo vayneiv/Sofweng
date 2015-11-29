@@ -7,17 +7,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class search extends AppCompatActivity {
     Bundle extras;
     String userName;
     EditText entry;
     Intent to_search_result;
+    LoginDataBaseAdapter loginDataBaseAdapter;
     String searchEntry;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        loginDataBaseAdapter=new LoginDataBaseAdapter(this);
+        loginDataBaseAdapter=loginDataBaseAdapter.open();
         if (savedInstanceState == null)
         {
             //fetching extra data passed with intents in a Bundle type variable
@@ -35,6 +39,9 @@ public class search extends AppCompatActivity {
     public void to_search_result(View v)
     {
         searchEntry = entry.getText().toString();
+        if(loginDataBaseAdapter.getrestauname(searchEntry)=="NOT EXIST"){
+            Toast.makeText(getApplicationContext(), "No Results", Toast.LENGTH_LONG).show();
+        }
         to_search_result= new Intent(this, search_result.class);
         to_search_result.putExtra("Username", userName);
         to_search_result.putExtra("Restaurant Name", searchEntry);

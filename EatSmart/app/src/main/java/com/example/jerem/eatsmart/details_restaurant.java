@@ -20,6 +20,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
@@ -28,26 +29,17 @@ import java.io.InputStream;
 public class details_restaurant extends AppCompatActivity {
     private static int RESULT_LOAD_IMAGE = 1;
     Bundle extras;
-    EditText desc,res_name;
-    CheckBox Cafe,Buffet,Bar,Grill,Lutong_Bahay,Dessert,Fast_food,Veg,Fine_dining,price1,price2,price3,price4,loc11,loc12,loc13,loc14,loc15,loc16;
+    EditText desc,res_name,contact;
     ImageButton next;
     Button sel_Image;
     String userName,password;
-    RadioGroup radioGroupBudget, radioGroupLocation;
-    RadioButton radioBudget, radioLocation;
-    int checkedIdBudget, checkedIdLocation;
     byte[] img;
-    RadioGroup pricerg,locrg;
-    int price;
-    int loc;
     ImageView imageView;
-    LoginDataBaseAdapter loginDataBaseAdapter;
+    Intent to_details_restaurant2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details_restaurant);
-        loginDataBaseAdapter=new LoginDataBaseAdapter(this);
-        loginDataBaseAdapter=loginDataBaseAdapter.open();
         if (savedInstanceState == null)
         {
             //fetching extra data passed with booleanents in a Bundle type variable
@@ -62,24 +54,10 @@ public class details_restaurant extends AppCompatActivity {
                 password=extras.getString("Password");
             }
         }
+        to_details_restaurant2 = new Intent(this, details_restaurant.class);
         res_name=(EditText)findViewById(R.id.editText4);
         desc=(EditText)findViewById(R.id.editText6);
-        Cafe=(CheckBox)findViewById(R.id.radioButton5);
-        Buffet=(CheckBox)findViewById(R.id.radioButton26);
-        Dessert=(CheckBox)findViewById(R.id.radioButton6);
-        Bar=(CheckBox)findViewById(R.id.radioButton16);
-        Grill=(CheckBox)findViewById(R.id.radioButton23);
-        Lutong_Bahay=(CheckBox)findViewById(R.id.radioButton27);
-        Fast_food=(CheckBox)findViewById(R.id.radioButton28);
-        Veg=(CheckBox)findViewById(R.id.radioButton25);
-        Fine_dining=(CheckBox)findViewById(R.id.radioButton24);
-        checkedIdBudget = -1;
-        checkedIdLocation = -1;
-        radioGroupBudget = (RadioGroup)findViewById(R.id.radioGroup7);
-        radioGroupLocation = (RadioGroup)findViewById(R.id.radioGroup8);
-        radioBudget = (RadioButton)radioGroupBudget.findViewById(radioGroupBudget.getCheckedRadioButtonId());
-        radioLocation = (RadioButton)radioGroupLocation.findViewById(radioGroupLocation.getCheckedRadioButtonId());
-
+        contact=(EditText)findViewById(R.id.editText10);
         imageView= (ImageView) findViewById(R.id.imageView5);
         sel_Image=(Button)findViewById(R.id.button6);
         sel_Image.setOnClickListener(new View.OnClickListener() {
@@ -95,69 +73,30 @@ public class details_restaurant extends AppCompatActivity {
                 // TODO Auto-generated method stub
                 String description = desc.getText().toString();
                 String resto_name = res_name.getText().toString();
-                boolean Cafeis = Cafe.isChecked();
-                boolean Buffetis = Buffet.isChecked();
-                boolean Dessertis = Dessert.isChecked();
-                boolean Baris = Bar.isChecked();
-                boolean Grillis = Grill.isChecked();
-                boolean Lutong_Bahayis = Lutong_Bahay.isChecked();
-                boolean Fast_foodis = Fast_food.isChecked();
-                boolean Vegis = Veg.isChecked();
-                boolean Fine_diningis = Fine_dining.isChecked();
+                String contactno=contact.getText().toString();
                 Bitmap yourSelectedImage = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 yourSelectedImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
                 img= stream.toByteArray();
-                price();
-                location();
-                loginDataBaseAdapter.insertEntryrestau(userName,
-                        password,
-                        resto_name,
-                        description,
-                        Cafeis,
-                        Buffetis,
-                        Dessertis,
-                        Baris,
-                        Grillis,
-                        Lutong_Bahayis,
-                        Fast_foodis,
-                        Vegis,
-                        Fine_diningis,
-                        loc,
-                        price,
-                        1,
-                        img);
-                finish();
+                if(resto_name.equals(""))//add other textfields and/or checkboxes
+                {
+                    Toast.makeText(getApplicationContext(), "Field Vacant", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                else{
+                    to_details_restaurant2.putExtra("Username", userName);
+                    to_details_restaurant2.putExtra("Password", password);
+                    to_details_restaurant2.putExtra("desc", description);
+                    to_details_restaurant2.putExtra("restau", resto_name);
+                    to_details_restaurant2.putExtra("contact", contactno);
+                    to_details_restaurant2.putExtra("Logo", img);
+                    startActivity(to_details_restaurant2);
+                    finish();
+                }
             }
 
         });
 
-    }
-    public void price()
-    {
-        checkedIdBudget = radioGroupBudget.getCheckedRadioButtonId();
-        if (checkedIdBudget == -1)
-        {
-            price = 0;
-        }
-        else
-        {
-            radioBudget = (RadioButton)radioGroupBudget.findViewById(checkedIdBudget);
-            price = radioGroupBudget.indexOfChild(radioBudget) + 1;
-        }
-    }
-    public void location()
-    {
-        checkedIdLocation = radioGroupLocation.getCheckedRadioButtonId();
-        if (checkedIdLocation == -1)
-        {
-            loc = 0;
-        }
-        else
-        {
-            radioLocation = (RadioButton)radioGroupLocation.findViewById(checkedIdLocation);
-            loc = radioGroupLocation.indexOfChild(radioLocation) + 1;
-        }
     }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

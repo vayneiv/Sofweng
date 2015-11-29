@@ -22,7 +22,7 @@ import android.widget.ToggleButton;
 import java.util.ArrayList;
 
 public class home_restaurant extends AppCompatActivity {
-    TextView welcMSG,description,location,cuisine,price;
+    TextView welcMSG,description,location,cuisine,price,contact;
     Bundle extras;
     String userName,password;
     String category=" ";
@@ -69,10 +69,10 @@ public class home_restaurant extends AppCompatActivity {
         loginDataBaseAdapter=new LoginDataBaseAdapter(this);
         loginDataBaseAdapter=loginDataBaseAdapter.open();
         description=new TextView(this);
-        description=(TextView)findViewById(R.id.textView13);
+        description=(TextView)findViewById(R.id.textView18);
         description.setText(loginDataBaseAdapter.getrestaudesc(userName));
         cuisine=new TextView(this);
-        cuisine=(TextView)findViewById(R.id.textView15);
+        cuisine=(TextView)findViewById(R.id.textView35);
         if (loginDataBaseAdapter.getBar(userName)==1){
             category=category+"Bar ";
         } if (loginDataBaseAdapter.getBuffet(userName)==1){
@@ -94,7 +94,7 @@ public class home_restaurant extends AppCompatActivity {
         }
             cuisine.setText(category);
         price=new TextView(this);
-        price=(TextView)findViewById(R.id.textView17);
+        price=(TextView)findViewById(R.id.textView38);
         if(loginDataBaseAdapter.getrestauprice(userName)==1){
             resto_price="P0-P100";
         }else if(loginDataBaseAdapter.getrestauprice(userName)==2){
@@ -108,7 +108,7 @@ public class home_restaurant extends AppCompatActivity {
         }
         price.setText(resto_price);
         location=new TextView(this);
-        location=(TextView)findViewById(R.id.textView18);
+        location=(TextView)findViewById(R.id.textView2);
         if(loginDataBaseAdapter.getrestauloc(userName)==1){
             resto_loc="Manila";
         }else if(loginDataBaseAdapter.getrestauloc(userName)==2){
@@ -125,6 +125,8 @@ public class home_restaurant extends AppCompatActivity {
             resto_loc=" ";
         }
         location.setText(resto_loc);
+        contact=new TextView(this);
+        contact=(TextView)findViewById(R.id.textView39);
         Ratings=loginDataBaseAdapter.Retrieve_Rate(userName);
         Comments=loginDataBaseAdapter.Retrieve_Comments(userName);
         final int no_of_custo =loginDataBaseAdapter.Retrieve_Comments(userName).size();
