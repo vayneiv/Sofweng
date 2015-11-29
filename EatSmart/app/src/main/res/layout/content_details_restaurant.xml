@@ -47,8 +47,8 @@
                 android:id="@+id/imageView5"
                 android:foreground="#00ffffff"
                 android:scaleType="fitXY"
-                android:background="#ffffff"
-                android:src="@drawable/signin_bg"
+                android:background="@null"
+                android:src="@drawable/profile_logo"
                 android:nestedScrollingEnabled="false"
                 android:longClickable="true"
                 android:layout_centerHorizontal="true"
@@ -79,6 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/editText4"
+                android:background="#ffffff"
                 android:layout_gravity="center_horizontal" />
 
             <TextView
@@ -95,8 +96,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/editText6"
-                android:layout_above="@+id/textView3"
-                android:layout_centerHorizontal="true"
+                android:background="#ffffff"
+
                 android:layout_gravity="center_horizontal"
                 android:textColor="#ffffff" />
 
@@ -245,52 +246,43 @@
                 android:layout_gravity="center_horizontal"
                 android:textColor="#ffffff" />
 
-            <GridLayout
+            <RadioGroup
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal">
-
-                <CheckBox
+                android:layout_height="wrap_content"
+                android:id="@+id/radioGroup7"
+                android:orientation="horizontal"
+                android:layout_below="@+id/textView20"
+                android:layout_centerHorizontal="true">
+                <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="P501-P1000"
-                    android:id="@+id/checkBox10"
-                    android:layout_row="1"
-                    android:layout_column="0"
-                    android:allowUndo="true"
-                    android:textColor="#ffffff" />
-
-                <CheckBox
+                    android:text="@string/text_budget_1"
+                    android:textColor="#ffffff"
+                    android:id="@+id/radioButton30"
+                    />
+                <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="P101-P500"
-                    android:id="@+id/checkBox11"
-                    android:layout_row="0"
-                    android:layout_column="1"
-                    android:allowUndo="true"
-                    android:textColor="#ffffff" />
+                    android:text="@string/text_budget_2"
+                    android:textColor="#ffffff"
+                    android:id="@+id/radioButton31"
 
-                <CheckBox
+                    />
+                <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="P0-P100"
-                    android:id="@+id/checkBox12"
-                    android:layout_row="0"
-                    android:layout_column="0"
-                    android:allowUndo="true"
-                    android:textColor="#ffffff" />
-
-                <CheckBox
+                    android:text="@string/text_budget_3"
+                    android:textColor="#ffffff"
+                    android:id="@+id/radioButton32"
+                    />
+                <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="P1000 above"
-                    android:id="@+id/checkBox13"
-                    android:layout_row="1"
-                    android:layout_column="1"
-                    android:allowUndo="true"
-                    android:textColor="#ffffff" />
-            </GridLayout>
-
+                    android:text="@string/text_budget_4"
+                    android:textColor="#ffffff"
+                    android:id="@+id/radioButton33"
+                    />
+            </RadioGroup>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -302,73 +294,61 @@
                 android:layout_gravity="center_horizontal"
                 android:textColor="#ffffff" />
 
-            <GridLayout
+            <RadioGroup
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
-                android:columnCount="4"
-                android:rowCount="3" >
-
-                <CheckBox
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView37"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_vertical"
+                android:id="@+id/radioGroup8">
+                <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Manila"
-                    android:id="@+id/radioButton13"
-                    android:layout_row="0"
-                    android:layout_column="1"
-                    android:allowUndo="true"
-                    android:textColor="#ffffff" />
+                    android:text="@string/text_location_1"
+                    android:textColor="#ffffff"
+                    android:id="@+id/radioButton34"
+                    />
 
-                <CheckBox
+                <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pasig"
-                    android:id="@+id/radioButton14"
-                    android:layout_row="0"
-                    android:layout_column="2"
-                    android:allowUndo="true"
-                    android:textColor="#ffffff" />
+                    android:text="@string/text_location_2"
+                    android:textColor="#ffffff"
+                    android:id="@+id/radioButton35"
+                    />
 
-                <CheckBox
+                <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Makati"
-                    android:id="@+id/radioButton15"
-                    android:layout_row="0"
-                    android:layout_column="3"
-                    android:allowUndo="true"
-                    android:textColor="#ffffff" />
+                    android:text="@string/text_location_3"
+                    android:textColor="#ffffff"
+                    android:id="@+id/radioButton36"
+                    />
 
-                <CheckBox
+                <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="San Juan"
-                    android:id="@+id/radioButton17"
-                    android:layout_row="1"
-                    android:layout_column="1"
-                    android:allowUndo="true"
-                    android:textColor="#ffffff" />
+                    android:text="@string/text_location_4"
+                    android:textColor="#ffffff"
+                    android:id="@+id/radioButton37"
+                    />
 
-                <CheckBox
+                <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pasay"
-                    android:id="@+id/radioButton49"
-                    android:layout_row="1"
-                    android:layout_column="2"
-                    android:allowUndo="true"
-                    android:textColor="#ffffff" />
+                    android:text="@string/text_location_5"
+                    android:textColor="#ffffff"
+                    android:id="@+id/radioButton38"
+                    />
 
-                <CheckBox
+                <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Taguig"
-                    android:id="@+id/radioButton50"
-                    android:layout_row="1"
-                    android:layout_column="3"
-                    android:allowUndo="true"
-                    android:textColor="#ffffff" />
-            </GridLayout>
+                    android:text="@string/text_location_6"
+                    android:textColor="#ffffff"
+                    android:id="@+id/radioButton39"
+                    />
+            </RadioGroup>
 
         </LinearLayout>
     </ScrollView>
@@ -395,8 +375,7 @@
         android:src="@drawable/name_logo_transparentbg"
         android:scaleType="fitXY"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="69dp" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

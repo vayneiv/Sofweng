@@ -27,6 +27,7 @@
     <string name="hint_restaurant_name">RESTAURANT NAME</string>
     <string name="hint_description">DESCRIPTION</string>
     <string name="hint_location">LOCATION</string>
+    <string name="get_started">TAP TO GET STARTED</string>
     <string name="title_activity_filter_options">FILTER OPTIONS</string>
     <string name="text_title_cuisine">CATEGORY</string>
     <string name="text_cuisine_1">Cafe</string>

@@ -12,10 +12,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/welcome_customer"
+        android:text="@string/get_started"
         android:id="@+id/textView4"
-        android:layout_marginTop="75dp"
-        android:layout_alignParentTop="true"
+        android:textColor="#ff0000"
+        android:layout_below="@+id/imageButton"
         android:layout_centerHorizontal="true" />
 
     <ImageButton
@@ -33,24 +33,52 @@
         android:scaleType="fitXY"
         android:background="@null"
         android:onClick="to_ifl"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/imageView14"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView14"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/name_logo_transparentbg"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:adjustViewBounds="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton8"
+        android:src="@drawable/filter_button"
+        android:scaleType="fitXY"
+        android:maxHeight="100dp"
+        android:maxWidth="100dp"
+        android:minHeight="100dp"
+        android:minWidth="100dp"
+        android:clickable="true"
+        android:background="@null"
+        android:adjustViewBounds="true"
+        android:onClick="to_filter"
+        android:layout_below="@+id/textView4"
         android:layout_centerHorizontal="true" />
 
-    <Button
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_filter"
-        android:id="@+id/button8"
-        android:layout_below="@+id/imageButton"
-        android:layout_centerHorizontal="true"
-        android:onClick="to_filter" />
+        android:id="@+id/imageButton9"
+        android:onClick="to_search"
+        android:src="@drawable/search_button"
+        android:scaleType="fitXY"
+        android:maxHeight="100dp"
+        android:maxWidth="100dp"
+        android:minHeight="100dp"
+        android:minWidth="100dp"
+        android:clickable="true"
+        android:background="@null"
+        android:adjustViewBounds="true"
+        android:layout_below="@+id/imageButton8"
+        android:layout_centerHorizontal="true" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_search"
-        android:id="@+id/button10"
-        android:layout_below="@+id/button8"
-        android:layout_centerHorizontal="true"
-        android:onClick="to_search" />
 </RelativeLayout>

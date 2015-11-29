@@ -8,7 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class splash_screen extends AppCompatActivity {
-    public static int splash_time = 3000;
+    public static int splash_time = 2000;
     Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

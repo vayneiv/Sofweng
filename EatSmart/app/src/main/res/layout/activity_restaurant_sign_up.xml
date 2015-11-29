@@ -17,7 +17,8 @@
         android:src="@drawable/name_logo_transparentbg"
         android:layout_gravity="center"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:adjustViewBounds="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -74,7 +75,8 @@
         android:background="#ffffff"
         android:singleLine="false"
         android:layout_below="@+id/textView58"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignLeft="@+id/editText5"
+        android:layout_alignStart="@+id/editText5" />
 
     <ImageButton
         android:layout_width="128dp"

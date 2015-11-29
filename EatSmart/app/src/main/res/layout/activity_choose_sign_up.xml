@@ -55,10 +55,10 @@
         android:src="@drawable/name_logo_transparentbg"
         android:maxHeight="100dp"
         android:minWidth="100dp"
-        android:scaleType="fitCenter"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:adjustViewBounds="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -70,9 +70,10 @@
         android:singleLine="true"
         android:typeface="sans"
         android:hint="@string/username_text"
-        android:layout_alignBottom="@+id/imageView4"
-        android:layout_centerInParent="true"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_below="@+id/imageView4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -84,7 +85,8 @@
         android:singleLine="true"
         android:typeface="sans"
         android:hint="@string/username_text"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/textView11"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp" />
 
 </RelativeLayout>

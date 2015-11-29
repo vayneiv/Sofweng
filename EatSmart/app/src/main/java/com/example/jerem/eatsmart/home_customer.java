@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 
 public class home_customer extends AppCompatActivity {
-    TextView welcMSG;
+
     Bundle extras;
     String userName;
     boolean cat_1;
@@ -44,9 +44,7 @@ public class home_customer extends AppCompatActivity {
                 userName= extras.getString("Username");
             }
         }
-        welcMSG=new TextView(this);
-        welcMSG=(TextView)findViewById(R.id.textView4);
-        welcMSG.setText("Welcome " + userName);
+
     }
     public void to_ifl(View v)
     {

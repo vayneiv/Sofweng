@@ -37,12 +37,18 @@ public class search_result extends AppCompatActivity {
                 userName= null;
                 restauName = null;
             }
+            else if(restauName == null)
+            {
+                userName= extras.getString("Username");
+                restauName = "No Restaurant Found";
+            }
             else
             {
                 userName= extras.getString("Username");
                 restauName= extras.getString("Restaurant Name");
             }
         }
+
         display_restau.setText("Restaurant Name: " + "\n" + restauName);
         image=(ImageView)findViewById(R.id.imageView3);
         image.invalidate();
