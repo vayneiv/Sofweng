@@ -42,16 +42,7 @@ public class restau_choose extends AppCompatActivity {
         }
         resto_profile = new Intent(this,home_restaurant.class);
         pack=loginDataBaseAdapter.getrestapack(userName);
-        resto_pack=(TextView)findViewById(R.id.textView27);
-        if(pack==1){
-            resto_pack.setText("CRAVING");
-        }else if(pack==2){
-            resto_pack.setText("STARVING");
-        }else if(pack==3){
-            resto_pack.setText("HUNGRY");
-        }else {
-            resto_pack.setText("ERROR");
-        }
+
         craving = (ImageButton)findViewById(R.id.imageButton3);
         craving.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){

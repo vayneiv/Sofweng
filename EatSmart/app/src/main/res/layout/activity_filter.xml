@@ -12,23 +12,18 @@
         android:id="@+id/imageView11"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/name_logo_transparentbg" />
+        android:src="@drawable/name_logo_transparentbg"
+        android:adjustViewBounds="true" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/scrollView4"
-        android:layout_marginBottom="30dp"
-        android:layout_below="@+id/imageView11">
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/title_activity_filter_options"
             android:id="@+id/textView33"
+            android:layout_below="@+id/imageView11"
+            android:textColor="#ff0000"
             android:layout_centerHorizontal="true"
             />
         <TextView
@@ -36,9 +31,10 @@
             android:layout_height="wrap_content"
             android:text="@string/text_title_cuisine"
             android:id="@+id/textView10"
+            android:textColor="#ff0000"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/textView33"
-            android:textColor="#000000"
+
             />
 
         <GridLayout
@@ -159,7 +155,7 @@
             android:text="Budget"
             android:id="@+id/textView36"
             android:layout_gravity="center_horizontal"
-            android:textColor="#000000"
+            android:textColor="#ff0000"
             android:layout_below="@+id/gridLayout3"
             android:layout_centerHorizontal="true" />
 
@@ -203,7 +199,7 @@
             android:text="Location"
             android:id="@+id/textView37"
             android:layout_below="@+id/radioGroup5"
-            android:textColor="#000000"
+            android:textColor="#ff0000"
             android:layout_centerHorizontal="true"
              />
 
@@ -255,9 +251,7 @@
                 android:id="@+id/radioButton48"
                 />
         </RadioGroup>
-    </RelativeLayout>
 
-    </ScrollView>
 
 
 </RelativeLayout>

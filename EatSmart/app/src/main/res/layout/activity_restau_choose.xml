@@ -11,99 +11,75 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:id="@+id/imageButton3"
-        android:src="@drawable/button_ifl"
-        android:background="#00ffffff"
-        android:scaleType="fitXY"
+        android:src="@drawable/craving_pac"
+        android:background="@null"
         android:layout_marginBottom="72dp"
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/imageButton4"
-        android:layout_toStartOf="@+id/imageButton4" />
+        android:layout_toStartOf="@+id/imageButton4"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:maxHeight="120dp"
+        android:maxWidth="120dp"
+        android:minHeight="120dp"
+        android:minWidth="120dp"
+        android:clickable="true" />
 
     <ImageButton
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:id="@+id/imageButton4"
-        android:src="@drawable/button_ifl"
-        android:background="#00ffffff"
+        android:src="@drawable/hungry_pack"
+        android:background="@null"
         android:scaleType="fitXY"
         android:layout_alignTop="@+id/imageButton3"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:adjustViewBounds="true"
+        android:clickable="true"
+        android:maxHeight="120dp"
+        android:maxWidth="120dp"
+        android:minHeight="120dp"
+        android:minWidth="120dp" />
 
     <ImageButton
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:id="@+id/imageButton5"
-        android:src="@drawable/button_ifl"
+        android:src="@drawable/starving_pac"
         android:background="#00ffffff"
         android:scaleType="fitXY"
-        android:layout_above="@+id/textView25"
+        android:layout_alignTop="@+id/imageButton4"
         android:layout_toRightOf="@+id/imageButton4"
         android:layout_toEndOf="@+id/imageButton4" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CRAVING"
-        android:id="@+id/textView24"
-        android:layout_alignTop="@+id/textView25"
-        android:layout_alignLeft="@+id/imageButton3"
-        android:layout_alignStart="@+id/imageButton3"
-        android:layout_marginLeft="30dp"
-        android:layout_marginStart="30dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="STARVING"
-        android:id="@+id/textView25"
-        android:layout_gravity="center"
-        android:layout_below="@+id/imageButton4"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="HUNGRY"
-        android:id="@+id/textView26"
-        android:layout_below="@+id/imageButton5"
-        android:layout_alignLeft="@+id/imageButton5"
-        android:layout_alignStart="@+id/imageButton5"
-        android:layout_marginLeft="35dp"
-        android:layout_marginStart="35dp"
-
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView27"
-        android:layout_above="@+id/textView28"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="29dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="CHOOSE A DIFFERENT PACKAGE"
         android:id="@+id/textView28"
+        android:textColor="#ff0000"
         android:layout_above="@+id/imageButton4"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="21dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="YOUR PACKAGE"
-        android:id="@+id/textView29"
-        android:layout_above="@+id/imageView7"
-        android:layout_centerHorizontal="true" />
 
     <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:id="@+id/imageView7"
         android:src="@drawable/button_ifl"
-        android:layout_above="@+id/textView27"
-        android:layout_centerHorizontal="true" />
+        android:layout_above="@+id/textView28"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/text_your_package"
+        android:textColor="#ff0000"
+        android:id="@+id/textView6"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/imageView7"
+        android:layout_alignStart="@+id/imageView7" />
+
 </RelativeLayout>

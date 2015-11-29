@@ -29,6 +29,8 @@
     <string name="hint_location">LOCATION</string>
     <string name="get_started">TAP TO GET STARTED</string>
     <string name="title_activity_filter_options">FILTER OPTIONS</string>
+    <string name="text_go_to">GO TO</string>
+    <string name="text_your_package">YOUR PACKAGE</string>
     <string name="text_title_cuisine">CATEGORY</string>
     <string name="text_cuisine_1">Cafe</string>
     <string name="text_cuisine_2">Dessert</string>

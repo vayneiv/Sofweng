@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 public class true_home_restau extends AppCompatActivity {
 
-    Button profile,packages;
+    ImageButton profile,packages;
     Intent resto_profile,resto_packages;
     Bundle extras;
     String userName,password;
@@ -37,23 +37,23 @@ public class true_home_restau extends AppCompatActivity {
             }
         }
         resto_profile = new Intent(this,home_restaurant.class);
-        profile = (Button)findViewById(R.id.button16);
+        profile = (ImageButton)findViewById(R.id.button16);
         profile.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 resto_profile.putExtra("Username", userName);
                 resto_profile.putExtra("Password", password);
                 startActivity(resto_profile); //transfer activity
-                finish();
+
             }
         });
         resto_packages=new Intent(this,restau_choose.class);
-        packages = (Button)findViewById(R.id.button17);
+        packages = (ImageButton)findViewById(R.id.button17);
         packages.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 resto_packages.putExtra("Username", userName);
                 resto_packages.putExtra("Password", password);
                 startActivity(resto_packages); //transfer activity
-                finish();
+
             }
         });
     }

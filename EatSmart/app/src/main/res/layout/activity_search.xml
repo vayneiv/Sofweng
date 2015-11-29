@@ -13,6 +13,7 @@
         android:text="@string/action_search"
         android:id="@+id/textView3"
         android:layout_marginTop="127dp"
+        android:textColor="#ff0000"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -34,5 +35,15 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:onClick="to_search_result" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView16"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/name_logo_transparentbg"
+        android:adjustViewBounds="true" />
 
 </RelativeLayout>
