@@ -18,7 +18,7 @@ public class LoginDataBaseAdapter
 {
     public static int nos_calls=0;
     static final String DATABASE_NAME = "login.db";
-    static final int DATABASE_VERSION = 10;
+    static final int DATABASE_VERSION = 11;
     public static final int NAME_COLUMN = 1;
     // TODO: Create public field for each column in your table.
     // SQL Statement to create a new database.
@@ -87,36 +87,46 @@ public class LoginDataBaseAdapter
 
     public ArrayList<String> Retrieve_Comments(String Resto_name){
         ArrayList<String> returnVar= new ArrayList<String>();
-        Cursor cursor =  db.query("Rate_Comment", new String[]{"USERNAME Comment"}, null, null, null, null, null);
-        cursor.moveToFirst();
-        while(!cursor.isAfterLast())
-        {
-            String Restau = cursor.getString(cursor.getColumnIndex("USERNAME"));
-            if(Restau==Resto_name) {
-                returnVar.add(cursor.getString(cursor.getColumnIndex("Comment")));
-            }else{
-
-            }
-            cursor.moveToNext();
+        Cursor precursor=db.rawQuery("SELECT * FROM Rate_Comment LIMIT 0,1", null);
+        if (precursor.getColumnIndex("USERNAME")==-1){
+            returnVar=null;
         }
-        cursor.close();
+        else {
+            Cursor cursor = db.query("Rate_Comment", new String[]{"USERNAME Comment"}, null, null, null, null, null);
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                String Restau = cursor.getString(cursor.getColumnIndex("USERNAME"));
+                if (Restau == Resto_name) {
+                    returnVar.add(cursor.getString(cursor.getColumnIndex("Comment")));
+                } else {
+
+                }
+                cursor.moveToNext();
+            }
+            cursor.close();
+        }
         return returnVar;
     }
     public ArrayList<Integer> Retrieve_Rate(String Resto_name){
-    ArrayList<Integer> returnVar= new ArrayList<Integer>();
-    Cursor cursor =  db.query("Rate_Comment", new String[]{"USERNAME Rate"}, null, null, null, null, null);
-    cursor.moveToFirst();
-        while(!cursor.isAfterLast())
-        {
-            String Restau = cursor.getString(cursor.getColumnIndex("USERNAME"));
-            if(Restau==Resto_name) {
-                returnVar.add(cursor.getInt(cursor.getColumnIndex("Rate")));
-            }else{
-
-            }
-            cursor.moveToNext();
+    ArrayList<Integer> returnVar= new ArrayList<Integer>();Cursor precursor=db.rawQuery("SELECT * FROM Rate_Comment LIMIT 0,1", null);
+        if (precursor.getColumnIndex("USERNAME")==-1){
+            returnVar=null;
         }
-    cursor.close();
+        else {
+        Cursor cursor =  db.query("Rate_Comment", new String[]{"USERNAME Rate"}, null, null, null, null, null);
+        cursor.moveToFirst();
+            while(!cursor.isAfterLast())
+            {
+                String Restau = cursor.getString(cursor.getColumnIndex("USERNAME"));
+                if(Restau==Resto_name) {
+                    returnVar.add(cursor.getInt(cursor.getColumnIndex("Rate")));
+                }else{
+
+                }
+                cursor.moveToNext();
+            }
+        cursor.close();
+        }
     return returnVar;
 }
     public double Retrieve_Total_Rate(String Resto_name){
@@ -443,8 +453,9 @@ public class LoginDataBaseAdapter
         }
         cursor.moveToFirst();
         returnVar = cursor.getBlob(cursor.getColumnIndex("image"));
+        Log.i("logo is",returnVar.toString());
         cursor.close();
-        BitmapFactory.decodeByteArray(returnVar, 0, returnVar.length);
+        img=BitmapFactory.decodeByteArray(returnVar, 0, returnVar.length);
         Log.i("Image Accessed", "Image Accessed");
         return img;
     }
@@ -479,27 +490,27 @@ public class LoginDataBaseAdapter
         return returnVar;
     }
     public void  updaterestau(String userName,
-                                  String password,
-                                  String RestauName,
-                                  String Description,
-                                  boolean Cafe,
-                                  boolean Buffet,
-                                  boolean Dessert,
-                                  boolean Bar,
-                                  boolean Grill,
-                                  boolean Lutong_bahay,
-                                  boolean fast_food,
-                                  boolean Veg,
-                                  boolean Fine_dining,
-                                  int LOCATION,
-                                  int price,
-                                  int pack,
-                                  byte []image)
+                              String password,
+                              String RestauName,
+                              String Description,
+                              boolean Cafe,
+                              boolean Buffet,
+                              boolean Dessert,
+                              boolean Bar,
+                              boolean Grill,
+                              boolean Lutong_bahay,
+                              boolean fast_food,
+                              boolean Veg,
+                              boolean Fine_dining,
+                              int LOCATION,
+                              int price,
+                              int pack,
+                              String contact,
+                              byte []image)
     {
-        // Define the updated row content.
+        Log.i(userName,"insertEntryrestau");
         ContentValues updatedValues = new ContentValues();
         // Assign values for each row.
-
         updatedValues.put("USERNAME", userName);
         updatedValues.put("PASSWORD", password);
         updatedValues.put("RESTAUNAME", RestauName);
@@ -516,7 +527,9 @@ public class LoginDataBaseAdapter
         updatedValues.put("LOCATION",LOCATION);
         updatedValues.put("price",price);
         updatedValues.put("package",pack);
+        updatedValues.put("contact",contact);
         updatedValues.put("image",image);
+
         String where="USERNAME = ?";
         db.update("restau",updatedValues, where, new String[]{userName});
     }

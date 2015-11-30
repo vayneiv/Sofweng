@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:text="Select Image"
         android:id="@+id/button12"
-        android:layout_below="@+id/imageView8"
+        android:layout_below="@id/imageView8"
         android:layout_centerHorizontal="true" />
 
     <ScrollView

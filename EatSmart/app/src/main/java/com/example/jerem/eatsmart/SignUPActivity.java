@@ -1,6 +1,7 @@
 package com.example.jerem.eatsmart;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,7 @@ public class SignUPActivity extends Activity
     EditText editTextUserName,editTextPassword,editTextConfirmPassword;
     ImageButton btnCreateAccount;
     LoginDataBaseAdapter loginDataBaseAdapter;
+    Intent back_home;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -33,14 +35,17 @@ public class SignUPActivity extends Activity
         Typeface font = Typeface.createFromAsset(getAssets(), "Kenzo Regular.otf");
         txt.setTypeface(font);
         TextView txt1 = (TextView) findViewById(R.id.textView27);
-        Typeface font1 = Typeface.createFromAsset(getAssets(), "basictitlefont.otf");
+        Typeface font1 = Typeface.createFromAsset(getAssets(), "basictitlefont.ttf");
         txt1.setTypeface(font1);
         TextView txt2 = (TextView) findViewById(R.id.textView29);
-        Typeface font2 = Typeface.createFromAsset(getAssets(), "basictitlefont.otf");
+        Typeface font2 = Typeface.createFromAsset(getAssets(), "basictitlefont.ttf");
         txt2.setTypeface(font2);
         TextView txt3= (TextView) findViewById(R.id.textView32);
-        Typeface font3 = Typeface.createFromAsset(getAssets(), "basictitlefont.otf");
+        Typeface font3 = Typeface.createFromAsset(getAssets(), "basictitlefont.ttf");
         txt3.setTypeface(font3);
+
+        back_home = new Intent(this, loginPage.class);
+        back_home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Removes other Activities from stack
         btnCreateAccount=(ImageButton)findViewById(R.id.buttonCreateAccount);
         btnCreateAccount.setOnClickListener(new View.OnClickListener() {
 
@@ -68,7 +73,7 @@ public class SignUPActivity extends Activity
                     // Save the Data in Database
                     loginDataBaseAdapter.insertEntrycusto(userName, password);
                     Toast.makeText(getApplicationContext(), "Account Successfully Created ", Toast.LENGTH_LONG).show();
-                    finish();
+                    startActivity(back_home);
                 }
             }
         });

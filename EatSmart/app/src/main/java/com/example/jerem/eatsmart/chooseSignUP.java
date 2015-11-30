@@ -28,7 +28,7 @@ public class chooseSignUP extends AppCompatActivity {
         Typeface font = Typeface.createFromAsset(getAssets(), "Kenzo Regular.otf");
         txt.setTypeface(font);
         TextView txt1 = (TextView) findViewById(R.id.textView11);
-        Typeface font1 = Typeface.createFromAsset(getAssets(), "basictitlefont.otf");
+        Typeface font1 = Typeface.createFromAsset(getAssets(), "basictitlefont.ttf");
         txt1.setTypeface(font1);
         customer = (ImageButton)findViewById(R.id.button3);
         customer.setOnClickListener(new View.OnClickListener(){

@@ -1,16 +1,24 @@
 package com.example.jerem.eatsmart;
 
+import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.util.LruCache;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 
@@ -24,9 +32,11 @@ public class details_restaurant_2 extends AppCompatActivity {
     LoginDataBaseAdapter loginDataBaseAdapter;
     Bundle extras;
     String userName,password,description,resto_name,contact;
-    byte[] img;
+    byte[] logo;
+    Uri img;
     int loc,price;
     ImageButton signUp;
+    Intent back_home;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +50,11 @@ public class details_restaurant_2 extends AppCompatActivity {
             if(extras == null) {
                 userName= null;
                 password=null;
+                description=null;
+                resto_name=null;
+                contact=null;
+                img=null;
+                Log.i("Extras is","null");
             }
             else
             {
@@ -48,28 +63,43 @@ public class details_restaurant_2 extends AppCompatActivity {
                 description=extras.getString("desc");
                 resto_name=extras.getString("restau");
                 contact=extras.getString("contact");
-                img=extras.getByteArray("Logo");
+                img=Uri.parse(extras.getString("imageUri"));
+
+                Log.i("Extras is","not null");
             }
         }
-
+        back_home = new Intent(this, loginPage.class);
+        back_home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Removes other Activities from stack
+        String[] filePathColumn = { MediaStore.Images.Media.DATA };
+        Cursor cursor = getContentResolver().query(img, filePathColumn, null, null, null);
+        cursor.moveToFirst();
+        int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+        String picturePath = cursor.getString(columnIndex);
+        cursor.close();
+        Bitmap yourSelectedImage = BitmapFactory.decodeFile(picturePath);
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        yourSelectedImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        logo = stream.toByteArray();
+        Log.i("logo is",logo.toString());
         TextView txt = (TextView) findViewById(R.id.textView24);
         Typeface font = Typeface.createFromAsset(getAssets(), "Kenzo Regular.otf");
         txt.setTypeface(font);
-        Cafe=(CheckBox)findViewById(R.id.checkBox10);
-        Buffet=(CheckBox)findViewById(R.id.checkBox25);
-        Dessert=(CheckBox)findViewById(R.id.checkBox11);
-        Bar=(CheckBox)findViewById(R.id.checkBox12);
-        Grill=(CheckBox)findViewById(R.id.checkBox13);
-        Lutong_Bahay=(CheckBox)findViewById(R.id.checkBox26);
-        Fast_food=(CheckBox)findViewById(R.id.checkBox27);
-        Veg=(CheckBox)findViewById(R.id.checkBox24);
-        Fine_dining=(CheckBox)findViewById(R.id.checkBox23);
+        Cafe=(CheckBox)findViewById(R.id.checkBox28);
+        Buffet=(CheckBox)findViewById(R.id.checkBox34);
+        Dessert=(CheckBox)findViewById(R.id.checkBox29);
+        Bar=(CheckBox)findViewById(R.id.checkBox30);
+        Grill=(CheckBox)findViewById(R.id.checkBox31);
+        Lutong_Bahay=(CheckBox)findViewById(R.id.checkBox35);
+        Fast_food=(CheckBox)findViewById(R.id.checkBox36);
+        Veg=(CheckBox)findViewById(R.id.checkBox33);
+        Fine_dining=(CheckBox)findViewById(R.id.checkBox32);
         checkedIdBudget = -1;
         checkedIdLocation = -1;
         radioGroupBudget = (RadioGroup)findViewById(R.id.radioGroup);
         radioGroupLocation = (RadioGroup)findViewById(R.id.radioGroup2);
         radioBudget = (RadioButton)radioGroupBudget.findViewById(radioGroupBudget.getCheckedRadioButtonId());
         radioLocation = (RadioButton)radioGroupLocation.findViewById(radioGroupLocation.getCheckedRadioButtonId());
+
 
         signUp=(ImageButton)findViewById(R.id.imageButton10);
         signUp.setOnClickListener(new View.OnClickListener() {
@@ -104,8 +134,9 @@ public class details_restaurant_2 extends AppCompatActivity {
                         price,
                         1,
                         contact,
-                        img);
-                finish();
+                        logo);
+                Toast.makeText(getApplicationContext(), "Account Successfully Created ", Toast.LENGTH_LONG).show();
+                startActivity(back_home);
             }
 
         });
@@ -135,5 +166,11 @@ public class details_restaurant_2 extends AppCompatActivity {
             radioLocation = (RadioButton)radioGroupLocation.findViewById(checkedIdLocation);
             loc = radioGroupLocation.indexOfChild(radioLocation) + 1;
         }
+    }
+    @Override
+    protected void onDestroy() {
+        // TODO Auto-generated method stub
+        super.onDestroy();
+
     }
 }

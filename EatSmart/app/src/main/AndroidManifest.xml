@@ -65,29 +65,38 @@
         </activity>
         <activity
             android:name=".im_feeling_lucky"
-            android:label="@string/title_activity_im_feeling_lucky" >
+            android:label="@string/title_activity_im_feeling_lucky"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".filter"
-            android:label="@string/title_activity_filter" >
+            android:label="@string/title_activity_filter"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".search"
-            android:label="@string/title_activity_search" >
+            android:label="@string/title_activity_search"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".search_result"
-            android:label="@string/title_activity_search_result" >
+            android:label="@string/title_activity_search_result"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name=".resto_edit" >
+        <activity android:name=".resto_edit"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".rate_and_comment"
-            android:label="@string/title_activity_rate_and_comment" >
+            android:label="@string/title_activity_rate_and_comment"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".true_home_restau" >
+        <activity android:name=".true_home_restau"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name=".details_restaurant_2" >
+        <activity android:name=".details_restaurant_2"
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

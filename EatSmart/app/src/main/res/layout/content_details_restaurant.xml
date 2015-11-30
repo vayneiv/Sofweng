@@ -23,7 +23,6 @@
         android:minWidth="120dp"
         android:scaleType="fitXY"
         android:adjustViewBounds="true"
-        android:layout_marginBottom="37dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
@@ -60,8 +59,9 @@
         android:id="@+id/textView52"
         android:layout_gravity="center_horizontal"
         android:textColor="#ffffff"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/button6"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" />
 
     <EditText
         android:layout_width="313dp"

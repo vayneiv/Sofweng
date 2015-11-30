@@ -46,7 +46,7 @@ public class resto_edit extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_details_restaurant);
+        setContentView(R.layout.activity_resto_edit);
         loginDataBaseAdapter=new LoginDataBaseAdapter(this);
         loginDataBaseAdapter=loginDataBaseAdapter.open();
         if (savedInstanceState == null)
@@ -76,19 +76,20 @@ public class resto_edit extends AppCompatActivity {
         Fine_dining=(CheckBox)findViewById(R.id.checkBox22);
         radioGroupBudget = (RadioGroup)findViewById(R.id.radioGroup9);
         radioGroupLocation = (RadioGroup)findViewById(R.id.radioGroup10);
+
+
         radioBudget = (RadioButton)radioGroupBudget.findViewById(radioGroupBudget.getCheckedRadioButtonId());
         radioLocation = (RadioButton)radioGroupLocation.findViewById(radioGroupLocation.getCheckedRadioButtonId());
-
-
         imageView= (ImageView) findViewById(R.id.imageView8);
         sel_Image=(Button)findViewById(R.id.button12);
+
+        next=(ImageButton)findViewById(R.id.imageButton6);
         sel_Image.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(i, RESULT_LOAD_IMAGE);
             }
         });
-        next=(ImageButton)findViewById(R.id.imageButton6);
         next.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -110,7 +111,7 @@ public class resto_edit extends AppCompatActivity {
                 img= stream.toByteArray();
                 price();
                 location();
-                loginDataBaseAdapter.insertEntryrestau(userName,
+                loginDataBaseAdapter.updaterestau(userName,
                         password,
                         null,
                         description,

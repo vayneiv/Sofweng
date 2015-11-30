@@ -35,6 +35,7 @@ public class home_restaurant extends AppCompatActivity {
     Intent edit;
     ImageView image;
     LinearLayout Rate;
+    TextView header;
     ArrayList<Integer> Ratings;
     ArrayList<String> Comments;
     @Override
@@ -66,6 +67,13 @@ public class home_restaurant extends AppCompatActivity {
         image=(ImageView)findViewById(R.id.imageView6);
         image.invalidate();
         image.setImageBitmap(loginDataBaseAdapter.getimage(userName));
+        if (loginDataBaseAdapter.getimage(userName)==null){
+
+            Log.i("Image Bytes", "null");
+        }else {
+            Log.i("Image Bytes", loginDataBaseAdapter.getimage(userName).toString());
+        }
+
         loginDataBaseAdapter=new LoginDataBaseAdapter(this);
         loginDataBaseAdapter=loginDataBaseAdapter.open();
         description=new TextView(this);
@@ -127,19 +135,26 @@ public class home_restaurant extends AppCompatActivity {
         location.setText(resto_loc);
         contact=new TextView(this);
         contact=(TextView)findViewById(R.id.textView39);
+        contact.setText(loginDataBaseAdapter.getrestaucontact(userName));
         Ratings=loginDataBaseAdapter.Retrieve_Rate(userName);
         Comments=loginDataBaseAdapter.Retrieve_Comments(userName);
-        final int no_of_custo =loginDataBaseAdapter.Retrieve_Comments(userName).size();
-        for (int i=0;i<no_of_custo;i+=3){
-            final TextView Header=new TextView(this);
-            Header.setText("Customer"+(i+1));
-            Rate.addView(Header);
-            final RatingBar Rating=new RatingBar(this);
-            Rating.setRating(Ratings.get(i));
-            Rate.addView(Rating);
-            final TextView Comment=new TextView(this);
-            Comment.setText("Comments" +Comments.get(i));
-            Rate.addView(Comment);
+        header=(TextView)findViewById(R.id.textView41);
+        if ((Ratings==null)||(Comments==null)){
+            header.setVisibility(View.GONE);
+        }else {
+            header.setVisibility(View.VISIBLE);
+            final int no_of_custo = loginDataBaseAdapter.Retrieve_Comments(userName).size();
+            for (int i = 0; i < no_of_custo; i += 3) {
+                final TextView Header = new TextView(this);
+                Header.setText("Customer" + (i + 1));
+                Rate.addView(Header);
+                final RatingBar Rating = new RatingBar(this);
+                Rating.setRating(Ratings.get(i));
+                Rate.addView(Rating);
+                final TextView Comment = new TextView(this);
+                Comment.setText("Comments" + Comments.get(i));
+                Rate.addView(Comment);
+            }
         }
         Save = (Button) findViewById(R.id.button7);
         Save.setOnClickListener(new View.OnClickListener() {
