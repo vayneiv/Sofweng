@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class rate_and_comment extends AppCompatActivity {
     Bundle extras;
@@ -47,7 +48,8 @@ public class rate_and_comment extends AppCompatActivity {
         comment = editComment.getText().toString();
         rate = ratingBar.getRating();
         display_rate_and_comment.setText("Rate: " + rate + "\n" + "Comment: " + comment);
-        loginDataBaseAdapter.newRateComment(restauName,comment,rate);
+        loginDataBaseAdapter.newRateComment(restauName, comment, rate);
+        Toast.makeText(getApplicationContext(), "Comment Posted", Toast.LENGTH_LONG).show();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

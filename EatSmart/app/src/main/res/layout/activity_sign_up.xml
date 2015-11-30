@@ -12,18 +12,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/buttonCreateAccount"
+
         android:clickable="true"
         android:contentDescription="@string/button_sign_up"
         android:src="@drawable/signup_bt"
-        android:maxHeight="120dp"
-        android:maxWidth="120dp"
-        android:minHeight="120dp"
-        android:minWidth="120dp"
+        android:maxHeight="100dp"
+        android:maxWidth="100dp"
+        android:minHeight="100dp"
+        android:minWidth="100dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
         android:background="@null"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="5dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,13 +34,13 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/title_activity_sign_up"
         android:id="@+id/textView"
+
         android:textColor="#ffffff"
         android:singleLine="true"
         android:typeface="sans"
         android:hint="@string/username_text"
-        android:layout_alignBottom="@+id/imageView2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="43dp" />
+        android:layout_below="@+id/imageView2"
+        android:layout_centerHorizontal="true" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -58,40 +61,81 @@
         android:layout_height="wrap_content"
         android:id="@+id/editTextUserName"
         android:minWidth="300dp"
-        android:minHeight="40dp"
-        android:background="#ffffff"
-        android:hint="@string/username_text"
+        android:minHeight="0dp"
+        android:background="@drawable/border"
         android:textAlignment="center"
         android:singleLine="true"
-        android:layout_below="@+id/textView"
-        android:layout_alignLeft="@+id/editTextPassword"
-        android:layout_alignStart="@+id/editTextPassword" />
+        android:layout_below="@+id/textView27"
+        android:typeface="sans"
+        android:layout_alignLeft="@+id/textView32"
+        android:layout_alignStart="@+id/textView32"
+        android:layout_alignRight="@+id/textView32"
+        android:layout_alignEnd="@+id/textView32"
+        android:height="10dp" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editTextPassword"
         android:minWidth="300dp"
-        android:minHeight="40dp"
-        android:background="#ffffff"
-        android:hint="@string/password_text"
+        android:background="@drawable/border"
         android:textAlignment="center"
         android:password="true"
         android:singleLine="true"
-        android:layout_below="@+id/editTextUserName"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/textView29"
+        android:layout_alignRight="@+id/textView32"
+        android:layout_alignEnd="@+id/textView32"
+        android:layout_alignLeft="@+id/textView32"
+        android:layout_alignStart="@+id/textView32" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editTextConfirmPassword"
-        android:minWidth="300dp"
-        android:minHeight="40dp"
-        android:background="#ffffff"
-        android:hint="@string/confirm_password_text"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:background="@drawable/border"
         android:textAlignment="center"
         android:password="true"
         android:singleLine="true"
-        android:layout_below="@+id/editTextPassword"
+        android:layout_below="@+id/textView32"
+        android:layout_alignLeft="@+id/textView32"
+        android:layout_alignStart="@+id/textView32"
+        android:width="300dp"
+        android:layout_alignRight="@+id/textView32"
+        android:layout_alignEnd="@+id/textView32" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="USERNAME"
+        android:id="@+id/textView27"
+        android:layout_marginTop="55dp"
+        android:textColor="#ffffff"
+        android:textAlignment="center"
+        android:singleLine="false"
+        android:layout_gravity="center"
+        android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PASSWORD"
+        android:id="@+id/textView29"
+        android:textColor="#ffffff"
+        android:layout_below="@+id/editTextUserName"
+        android:layout_alignLeft="@+id/textView27"
+        android:layout_alignStart="@+id/textView27"
+        android:layout_marginTop="29dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CONFIRM PASSWORD"
+        android:id="@+id/textView32"
+        android:textColor="#ffffff"
+        android:layout_below="@+id/editTextPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="29dp" />
 </RelativeLayout>

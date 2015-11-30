@@ -18,7 +18,7 @@ public class LoginDataBaseAdapter
 {
     public static int nos_calls=0;
     static final String DATABASE_NAME = "login.db";
-    static final int DATABASE_VERSION = 9;
+    static final int DATABASE_VERSION = 10;
     public static final int NAME_COLUMN = 1;
     // TODO: Create public field for each column in your table.
     // SQL Statement to create a new database.

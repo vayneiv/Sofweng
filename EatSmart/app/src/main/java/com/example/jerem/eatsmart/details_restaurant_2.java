@@ -1,6 +1,7 @@
 package com.example.jerem.eatsmart;
 
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
 
@@ -50,6 +52,9 @@ public class details_restaurant_2 extends AppCompatActivity {
             }
         }
 
+        TextView txt = (TextView) findViewById(R.id.textView24);
+        Typeface font = Typeface.createFromAsset(getAssets(), "Kenzo Regular.otf");
+        txt.setTypeface(font);
         Cafe=(CheckBox)findViewById(R.id.checkBox10);
         Buffet=(CheckBox)findViewById(R.id.checkBox25);
         Dessert=(CheckBox)findViewById(R.id.checkBox11);

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
@@ -54,6 +56,19 @@ public class details_restaurant extends AppCompatActivity {
                 password=extras.getString("Password");
             }
         }
+
+        TextView txt = (TextView) findViewById(R.id.textView53);
+        Typeface font = Typeface.createFromAsset(getAssets(), "Kenzo Regular.otf");
+        txt.setTypeface(font);
+        TextView txt1 = (TextView) findViewById(R.id.textView52);
+        Typeface font1 = Typeface.createFromAsset(getAssets(), "basictitlefont.otf");
+        txt1.setTypeface(font1);
+        TextView txt2 = (TextView) findViewById(R.id.textView25);
+        Typeface font2 = Typeface.createFromAsset(getAssets(), "basictitlefont.otf");
+        txt2.setTypeface(font2);
+        TextView txt3= (TextView) findViewById(R.id.textView7);
+        Typeface font3 = Typeface.createFromAsset(getAssets(), "basictitlefont.otf");
+        txt3.setTypeface(font3);
         to_details_restaurant2 = new Intent(this, details_restaurant.class);
         res_name=(EditText)findViewById(R.id.editText4);
         desc=(EditText)findViewById(R.id.editText6);
@@ -81,7 +96,6 @@ public class details_restaurant extends AppCompatActivity {
                 if(resto_name.equals(""))//add other textfields and/or checkboxes
                 {
                     Toast.makeText(getApplicationContext(), "Field Vacant", Toast.LENGTH_LONG).show();
-                    return;
                 }
                 else{
                     to_details_restaurant2.putExtra("Username", userName);

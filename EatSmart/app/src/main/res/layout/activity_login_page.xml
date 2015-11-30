@@ -16,11 +16,14 @@
         android:password="false"
         android:inputType="text"
         android:minWidth="300dp"
-        android:hint="@string/username_text"
-        android:background="#ffffff"
-        android:minHeight="40dp"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:hint=" USERNAME"
+        android:background="@drawable/border"
+        android:minHeight="35dp"
+        android:layout_below="@+id/imageView"
+        android:layout_alignLeft="@+id/editText2"
+        android:layout_alignStart="@+id/editText2"
+        android:layout_marginTop="105dp"
+        android:textColorHint="#717171" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -33,12 +36,13 @@
         android:singleLine="true"
         android:inputType="text|textPassword"
         android:minWidth="300dp"
-        android:hint="@string/password_text"
-        android:background="#ffffff"
-        android:layout_marginTop="32dp"
-        android:minHeight="40dp"
+        android:hint=" PASSWORD"
+        android:background="@drawable/border"
+        android:layout_marginTop="15dp"
+        android:minHeight="35dp"
         android:layout_below="@+id/editTextConfirmPassword"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColorHint="#989898" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -47,40 +51,36 @@
         android:text="@string/button_login"
         android:id="@+id/button"
         android:onClick="logIn"
-        android:layout_marginTop="33dp"
+        android:layout_marginTop="15dp"
         android:layout_below="@+id/editText2"
         android:layout_centerHorizontal="true"
         android:minWidth="150dp"
         android:textColor="#ff090b"
-        android:background="#ffffff" />
+        android:background="#ffffff"
+        android:maxHeight="100dp"
+        android:minHeight="30dp" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_sign_up"
+        android:text="DONT HAVE AN ACCOUNT YET? SIGN UP"
         android:id="@+id/button2"
         android:onClick="signUp"
+        android:minWidth="150dp"
+        android:background="#00ffffff"
         android:layout_below="@+id/button"
         android:layout_centerHorizontal="true"
-        android:minWidth="150dp" />
+        android:textColor="#000000" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
         android:src="@drawable/name_logo_transparentbg"
-        android:layout_above="@+id/editTextConfirmPassword"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="debug"
-        android:id="@+id/button5"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/editText2"
-        android:layout_alignStart="@+id/editText2"
-        android:onClick="debug" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="30dp" />
 
 </RelativeLayout>

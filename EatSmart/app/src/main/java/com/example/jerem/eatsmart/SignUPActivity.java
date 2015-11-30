@@ -1,11 +1,13 @@
 package com.example.jerem.eatsmart;
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class SignUPActivity extends Activity
@@ -27,7 +29,18 @@ public class SignUPActivity extends Activity
         editTextUserName=(EditText)findViewById(R.id.editTextUserName);
         editTextPassword=(EditText)findViewById(R.id.editTextPassword);
         editTextConfirmPassword=(EditText)findViewById(R.id.editTextConfirmPassword);
-
+        TextView txt = (TextView) findViewById(R.id.textView);
+        Typeface font = Typeface.createFromAsset(getAssets(), "Kenzo Regular.otf");
+        txt.setTypeface(font);
+        TextView txt1 = (TextView) findViewById(R.id.textView27);
+        Typeface font1 = Typeface.createFromAsset(getAssets(), "basictitlefont.otf");
+        txt1.setTypeface(font1);
+        TextView txt2 = (TextView) findViewById(R.id.textView29);
+        Typeface font2 = Typeface.createFromAsset(getAssets(), "basictitlefont.otf");
+        txt2.setTypeface(font2);
+        TextView txt3= (TextView) findViewById(R.id.textView32);
+        Typeface font3 = Typeface.createFromAsset(getAssets(), "basictitlefont.otf");
+        txt3.setTypeface(font3);
         btnCreateAccount=(ImageButton)findViewById(R.id.buttonCreateAccount);
         btnCreateAccount.setOnClickListener(new View.OnClickListener() {
 
