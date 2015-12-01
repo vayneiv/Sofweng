@@ -84,6 +84,15 @@ public class details_restaurant_2 extends AppCompatActivity {
         TextView txt = (TextView) findViewById(R.id.textView24);
         Typeface font = Typeface.createFromAsset(getAssets(), "Kenzo Regular.otf");
         txt.setTypeface(font);
+        TextView txt1 = (TextView) findViewById(R.id.textView19);
+        Typeface font1 = Typeface.createFromAsset(getAssets(), "basictitlefont.ttf");
+        txt1.setTypeface(font1);
+        TextView txt2 = (TextView) findViewById(R.id.textView42);
+        Typeface font2 = Typeface.createFromAsset(getAssets(), "basictitlefont.ttf");
+        txt2.setTypeface(font2);
+        TextView txt3 = (TextView) findViewById(R.id.textView43);
+        Typeface font3 = Typeface.createFromAsset(getAssets(), "basictitlefont.ttf");
+        txt3.setTypeface(font3);
         Cafe=(CheckBox)findViewById(R.id.checkBox28);
         Buffet=(CheckBox)findViewById(R.id.checkBox34);
         Dessert=(CheckBox)findViewById(R.id.checkBox29);

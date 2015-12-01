@@ -1,6 +1,7 @@
 package com.example.jerem.eatsmart;
 
 import android.content.*;
+import android.graphics.Paint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,7 +19,7 @@ public class loginPage extends AppCompatActivity {
     Toast fail;
     Toast deb;
     LoginDataBaseAdapter loginDataBaseAdapter;
-    Button Debug;
+    Button signup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,11 +29,12 @@ public class loginPage extends AppCompatActivity {
         context = getApplicationContext(); //necessary for toast
         text_fail = "Try Again"; //text of toast
         duration = Toast.LENGTH_SHORT; //duration of toast
-        fail = Toast.makeText(context, text_fail, duration); //initialize toast
-        deb=Toast.makeText(context, text_deb, duration);
+        fail = Toast.makeText(context, text_fail, Toast.LENGTH_SHORT); //initialize toast
+        deb=Toast.makeText(context, text_deb,Toast.LENGTH_SHORT);
         loginDataBaseAdapter=new LoginDataBaseAdapter(this);
         loginDataBaseAdapter=loginDataBaseAdapter.open();
-
+        signup=(Button)findViewById(R.id.button2);
+        signup.setPaintFlags(signup.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
     }
     //Create onClick for login
     //  compare input strings from database

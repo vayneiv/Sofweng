@@ -1,5 +1,6 @@
 package com.example.jerem.eatsmart;
 
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,7 +16,6 @@ public class rate_and_comment extends AppCompatActivity {
     String userName, restauName, comment;
     EditText editComment;
     RatingBar ratingBar;
-    TextView display_rate_and_comment;
     LoginDataBaseAdapter loginDataBaseAdapter;
     float rate;
     @Override
@@ -39,15 +39,18 @@ public class rate_and_comment extends AppCompatActivity {
                 restauName= extras.getString("Restaurant Name");
             }
         }
+        TextView txt = (TextView) findViewById(R.id.textView52);
+        TextView txt1 = (TextView) findViewById(R.id.textView53);
+        Typeface font = Typeface.createFromAsset(getAssets(), "Kenzo Regular.otf");
+        txt.setTypeface(font);
+        txt1.setTypeface(font);
         editComment = (EditText)findViewById(R.id.editText4);
         ratingBar = (RatingBar)findViewById(R.id.ratingBar);
-        display_rate_and_comment = (TextView)findViewById(R.id.textView59);
     }
     public void send(View v)
     {
         comment = editComment.getText().toString();
         rate = ratingBar.getRating();
-        display_rate_and_comment.setText("Rate: " + rate + "\n" + "Comment: " + comment);
         loginDataBaseAdapter.newRateComment(restauName, comment, rate);
         Toast.makeText(getApplicationContext(), "Comment Posted", Toast.LENGTH_LONG).show();
     }

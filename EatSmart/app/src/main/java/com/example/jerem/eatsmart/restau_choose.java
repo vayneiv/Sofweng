@@ -1,6 +1,7 @@
 package com.example.jerem.eatsmart;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -47,6 +48,11 @@ public class restau_choose extends AppCompatActivity {
         resto_profile = new Intent(this,home_restaurant.class);
         pack=loginDataBaseAdapter.getrestapack(userName);
 
+        TextView txt1 = (TextView) findViewById(R.id.textView6);
+        TextView txt2 = (TextView) findViewById(R.id.textView28);
+        Typeface font1 = Typeface.createFromAsset(getAssets(), "basictitlefont.ttf");
+        txt1.setTypeface(font1);
+        txt2.setTypeface(font1);
         if(pack==1){
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 packages.setImageDrawable(getResources().getDrawable(R.drawable.craving_pac, getApplicationContext().getTheme()));

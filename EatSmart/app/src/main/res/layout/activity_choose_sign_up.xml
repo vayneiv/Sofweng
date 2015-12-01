@@ -16,19 +16,19 @@
         android:clickable="true"
         android:contentDescription="@string/welcome_customer"
         android:src="@drawable/customer_bt"
-        android:maxHeight="160dp"
-        android:maxWidth="160dp"
+        android:maxHeight="140dp"
+        android:maxWidth="140dp"
         android:minHeight="120dp"
         android:minWidth="120dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
         android:background="@null"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="70dp"
         android:layout_below="@+id/textView12"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="20dp" />
+        android:layout_marginLeft="35dp" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -37,8 +37,8 @@
         android:clickable="true"
         android:contentDescription="@string/welcome_Restaurant"
         android:src="@drawable/resto_owner_bt"
-        android:maxHeight="160dp"
-        android:maxWidth="160dp"
+        android:maxHeight="140dp"
+        android:maxWidth="140dp"
         android:minHeight="120dp"
         android:minWidth="120dp"
         android:adjustViewBounds="true"
@@ -48,7 +48,7 @@
         android:layout_alignTop="@+id/button3"
         android:layout_alignRight="@+id/imageView4"
         android:layout_alignEnd="@+id/imageView4"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="35dp"
         android:layout_marginEnd="32dp" />
 
     <ImageView

@@ -2,6 +2,7 @@ package com.example.jerem.eatsmart;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,6 +12,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 public class filter extends AppCompatActivity {
     Bundle extras;
@@ -55,6 +57,15 @@ public class filter extends AppCompatActivity {
         Fast_food=(CheckBox)findViewById(R.id.checkBox7);
         Veg=(CheckBox)findViewById(R.id.checkBox8);
         Fine_dining=(CheckBox)findViewById(R.id.checkBox9);
+        TextView txt = (TextView) findViewById(R.id.textView10);
+        Typeface font = Typeface.createFromAsset(getAssets(), "Kenzo Regular.otf");
+        txt.setTypeface(font);
+        TextView txt1 = (TextView) findViewById(R.id.textView36);
+        txt1.setTypeface(font);
+        TextView txt2 = (TextView) findViewById(R.id.textView37);
+        txt2.setTypeface(font);
+        TextView txt3 = (TextView) findViewById(R.id.textView33);
+        txt3.setTypeface(font);
     }
     public void price()
     {

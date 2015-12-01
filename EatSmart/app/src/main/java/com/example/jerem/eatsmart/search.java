@@ -39,14 +39,15 @@ public class search extends AppCompatActivity {
     public void to_search_result(View v)
     {
         searchEntry = entry.getText().toString();
-        if(loginDataBaseAdapter.getrestauname(searchEntry)=="NOT EXIST"){
+        to_search_result = new Intent(this, search_result.class);
+        if(loginDataBaseAdapter.getusernamerestau(searchEntry)=="NOT EXIST"){
             Toast.makeText(getApplicationContext(), "No Results", Toast.LENGTH_LONG).show();
+        }else {
+            to_search_result.putExtra("Username", userName);
+            to_search_result.putExtra("Restaurant Name", loginDataBaseAdapter.getusernamerestau(searchEntry));
+            startActivity(to_search_result); //transfer activity
+            finish();
         }
-        to_search_result= new Intent(this, search_result.class);
-        to_search_result.putExtra("Username", userName);
-        to_search_result.putExtra("Restaurant Name", searchEntry);
-        startActivity(to_search_result); //transfer activity
-        finish();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -40,9 +40,21 @@ public class resto_edit extends AppCompatActivity {
     byte[] img;
     int checkedIdBudget, checkedIdLocation;
     int price;
-    int loc;
+    int loc,pack;
     ImageView imageView;
     LoginDataBaseAdapter loginDataBaseAdapter;
+    Bitmap logo;
+    String description;
+    String contactno;
+    boolean Cafeis;
+    boolean Buffetis;
+    boolean Dessertis ;
+    boolean Baris;
+    boolean Grillis;
+    boolean Lutong_Bahayis;
+    boolean Fast_foodis ;
+    boolean Vegis ;
+    boolean Fine_diningis ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,21 +102,84 @@ public class resto_edit extends AppCompatActivity {
                 startActivityForResult(i, RESULT_LOAD_IMAGE);
             }
         });
+        description = loginDataBaseAdapter.getrestaudesc(userName);
+        contactno=loginDataBaseAdapter.getrestaucontact(userName);
+        if (loginDataBaseAdapter.getCafe(userName)==1) {
+            Cafeis = true;
+        }
+        else{
+            Cafeis=false;
+        }
+        if (loginDataBaseAdapter.getBuffet(userName)==1) {
+            Buffetis = true;
+        }
+        else{
+            Buffetis=false;
+        }
+        if (loginDataBaseAdapter.getDessert(userName)==1) {
+            Dessertis = true;
+        }
+        else{
+            Dessertis=false;
+        }
+        if (loginDataBaseAdapter.getBar(userName)==1) {
+            Baris = true;
+        }
+        else{
+            Baris=false;
+        }
+        if (loginDataBaseAdapter.getGrill(userName)==1) {
+            Grillis = true;
+        }
+        else{
+            Grillis=false;
+        }
+        if (loginDataBaseAdapter.getLutong_bahay(userName)==1) {
+            Lutong_Bahayis = true;
+        }
+        else{
+            Lutong_Bahayis=false;
+        }
+        if (loginDataBaseAdapter.getfast_food(userName)==1) {
+            Fast_foodis = true;
+        }
+        else{
+            Fast_foodis=false;
+        }
+        if (loginDataBaseAdapter.getveg(userName)==1) {
+            Vegis = true;
+        }
+        else{
+            Vegis=false;
+        }
+        if (loginDataBaseAdapter.getFine_dining(userName)==1) {
+            Fine_diningis = true;
+        }
+        else{
+            Fine_diningis=false;
+        }
+        loc=loginDataBaseAdapter.getrestauloc(userName);
+        price=loginDataBaseAdapter.getrestauprice(userName);
+        pack=loginDataBaseAdapter.getrestapack(userName);
+        logo=loginDataBaseAdapter.getimage(userName);
+        ByteArrayOutputStream stream1 = new ByteArrayOutputStream();
+        logo.compress(Bitmap.CompressFormat.PNG, 100, stream1);
+        img= stream1.toByteArray();
         next.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                String description = desc.getText().toString();
-                String contactno=contact.getText().toString();
-                boolean Cafeis = Cafe.isChecked();
-                boolean Buffetis = Buffet.isChecked();
-                boolean Dessertis = Dessert.isChecked();
-                boolean Baris = Bar.isChecked();
-                boolean Grillis = Grill.isChecked();
-                boolean Lutong_Bahayis = Lutong_Bahay.isChecked();
-                boolean Fast_foodis = Fast_food.isChecked();
-                boolean Vegis = Veg.isChecked();
-                boolean Fine_diningis = Fine_dining.isChecked();
+                description = desc.getText().toString();
+                contactno=contact.getText().toString();
+                 Cafeis = Cafe.isChecked();
+                 Buffetis = Buffet.isChecked();
+                 Dessertis = Dessert.isChecked();
+                 Baris = Bar.isChecked();
+                 Grillis = Grill.isChecked();
+                 Lutong_Bahayis = Lutong_Bahay.isChecked();
+                 Fast_foodis = Fast_food.isChecked();
+                 Vegis = Veg.isChecked();
+                 Fine_diningis = Fine_dining.isChecked();
                 Bitmap yourSelectedImage = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 yourSelectedImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
@@ -126,7 +201,7 @@ public class resto_edit extends AppCompatActivity {
                         Fine_diningis,
                         loc,
                         price,
-                        1,
+                        pack,
                         contactno,
                         img);
                 finish();

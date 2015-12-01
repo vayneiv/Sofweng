@@ -2,6 +2,7 @@ package com.example.jerem.eatsmart;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.internal.view.*;
 import android.os.Bundle;
@@ -9,6 +10,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class home_customer extends AppCompatActivity {
 
@@ -23,8 +27,10 @@ public class home_customer extends AppCompatActivity {
     boolean cat_7;
     boolean cat_8;
     boolean cat_9;
+    boolean no_cat;
     int budget;
     int location;
+    LoginDataBaseAdapter loginDataBaseAdapter;
     Intent to_ifl, to_filter, to_search;
     static int requestCode;
     @Override
@@ -45,15 +51,32 @@ public class home_customer extends AppCompatActivity {
             }
         }
 
+        TextView txt = (TextView) findViewById(R.id.textView4);
+        Typeface font = Typeface.createFromAsset(getAssets(), "Kenzo Regular.otf");
+        txt.setTypeface(font);
+
     }
     public void to_ifl(View v)
     {
+        ArrayList<String> choice;
         to_ifl= new Intent(this, im_feeling_lucky.class);
         to_ifl.putExtra("Username", userName);
         putCategory();
         to_ifl.putExtra("Price", budget);
         to_ifl.putExtra("Location", location);
-        startActivity(to_ifl); //transfer activity
+
+        if ((!cat_1)&&(!cat_2)&&(!cat_3)&&(!cat_4)&&(!cat_5)&&(!cat_6)&&(!cat_7)&&(!cat_8)&&(!cat_9)){
+            no_cat=true;
+        }
+        else{
+            no_cat=false;
+        }
+        choice = loginDataBaseAdapter.getList(cat_1, cat_2, cat_3, cat_4, cat_5, cat_6, cat_7, cat_8, cat_9,no_cat, location, budget);
+        if(choice==null){
+            Toast.makeText(getApplicationContext(), "No Restaurant have Signed Up Yet", Toast.LENGTH_LONG).show();
+        }else {
+            startActivity(to_ifl); //transfer activity
+        }
     }
     public void putCategory()
     {

@@ -18,7 +18,7 @@ public class LoginDataBaseAdapter
 {
     public static int nos_calls=0;
     static final String DATABASE_NAME = "login.db";
-    static final int DATABASE_VERSION = 11;
+    static final int DATABASE_VERSION = 12;
     public static final int NAME_COLUMN = 1;
     // TODO: Create public field for each column in your table.
     // SQL Statement to create a new database.
@@ -244,6 +244,21 @@ public class LoginDataBaseAdapter
     returnVar= cursor.getString(cursor.getColumnIndex("RESTAUNAME"));
     cursor.close();
     return returnVar;
+    }
+    public String getusernamerestau(String restauname)
+    {
+        String returnVar;
+        Cursor cursor=db.query("restau", null, " RESTAUNAME=?", new String[]{restauname}, null, null, null);
+        if(cursor.getCount()<1) // UserName Not Exist
+        {
+            cursor.close();
+            returnVar="NOT EXIST";
+            return returnVar;
+        }
+        cursor.moveToFirst();
+        returnVar= cursor.getString(cursor.getColumnIndex("USERNAME"));
+        cursor.close();
+        return returnVar;
     }
     public String getrestaucontact(String userName)
 {

@@ -1,32 +1,39 @@
 package com.example.jerem.eatsmart;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+
 public class search_result extends AppCompatActivity {
-    TextView description,location,cuisine,price;
+    TextView welcMSG,description,location,cuisine,price,contact;
     String category=" ";
     String resto_price=" ";
     String resto_loc=" ";
     Bundle extras;
     String userName, restauName;
     LoginDataBaseAdapter loginDataBaseAdapter;
-    TextView  display_restau;
     Intent to_rate_and_comment;
     ImageView image;
+    LinearLayout Rate;
+    TextView header;
+    ArrayList<Integer> Ratings;
+    ArrayList<String> Comments;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_result);
-        display_restau = (TextView) findViewById(R.id.textView67);
         loginDataBaseAdapter=new LoginDataBaseAdapter(this);
         loginDataBaseAdapter=loginDataBaseAdapter.open();
         if (savedInstanceState == null)
@@ -48,16 +55,33 @@ public class search_result extends AppCompatActivity {
                 restauName= extras.getString("Restaurant Name");
             }
         }
+        Rate=(LinearLayout)findViewById(R.id.linearLayout2);
 
-        display_restau.setText("Restaurant Name: " + "\n" + restauName);
+        TextView txt = (TextView) findViewById(R.id.textView44);
+        Typeface font = Typeface.createFromAsset(getAssets(), "Kenzo Regular.otf");
+        TextView txt1 = (TextView) findViewById(R.id.textView46);
+        Typeface font1 = Typeface.createFromAsset(getAssets(), "basictitlefont.ttf");
+        txt.setTypeface(font);
+        txt1.setTypeface(font);
+        TextView txt2 = (TextView) findViewById(R.id.textView48);
+        txt2.setTypeface(font);
+        TextView txt3 = (TextView) findViewById(R.id.textView50);
+        txt3.setTypeface(font);
+        TextView txt4 = (TextView) findViewById(R.id.textView60);
+        txt4.setTypeface(font);
+        welcMSG=(TextView)findViewById(R.id.textView23);
+        welcMSG.setText(loginDataBaseAdapter.getrestauname(restauName));
+        welcMSG.setTypeface(font1);
         image=(ImageView)findViewById(R.id.imageView3);
         image.invalidate();
         image.setImageBitmap(loginDataBaseAdapter.getimage(restauName));
+
         description=new TextView(this);
-        description=(TextView)findViewById(R.id.textView63);
+        description=(TextView)findViewById(R.id.textView45);
         description.setText(loginDataBaseAdapter.getrestaudesc(restauName));
+        description.setTypeface(font1);
         cuisine=new TextView(this);
-        cuisine=(TextView)findViewById(R.id.textView64);
+        cuisine=(TextView)findViewById(R.id.textView47);
         if (loginDataBaseAdapter.getBar(restauName)==1){
             category=category+"Bar ";
         } if (loginDataBaseAdapter.getBuffet(restauName)==1){
@@ -78,8 +102,10 @@ public class search_result extends AppCompatActivity {
             category=category+"Veg ";
         }
         cuisine.setText(category);
+
+        cuisine.setTypeface(font1);
         price=new TextView(this);
-        price=(TextView)findViewById(R.id.textView65);
+        price=(TextView)findViewById(R.id.textView49);
         if(loginDataBaseAdapter.getrestauprice(restauName)==1){
             resto_price="P0-P100";
         }else if(loginDataBaseAdapter.getrestauprice(restauName)==2){
@@ -92,8 +118,10 @@ public class search_result extends AppCompatActivity {
             resto_price=" ";
         }
         price.setText(resto_price);
+
+        price.setTypeface(font1);
         location=new TextView(this);
-        location=(TextView)findViewById(R.id.textView66);
+        location=(TextView)findViewById(R.id.textView51);
         if(loginDataBaseAdapter.getrestauloc(restauName)==1){
             resto_loc="Manila";
         }else if(loginDataBaseAdapter.getrestauloc(restauName)==2){
@@ -108,6 +136,36 @@ public class search_result extends AppCompatActivity {
             resto_loc="Taguig";
         }else{
             resto_loc=" ";
+        }
+        location.setText(resto_loc);
+
+        location.setTypeface(font1);
+        contact=new TextView(this);
+        contact=(TextView)findViewById(R.id.textView61);
+        contact.setText(loginDataBaseAdapter.getrestaucontact(restauName));
+
+        contact.setTypeface(font1);
+        Ratings=loginDataBaseAdapter.Retrieve_Rate(restauName);
+        Comments=loginDataBaseAdapter.Retrieve_Comments(restauName);
+        header=(TextView)findViewById(R.id.textView62);
+        if ((Ratings==null)||(Comments==null)){
+            header.setVisibility(View.GONE);
+        }else {
+            header.setVisibility(View.VISIBLE);
+            final int no_of_custo = loginDataBaseAdapter.Retrieve_Comments(restauName).size();
+            for (int i = 0; i < no_of_custo; i += 3) {
+                final TextView Header = new TextView(this);
+                Header.setText("Customer" + (i + 1));
+                Header.setTypeface(font);
+                Rate.addView(Header);
+                final RatingBar Rating = new RatingBar(this);
+                Rating.setRating(Ratings.get(i));
+                Rate.addView(Rating);
+                final TextView Comment = new TextView(this);
+                Comment.setText("Comments" + Comments.get(i));
+                Comment.setTypeface(font1);
+                Rate.addView(Comment);
+            }
         }
     }
     public void to_rate_and_comment(View v)

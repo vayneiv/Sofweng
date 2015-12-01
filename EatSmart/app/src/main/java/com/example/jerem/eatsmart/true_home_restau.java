@@ -1,6 +1,7 @@
 package com.example.jerem.eatsmart;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -37,6 +38,10 @@ public class true_home_restau extends AppCompatActivity {
             }
         }
         resto_profile = new Intent(this,home_restaurant.class);
+
+        TextView txt1 = (TextView) findViewById(R.id.textView5);
+        Typeface font1 = Typeface.createFromAsset(getAssets(), "basictitlefont.ttf");
+        txt1.setTypeface(font1);
         profile = (ImageButton)findViewById(R.id.button16);
         profile.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

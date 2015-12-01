@@ -2,6 +2,7 @@ package com.example.jerem.eatsmart;
 
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.media.Rating;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -62,23 +63,32 @@ public class home_restaurant extends AppCompatActivity {
             }
         }
         Rate=(LinearLayout)findViewById(R.id.linearlayout1);
+
+        TextView txt = (TextView) findViewById(R.id.textView9);
+        Typeface font = Typeface.createFromAsset(getAssets(), "Kenzo Regular.otf");
+        TextView txt1 = (TextView) findViewById(R.id.textView14);
+        Typeface font1 = Typeface.createFromAsset(getAssets(), "basictitlefont.ttf");
+        txt.setTypeface(font);
+        txt1.setTypeface(font);
+        TextView txt2 = (TextView) findViewById(R.id.textView15);
+        txt2.setTypeface(font);
+        TextView txt3 = (TextView) findViewById(R.id.textView17);
+        txt3.setTypeface(font);
+        TextView txt4 = (TextView) findViewById(R.id.textView40);
+        txt4.setTypeface(font);
         welcMSG=(TextView)findViewById(R.id.textView54);
         welcMSG.setText(loginDataBaseAdapter.getrestauname(userName));
+        welcMSG.setTypeface(font1);
         image=(ImageView)findViewById(R.id.imageView6);
         image.invalidate();
         image.setImageBitmap(loginDataBaseAdapter.getimage(userName));
-        if (loginDataBaseAdapter.getimage(userName)==null){
-
-            Log.i("Image Bytes", "null");
-        }else {
-            Log.i("Image Bytes", loginDataBaseAdapter.getimage(userName).toString());
-        }
 
         loginDataBaseAdapter=new LoginDataBaseAdapter(this);
         loginDataBaseAdapter=loginDataBaseAdapter.open();
         description=new TextView(this);
         description=(TextView)findViewById(R.id.textView18);
         description.setText(loginDataBaseAdapter.getrestaudesc(userName));
+        description.setTypeface(font1);
         cuisine=new TextView(this);
         cuisine=(TextView)findViewById(R.id.textView35);
         if (loginDataBaseAdapter.getBar(userName)==1){
@@ -101,6 +111,8 @@ public class home_restaurant extends AppCompatActivity {
             category=category+"Veg ";
         }
             cuisine.setText(category);
+
+        cuisine.setTypeface(font1);
         price=new TextView(this);
         price=(TextView)findViewById(R.id.textView38);
         if(loginDataBaseAdapter.getrestauprice(userName)==1){
@@ -115,6 +127,8 @@ public class home_restaurant extends AppCompatActivity {
             resto_price=" ";
         }
         price.setText(resto_price);
+
+        price.setTypeface(font1);
         location=new TextView(this);
         location=(TextView)findViewById(R.id.textView2);
         if(loginDataBaseAdapter.getrestauloc(userName)==1){
@@ -133,9 +147,13 @@ public class home_restaurant extends AppCompatActivity {
             resto_loc=" ";
         }
         location.setText(resto_loc);
+
+        location.setTypeface(font1);
         contact=new TextView(this);
         contact=(TextView)findViewById(R.id.textView39);
         contact.setText(loginDataBaseAdapter.getrestaucontact(userName));
+
+        contact.setTypeface(font1);
         Ratings=loginDataBaseAdapter.Retrieve_Rate(userName);
         Comments=loginDataBaseAdapter.Retrieve_Comments(userName);
         header=(TextView)findViewById(R.id.textView41);
@@ -147,12 +165,14 @@ public class home_restaurant extends AppCompatActivity {
             for (int i = 0; i < no_of_custo; i += 3) {
                 final TextView Header = new TextView(this);
                 Header.setText("Customer" + (i + 1));
+                Header.setTypeface(font);
                 Rate.addView(Header);
                 final RatingBar Rating = new RatingBar(this);
                 Rating.setRating(Ratings.get(i));
                 Rate.addView(Rating);
                 final TextView Comment = new TextView(this);
                 Comment.setText("Comments" + Comments.get(i));
+                Comment.setTypeface(font1);
                 Rate.addView(Comment);
             }
         }
