@@ -77,7 +77,7 @@ public class im_feeling_lucky extends AppCompatActivity {
         if(restauName.equals("None")){
             Resto_name.setText("None");
         }else {
-            Resto_name.setText(restauName);
+            Resto_name.setText(loginDataBaseAdapter.getrestauname(restauName));
             image.invalidate();
             image.setImageBitmap(loginDataBaseAdapter.getimage(restauName));
         }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -44,11 +45,6 @@ public class search_result extends AppCompatActivity {
                 userName= null;
                 restauName = null;
             }
-            else if(restauName == null)
-            {
-                userName= extras.getString("Username");
-                restauName = "No Restaurant Found";
-            }
             else
             {
                 userName= extras.getString("Username");
@@ -57,6 +53,7 @@ public class search_result extends AppCompatActivity {
         }
         Rate=(LinearLayout)findViewById(R.id.linearLayout2);
 
+        Log.i("Username of restau is",restauName);
         TextView txt = (TextView) findViewById(R.id.textView44);
         Typeface font = Typeface.createFromAsset(getAssets(), "Kenzo Regular.otf");
         TextView txt1 = (TextView) findViewById(R.id.textView46);

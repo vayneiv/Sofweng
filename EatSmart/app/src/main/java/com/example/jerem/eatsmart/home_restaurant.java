@@ -182,7 +182,6 @@ public class home_restaurant extends AppCompatActivity {
                 edit.putExtra("Username", userName);
                 edit.putExtra("Password", password);
                 startActivity(edit); //transfer activity
-                finish();
             }
         });
     }

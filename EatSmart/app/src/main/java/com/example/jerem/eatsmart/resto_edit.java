@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
@@ -75,8 +77,6 @@ public class resto_edit extends AppCompatActivity {
                 password=extras.getString("Password");
             }
         }
-        contact=(EditText)findViewById(R.id.editText11);
-        desc=(EditText)findViewById(R.id.editText3);
         Cafe=(CheckBox)findViewById(R.id.checkBox14);
         Buffet=(CheckBox)findViewById(R.id.checkBox15);
         Dessert=(CheckBox)findViewById(R.id.checkBox16);
@@ -90,6 +90,8 @@ public class resto_edit extends AppCompatActivity {
         radioGroupLocation = (RadioGroup)findViewById(R.id.radioGroup10);
 
 
+        desc=(EditText)findViewById(R.id.editText3);
+        contact=(EditText)findViewById(R.id.editText11);
         radioBudget = (RadioButton)radioGroupBudget.findViewById(radioGroupBudget.getCheckedRadioButtonId());
         radioLocation = (RadioButton)radioGroupLocation.findViewById(radioGroupLocation.getCheckedRadioButtonId());
         imageView= (ImageView) findViewById(R.id.imageView8);
@@ -102,75 +104,86 @@ public class resto_edit extends AppCompatActivity {
                 startActivityForResult(i, RESULT_LOAD_IMAGE);
             }
         });
-        description = loginDataBaseAdapter.getrestaudesc(userName);
-        contactno=loginDataBaseAdapter.getrestaucontact(userName);
-        if (loginDataBaseAdapter.getCafe(userName)==1) {
-            Cafeis = true;
-        }
-        else{
-            Cafeis=false;
-        }
-        if (loginDataBaseAdapter.getBuffet(userName)==1) {
-            Buffetis = true;
-        }
-        else{
-            Buffetis=false;
-        }
-        if (loginDataBaseAdapter.getDessert(userName)==1) {
-            Dessertis = true;
-        }
-        else{
-            Dessertis=false;
-        }
-        if (loginDataBaseAdapter.getBar(userName)==1) {
-            Baris = true;
-        }
-        else{
-            Baris=false;
-        }
-        if (loginDataBaseAdapter.getGrill(userName)==1) {
-            Grillis = true;
-        }
-        else{
-            Grillis=false;
-        }
-        if (loginDataBaseAdapter.getLutong_bahay(userName)==1) {
-            Lutong_Bahayis = true;
-        }
-        else{
-            Lutong_Bahayis=false;
-        }
-        if (loginDataBaseAdapter.getfast_food(userName)==1) {
-            Fast_foodis = true;
-        }
-        else{
-            Fast_foodis=false;
-        }
-        if (loginDataBaseAdapter.getveg(userName)==1) {
-            Vegis = true;
-        }
-        else{
-            Vegis=false;
-        }
-        if (loginDataBaseAdapter.getFine_dining(userName)==1) {
-            Fine_diningis = true;
-        }
-        else{
-            Fine_diningis=false;
-        }
-        loc=loginDataBaseAdapter.getrestauloc(userName);
-        price=loginDataBaseAdapter.getrestauprice(userName);
         pack=loginDataBaseAdapter.getrestapack(userName);
-        logo=loginDataBaseAdapter.getimage(userName);
-        ByteArrayOutputStream stream1 = new ByteArrayOutputStream();
-        logo.compress(Bitmap.CompressFormat.PNG, 100, stream1);
-        img= stream1.toByteArray();
+        imageView.setImageBitmap(loginDataBaseAdapter.getimage(userName));
+
+        TextView txt1 = (TextView) findViewById(R.id.textView22);
+        Typeface font1 = Typeface.createFromAsset(getAssets(), "basictitlefont.ttf");
+        txt1.setTypeface(font1);
+        TextView txt2 = (TextView) findViewById(R.id.textView26);
+        Typeface font2 = Typeface.createFromAsset(getAssets(), "basictitlefont.ttf");
+        txt2.setTypeface(font2);
+        TextView txt3= (TextView) findViewById(R.id.textView31);
+        Typeface font3 = Typeface.createFromAsset(getAssets(), "basictitlefont.ttf");
+        txt3.setTypeface(font3);
+        TextView txt4 = (TextView) findViewById(R.id.textView30);
+        txt4.setTypeface(font2);
+        TextView txt5= (TextView) findViewById(R.id.textView21);
+        txt5.setTypeface(font3);
         next.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                description = desc.getText().toString();
-                contactno=contact.getText().toString();
+                if (desc.getText().toString() == "") {
+                    description = loginDataBaseAdapter.getrestaudesc(userName);
+                } else {
+                    description = desc.getText().toString();
+                }
+                if (contact.getText().toString() == "") {
+                    contactno = loginDataBaseAdapter.getrestaucontact(userName);
+                } else {
+                    contactno = contact.getText().toString();
+                }
+                if(!Cafe.isChecked()&&!Buffet.isChecked()&&!Dessert.isChecked()&&!Bar.isChecked()&&!Grill.isChecked()&&!Lutong_Bahay.isChecked()&&!Fast_food.isChecked()&&!Veg.isChecked()&&!Fine_dining.isChecked()){
+
+                    if (loginDataBaseAdapter.getCafe(userName) == 1) {
+                        Cafeis = true;
+                    } else {
+                        Cafeis = false;
+                    }
+                    if (loginDataBaseAdapter.getBuffet(userName) == 1) {
+                        Buffetis = true;
+                    } else {
+                        Buffetis = false;
+                    }
+                    if (loginDataBaseAdapter.getDessert(userName) == 1) {
+                        Dessertis = true;
+                    } else {
+                        Dessertis = false;
+                    }
+                    if (loginDataBaseAdapter.getBar(userName) == 1) {
+                        Baris = true;
+                    } else {
+                        Baris = false;
+                    }
+                    if (loginDataBaseAdapter.getGrill(userName) == 1) {
+                        Grillis = true;
+                    } else {
+                        Grillis = false;
+                    }
+                    if (loginDataBaseAdapter.getLutong_bahay(userName) == 1) {
+                        Lutong_Bahayis = true;
+                    } else {
+                        Lutong_Bahayis = false;
+                    }
+                    if (loginDataBaseAdapter.getfast_food(userName) == 1) {
+                        Fast_foodis = true;
+                    } else {
+                        Fast_foodis = false;
+                    }
+                    if (loginDataBaseAdapter.getveg(userName) == 1) {
+                        Vegis = true;
+                    } else {
+                        Vegis = false;
+                    }
+                    if (loginDataBaseAdapter.getFine_dining(userName) == 1) {
+                        Fine_diningis = true;
+                    } else {
+                        Fine_diningis = false;
+                    }
+                }
+                else
+                {
                  Cafeis = Cafe.isChecked();
                  Buffetis = Buffet.isChecked();
                  Dessertis = Dessert.isChecked();
@@ -180,15 +193,17 @@ public class resto_edit extends AppCompatActivity {
                  Fast_foodis = Fast_food.isChecked();
                  Vegis = Veg.isChecked();
                  Fine_diningis = Fine_dining.isChecked();
+                }
                 Bitmap yourSelectedImage = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 yourSelectedImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
                 img= stream.toByteArray();
                 price();
                 location();
+                Log.i("Description contains",contact.getText().toString());
                 loginDataBaseAdapter.updaterestau(userName,
                         password,
-                        null,
+                        loginDataBaseAdapter.getrestauname(userName),
                         description,
                         Cafeis,
                         Buffetis,
@@ -217,7 +232,7 @@ public class resto_edit extends AppCompatActivity {
         checkedIdBudget = radioGroupBudget.getCheckedRadioButtonId();
         if (checkedIdBudget == -1)
         {
-            price = 0;
+            price=loginDataBaseAdapter.getrestauprice(userName);
         }
         else
         {
@@ -230,7 +245,7 @@ public class resto_edit extends AppCompatActivity {
         checkedIdLocation = radioGroupLocation.getCheckedRadioButtonId();
         if (checkedIdLocation == -1)
         {
-            loc = 0;
+            loc=loginDataBaseAdapter.getrestauloc(userName);
         }
         else
         {

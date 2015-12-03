@@ -18,7 +18,7 @@ public class LoginDataBaseAdapter
 {
     public static int nos_calls=0;
     static final String DATABASE_NAME = "login.db";
-    static final int DATABASE_VERSION = 12;
+    static final int DATABASE_VERSION = 15;
     public static final int NAME_COLUMN = 1;
     // TODO: Create public field for each column in your table.
     // SQL Statement to create a new database.
@@ -129,6 +129,9 @@ public class LoginDataBaseAdapter
         }
     return returnVar;
 }
+    public void updaterestaupack(String userName,int pack){
+        db.execSQL("UPDATE restau SET package="+pack+" WHERE USERNAME='"+userName+"'");
+    }
     public double Retrieve_Total_Rate(String Resto_name){
         Integer ctr=0;
             double returnVar=0;
@@ -233,6 +236,7 @@ public class LoginDataBaseAdapter
     public String getrestauname(String userName)
     {
     String returnVar;
+        Log.i("Username=",userName);
     Cursor cursor=db.query("restau", null, " USERNAME=?", new String[]{userName}, null, null, null);
     if(cursor.getCount()<1) // UserName Not Exist
     {

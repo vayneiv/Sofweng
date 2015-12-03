@@ -7,7 +7,7 @@
     android:gravity="center_vertical"
     android:weightSum="1"
     tools:context=".restaurantSignUp"
-    android:background="@drawable/ro_signup_3">
+    android:background="@drawable/ro_signup_1">
 
 
     <ImageView
@@ -18,7 +18,8 @@
         android:layout_gravity="center"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:adjustViewBounds="true" />
+        android:adjustViewBounds="true"
+        android:layout_marginTop="50dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -33,7 +34,8 @@
         android:layout_gravity="center_horizontal"
         android:gravity="center_horizontal"
         android:layout_below="@+id/imageView10"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp" />
 
     <EditText
         android:id="@+id/editText5"
@@ -41,12 +43,16 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:textAlignment="center"
-        android:background="#ffffff"
+        android:background="@drawable/border"
         android:minWidth="300dp"
-        android:minHeight="40dp"
+        android:minHeight="0dp"
         android:singleLine="true"
         android:layout_below="@+id/textView56"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignRight="@+id/editText8"
+        android:layout_alignEnd="@+id/editText8"
+        android:layout_alignLeft="@+id/editText8"
+        android:layout_alignStart="@+id/editText8"
+        android:textSize="20dp" />
 
     <EditText
         android:id="@+id/editText8"
@@ -55,13 +61,16 @@
         android:inputType="textPassword"
         android:layout_gravity="center_horizontal"
         android:textAlignment="center"
-        android:background="#ffffff"
+        android:background="@drawable/border"
         android:minWidth="300dp"
-        android:minHeight="40dp"
+        android:minHeight="0dp"
         android:singleLine="true"
         android:layout_below="@+id/textView57"
         android:layout_alignLeft="@+id/editText9"
-        android:layout_alignStart="@+id/editText9" />
+        android:layout_alignStart="@+id/editText9"
+        android:layout_alignRight="@+id/textView58"
+        android:layout_alignEnd="@+id/textView58"
+        android:textSize="20dp" />
 
     <EditText
         android:id="@+id/editText9"
@@ -71,32 +80,36 @@
         android:layout_gravity="center_horizontal"
         android:textAlignment="center"
         android:minWidth="300dp"
-        android:minHeight="40dp"
-        android:background="#ffffff"
+        android:minHeight="0dp"
+        android:background="@drawable/border"
         android:singleLine="false"
         android:layout_below="@+id/textView58"
-        android:layout_alignLeft="@+id/editText5"
-        android:layout_alignStart="@+id/editText5" />
+        android:layout_alignLeft="@+id/textView58"
+        android:layout_alignStart="@+id/textView58"
+        android:layout_alignRight="@+id/textView58"
+        android:layout_alignEnd="@+id/textView58"
+        android:textSize="20dp" />
 
     <ImageButton
-        android:layout_width="128dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageButton7"
         android:clickable="true"
         android:contentDescription="@string/button_sign_up"
-        android:src="@drawable/next"
+        android:src="@drawable/next_bt"
         android:maxHeight="120dp"
-        android:maxWidth="120dp"
-        android:minHeight="120dp"
-        android:minWidth="120dp"
+        android:maxWidth="100dp"
+        android:minHeight="50dp"
+        android:minWidth="50dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
         android:background="@null"
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.17"
-        android:layout_below="@+id/editText9"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="34dp" />
+        android:layout_marginBottom="40dp"
+        android:longClickable="false" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -106,7 +119,8 @@
         android:layout_below="@+id/textView55"
         android:layout_centerHorizontal="true"
         android:textColor="#ffffff"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:layout_marginTop="65dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -117,7 +131,8 @@
         android:layout_alignLeft="@+id/textView56"
         android:layout_alignStart="@+id/textView56"
         android:textColor="#ffffff"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:layout_marginTop="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -127,5 +142,6 @@
         android:textColor="#ffffff"
         android:textSize="20dp"
         android:layout_below="@+id/editText8"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" />
 </RelativeLayout>

@@ -16,19 +16,19 @@
         android:clickable="true"
         android:contentDescription="@string/welcome_customer"
         android:src="@drawable/customer_bt"
-        android:maxHeight="140dp"
-        android:maxWidth="140dp"
+        android:maxHeight="120dp"
+        android:maxWidth="120dp"
         android:minHeight="120dp"
         android:minWidth="120dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
         android:background="@null"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="70dp"
-        android:layout_below="@+id/textView12"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="35dp" />
+        android:layout_above="@+id/textView63"
+        android:layout_toLeftOf="@+id/textView63"
+        android:layout_toStartOf="@+id/textView63"
+        android:layout_marginBottom="150dp"
+        android:layout_marginRight="-10dp" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -37,19 +37,19 @@
         android:clickable="true"
         android:contentDescription="@string/welcome_Restaurant"
         android:src="@drawable/resto_owner_bt"
-        android:maxHeight="140dp"
-        android:maxWidth="140dp"
+        android:maxHeight="120dp"
+        android:maxWidth="120dp"
         android:minHeight="120dp"
         android:minWidth="120dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
         android:background="@null"
         android:layout_gravity="center_horizontal"
-        android:layout_alignTop="@+id/button3"
-        android:layout_alignRight="@+id/imageView4"
-        android:layout_alignEnd="@+id/imageView4"
-        android:layout_marginRight="35dp"
-        android:layout_marginEnd="32dp" />
+        android:layout_above="@+id/textView63"
+        android:layout_toRightOf="@+id/textView63"
+        android:layout_toEndOf="@+id/textView63"
+        android:layout_marginBottom="150dp"
+        android:layout_marginLeft="-10dp" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -68,33 +68,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/button_sign_up"
-        android:id="@+id/textView11"
-        android:textColor="#ffffff"
-        android:singleLine="true"
-        android:typeface="sans"
-        android:hint="@string/username_text"
-        android:textStyle="bold"
-        android:layout_marginTop="92dp"
-        android:textAlignment="center"
-        android:layout_below="@+id/imageView4"
-        android:layout_alignRight="@+id/textView12"
-        android:layout_alignEnd="@+id/textView12"
-        android:layout_marginRight="52dp"
-        android:layout_marginEnd="52dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/title_activity_choose_sign_up"
         android:id="@+id/textView12"
         android:textColor="#ffffff"
         android:singleLine="true"
         android:typeface="sans"
         android:hint="@string/username_text"
-        android:layout_below="@+id/textView11"
+        android:layout_below="@+id/textView59"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SIGNUP"
+        android:id="@+id/textView59"
+        android:layout_below="@+id/imageView4"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/abc_text_size_large_material"
+        android:layout_marginTop="70dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/textView63"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible" />
 
 </RelativeLayout>

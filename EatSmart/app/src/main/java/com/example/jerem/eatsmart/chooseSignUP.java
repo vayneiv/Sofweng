@@ -24,10 +24,10 @@ public class chooseSignUP extends AppCompatActivity {
         consumerLogin= new Intent(this, SignUPActivity.class);
         restoLogin= new Intent(this, restaurantSignUp.class);
 
-        TextView txt = (TextView) findViewById(R.id.textView12);
+        TextView txt = (TextView) findViewById(R.id.textView59);
         Typeface font = Typeface.createFromAsset(getAssets(), "Kenzo Regular.otf");
         txt.setTypeface(font);
-        TextView txt1 = (TextView) findViewById(R.id.textView11);
+        TextView txt1 = (TextView) findViewById(R.id.textView12);
         Typeface font1 = Typeface.createFromAsset(getAssets(), "basictitlefont.ttf");
         txt1.setTypeface(font1);
         customer = (ImageButton)findViewById(R.id.button3);

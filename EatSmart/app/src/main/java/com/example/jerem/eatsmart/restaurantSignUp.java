@@ -1,6 +1,7 @@
 package com.example.jerem.eatsmart;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class restaurantSignUp extends Activity
@@ -31,6 +33,19 @@ public class restaurantSignUp extends Activity
         editTextPassword=(EditText)findViewById(R.id.editText8);
         editTextConfirmPassword=(EditText)findViewById(R.id.editText9);
         btnCreateAccount=(ImageButton)findViewById(R.id.imageButton7);
+
+        TextView txt = (TextView) findViewById(R.id.textView55);
+        Typeface font = Typeface.createFromAsset(getAssets(), "Kenzo Regular.otf");
+        txt.setTypeface(font);
+        TextView txt1 = (TextView) findViewById(R.id.textView56);
+        Typeface font1 = Typeface.createFromAsset(getAssets(), "basictitlefont.ttf");
+        txt1.setTypeface(font1);
+        TextView txt2 = (TextView) findViewById(R.id.textView57);
+        Typeface font2 = Typeface.createFromAsset(getAssets(), "basictitlefont.ttf");
+        txt2.setTypeface(font2);
+        TextView txt3= (TextView) findViewById(R.id.textView58);
+        Typeface font3 = Typeface.createFromAsset(getAssets(), "basictitlefont.ttf");
+        txt3.setTypeface(font3);
         btnCreateAccount.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -39,6 +54,7 @@ public class restaurantSignUp extends Activity
                 String userName=editTextUserName.getText().toString();
                 String password=editTextPassword.getText().toString();
                 String confirmPassword=editTextConfirmPassword.getText().toString();
+
                 // check if any of the fields are vaccant
                 if(userName.equals("")||password.equals("")||confirmPassword.equals(""))//add other textfields and/or checkboxes
                 {

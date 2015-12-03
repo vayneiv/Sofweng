@@ -13,8 +13,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/button16"
         android:src="@drawable/choose_profile"
-        android:maxHeight="150dp"
-        android:maxWidth="150dp"
+        android:maxHeight="120dp"
+        android:maxWidth="120dp"
         android:minHeight="120dp"
         android:minWidth="120dp"
         android:clickable="true"
@@ -22,9 +22,9 @@
         android:scaleType="fitXY"
         android:background="@null"
         android:layout_alignTop="@+id/button17"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="25dp" />
+        android:layout_toLeftOf="@+id/button17"
+        android:layout_toStartOf="@+id/button17"
+        android:layout_marginRight="50dp" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -35,15 +35,15 @@
         android:background="@null"
         android:scaleType="fitXY"
         android:src="@drawable/choose_pack"
-        android:maxHeight="150dp"
-        android:maxWidth="150dp"
+        android:maxHeight="120dp"
+        android:maxWidth="120dp"
         android:minHeight="120dp"
         android:minWidth="120dp"
         android:layout_marginBottom="130dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginRight="25dp" />
+        android:layout_marginRight="45dp" />
 
     <ImageView
         android:layout_width="wrap_content"

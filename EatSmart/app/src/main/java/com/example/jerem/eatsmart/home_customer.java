@@ -18,15 +18,15 @@ public class home_customer extends AppCompatActivity {
 
     Bundle extras;
     String userName;
-    boolean cat_1;
-    boolean cat_2;
-    boolean cat_3;
-    boolean cat_4;
-    boolean cat_5;
-    boolean cat_6;
-    boolean cat_7;
-    boolean cat_8;
-    boolean cat_9;
+    boolean cat_1=false;
+    boolean cat_2=false;
+    boolean cat_3=false;
+    boolean cat_4=false;
+    boolean cat_5=false;
+    boolean cat_6=false;
+    boolean cat_7=false;
+    boolean cat_8=false;
+    boolean cat_9=false;
     boolean no_cat;
     int budget;
     int location;
@@ -38,6 +38,8 @@ public class home_customer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_customer);
         requestCode = 1;
+        loginDataBaseAdapter=new LoginDataBaseAdapter(this);
+        loginDataBaseAdapter=loginDataBaseAdapter.open();
         if (savedInstanceState == null)
         {
             //fetching extra data passed with intents in a Bundle type variable
@@ -60,11 +62,6 @@ public class home_customer extends AppCompatActivity {
     {
         ArrayList<String> choice;
         to_ifl= new Intent(this, im_feeling_lucky.class);
-        to_ifl.putExtra("Username", userName);
-        putCategory();
-        to_ifl.putExtra("Price", budget);
-        to_ifl.putExtra("Location", location);
-
         if ((!cat_1)&&(!cat_2)&&(!cat_3)&&(!cat_4)&&(!cat_5)&&(!cat_6)&&(!cat_7)&&(!cat_8)&&(!cat_9)){
             no_cat=true;
         }
@@ -75,6 +72,10 @@ public class home_customer extends AppCompatActivity {
         if(choice==null){
             Toast.makeText(getApplicationContext(), "No Restaurant have Signed Up Yet", Toast.LENGTH_LONG).show();
         }else {
+        to_ifl.putExtra("Username", userName);
+        putCategory();
+        to_ifl.putExtra("Price", budget);
+        to_ifl.putExtra("Location", location);
             startActivity(to_ifl); //transfer activity
         }
     }

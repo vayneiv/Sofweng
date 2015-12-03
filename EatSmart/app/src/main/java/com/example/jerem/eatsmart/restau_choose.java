@@ -121,4 +121,10 @@ public class restau_choose extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public void onBackPressed(){
+        loginDataBaseAdapter.updaterestaupack(userName,pack);
+
+        finish();
+    }
 }
