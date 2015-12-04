@@ -41,7 +41,8 @@
         android:layout_below="@+id/textView54"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_gravity="right|left">
+        android:layout_gravity="right|left"
+        android:layout_above="@+id/button7">
 
         <LinearLayout
             android:id="@+id/linearlayout1"
@@ -166,7 +167,7 @@
                 android:layout_alignParentStart="true"
                 android:textColor="#ff0000"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="20dp" />
 
         </LinearLayout>
     </ScrollView>

@@ -2,6 +2,7 @@ package com.example.jerem.eatsmart;
 
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.media.Rating;
 import android.support.v7.app.AppCompatActivity;
@@ -157,23 +158,46 @@ public class home_restaurant extends AppCompatActivity {
         Ratings=loginDataBaseAdapter.Retrieve_Rate(userName);
         Comments=loginDataBaseAdapter.Retrieve_Comments(userName);
         header=(TextView)findViewById(R.id.textView41);
-        if ((Ratings==null)||(Comments==null)){
+        header.setTypeface(font);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                (int) LinearLayout.LayoutParams.WRAP_CONTENT,
+                (int) LinearLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(
+                (int) LinearLayout.LayoutParams.WRAP_CONTENT,
+                (int) LinearLayout.LayoutParams.WRAP_CONTENT);
+        params1.topMargin=30;
+        if (loginDataBaseAdapter.Retrieve_Comments(userName).size()==0){
             header.setVisibility(View.GONE);
         }else {
             header.setVisibility(View.VISIBLE);
             final int no_of_custo = loginDataBaseAdapter.Retrieve_Comments(userName).size();
-            for (int i = 0; i < no_of_custo; i += 3) {
+            for (int i = 0; i <no_of_custo; i += 1) {
+                Log.i("Customer no.", "1");
                 final TextView Header = new TextView(this);
-                Header.setText("Customer" + (i + 1));
+                Header.setLayoutParams(params1);
+                Header.setText("Customer " + (i + 1));
                 Header.setTypeface(font);
+                Header.setTextSize(20);
+                Header.setTextColor(Color.RED);
                 Rate.addView(Header);
                 final RatingBar Rating = new RatingBar(this);
+                Rating.setLayoutParams(params);
+                Rating.setNumStars(5);
+                Rating.setStepSize((float) 0.5);
+                Rating.setMax(5);
                 Rating.setRating(Ratings.get(i));
                 Rate.addView(Rating);
                 final TextView Comment = new TextView(this);
-                Comment.setText("Comments" + Comments.get(i));
-                Comment.setTypeface(font1);
+                final TextView Comment1 = new TextView(this);
+                Comment.setText("Comments");
+                Comment.setTypeface(font);
+                Comment.setTextSize(20);
+                Comment1.setText("" + Comments.get(i));
+                Comment1.setTypeface(font1);
+                Comment1.setTextSize(20);
+                Comment.setTextColor(Color.RED);
                 Rate.addView(Comment);
+                Rate.addView(Comment1);
             }
         }
         Save = (Button) findViewById(R.id.button7);

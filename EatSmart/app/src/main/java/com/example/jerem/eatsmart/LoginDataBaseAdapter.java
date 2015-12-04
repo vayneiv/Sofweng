@@ -18,7 +18,7 @@ public class LoginDataBaseAdapter
 {
     public static int nos_calls=0;
     static final String DATABASE_NAME = "login.db";
-    static final int DATABASE_VERSION = 15;
+    static final int DATABASE_VERSION = 16;
     public static final int NAME_COLUMN = 1;
     // TODO: Create public field for each column in your table.
     // SQL Statement to create a new database.
@@ -82,22 +82,28 @@ public class LoginDataBaseAdapter
         newValues.put("RestoName",Resto_name);
         newValues.put("Comment",Comment);
         newValues.put("Rate", rate);
+        Log.i("Restau_name is", Resto_name);
+
+        Log.i("Comment is",Comment);
         db.insert("Rate_Comment", null, newValues);
     }
 
     public ArrayList<String> Retrieve_Comments(String Resto_name){
         ArrayList<String> returnVar= new ArrayList<String>();
         Cursor precursor=db.rawQuery("SELECT * FROM Rate_Comment LIMIT 0,1", null);
-        if (precursor.getColumnIndex("USERNAME")==-1){
+        if (precursor.getColumnIndex("RestoName")==-1){
             returnVar=null;
         }
         else {
-            Cursor cursor = db.query("Rate_Comment", new String[]{"USERNAME Comment"}, null, null, null, null, null);
+            Cursor cursor = db.query("Rate_Comment", new String[]{"RestoName","Comment"}, null, null, null, null, null);
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
-                String Restau = cursor.getString(cursor.getColumnIndex("USERNAME"));
-                if (Restau == Resto_name) {
+                String Restau = cursor.getString(cursor.getColumnIndex("RestoName"));
+                Log.i("Restau_name",Restau);
+                Log.i("UserName",Resto_name);
+                if (Restau.equals(Resto_name)) {
                     returnVar.add(cursor.getString(cursor.getColumnIndex("Comment")));
+                    Log.i("There is a String","Yes");
                 } else {
 
                 }
@@ -108,17 +114,18 @@ public class LoginDataBaseAdapter
         return returnVar;
     }
     public ArrayList<Integer> Retrieve_Rate(String Resto_name){
-    ArrayList<Integer> returnVar= new ArrayList<Integer>();Cursor precursor=db.rawQuery("SELECT * FROM Rate_Comment LIMIT 0,1", null);
-        if (precursor.getColumnIndex("USERNAME")==-1){
+    ArrayList<Integer> returnVar= new ArrayList<Integer>();
+        Cursor precursor=db.rawQuery("SELECT * FROM Rate_Comment LIMIT 0,1", null);
+        if (precursor.getColumnIndex("RestoName")==-1){
             returnVar=null;
         }
         else {
-        Cursor cursor =  db.query("Rate_Comment", new String[]{"USERNAME Rate"}, null, null, null, null, null);
+        Cursor cursor =  db.query("Rate_Comment", new String[]{"RestoName", "Rate"}, null, null, null, null, null);
         cursor.moveToFirst();
             while(!cursor.isAfterLast())
             {
-                String Restau = cursor.getString(cursor.getColumnIndex("USERNAME"));
-                if(Restau==Resto_name) {
+                String Restau = cursor.getString(cursor.getColumnIndex("RestoName"));
+                if (Restau.equals(Resto_name)) {
                     returnVar.add(cursor.getInt(cursor.getColumnIndex("Rate")));
                 }else{
 

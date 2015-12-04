@@ -145,22 +145,26 @@ public class search_result extends AppCompatActivity {
         Ratings=loginDataBaseAdapter.Retrieve_Rate(restauName);
         Comments=loginDataBaseAdapter.Retrieve_Comments(restauName);
         header=(TextView)findViewById(R.id.textView62);
-        if ((Ratings==null)||(Comments==null)){
+        if (loginDataBaseAdapter.Retrieve_Comments(userName).size()==0){
             header.setVisibility(View.GONE);
         }else {
             header.setVisibility(View.VISIBLE);
-            final int no_of_custo = loginDataBaseAdapter.Retrieve_Comments(restauName).size();
-            for (int i = 0; i < no_of_custo; i += 3) {
+            final int no_of_custo = loginDataBaseAdapter.Retrieve_Comments(userName).size();
+            for (int i = 0; i <no_of_custo; i += 3) {
+                Log.i("Customer no.", "1");
                 final TextView Header = new TextView(this);
-                Header.setText("Customer" + (i + 1));
+                Header.setText("Customer " + (i + 1));
                 Header.setTypeface(font);
                 Rate.addView(Header);
                 final RatingBar Rating = new RatingBar(this);
                 Rating.setRating(Ratings.get(i));
                 Rate.addView(Rating);
                 final TextView Comment = new TextView(this);
-                Comment.setText("Comments" + Comments.get(i));
-                Comment.setTypeface(font1);
+                final TextView Comment1 = new TextView(this);
+                Comment.setText("Comments");
+                Comment.setTypeface(font);
+                Comment1.setText("" + Comments.get(i));
+                Comment1.setTypeface(font1);
                 Rate.addView(Comment);
             }
         }

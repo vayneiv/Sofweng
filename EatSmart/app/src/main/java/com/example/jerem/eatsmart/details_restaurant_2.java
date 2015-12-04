@@ -31,9 +31,9 @@ public class details_restaurant_2 extends AppCompatActivity {
     RadioGroup pricerg,locrg;
     LoginDataBaseAdapter loginDataBaseAdapter;
     Bundle extras;
-    String userName,password,description,resto_name,contact;
+    String userName,password,description,resto_name,contact,img;
     byte[] logo;
-    Uri img;
+    Uri imgUri;
     int loc,price;
     ImageButton signUp;
     Intent back_home;
@@ -63,7 +63,7 @@ public class details_restaurant_2 extends AppCompatActivity {
                 description=extras.getString("desc");
                 resto_name=extras.getString("restau");
                 contact=extras.getString("contact");
-                img=Uri.parse(extras.getString("imageUri"));
+                img=extras.getString("imageUri");
 
                 Log.i("Extras is","not null");
             }
@@ -71,15 +71,24 @@ public class details_restaurant_2 extends AppCompatActivity {
         back_home = new Intent(this, loginPage.class);
         back_home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Removes other Activities from stack
         String[] filePathColumn = { MediaStore.Images.Media.DATA };
-        Cursor cursor = getContentResolver().query(img, filePathColumn, null, null, null);
-        cursor.moveToFirst();
-        int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-        String picturePath = cursor.getString(columnIndex);
-        cursor.close();
-        Bitmap yourSelectedImage = BitmapFactory.decodeFile(picturePath);
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        yourSelectedImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        logo = stream.toByteArray();
+        Log.i("img is",img);
+        if(img.equalsIgnoreCase("1")){
+            Bitmap profilelogo= BitmapFactory.decodeResource(getResources(), R.drawable.profile_logo);
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            profilelogo.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            logo = stream.toByteArray();
+        }else{
+            imgUri=Uri.parse(img);
+            Cursor cursor = getContentResolver().query(imgUri, filePathColumn, null, null, null);
+            cursor.moveToFirst();
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close();
+            Bitmap yourSelectedImage = BitmapFactory.decodeFile(picturePath);
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            yourSelectedImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            logo = stream.toByteArray();
+        }
         Log.i("logo is",logo.toString());
         TextView txt = (TextView) findViewById(R.id.textView24);
         Typeface font = Typeface.createFromAsset(getAssets(), "Kenzo Regular.otf");

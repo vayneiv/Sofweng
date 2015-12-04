@@ -101,9 +101,13 @@ public class details_restaurant extends AppCompatActivity {
                     to_details_restaurant2.putExtra("desc", description);
                     to_details_restaurant2.putExtra("restau", resto_name);
                     to_details_restaurant2.putExtra("contact", contactno);
-                    to_details_restaurant2.putExtra("imageUri",selectedimage.toString());
+                    if(selectedimage==null){
+                        to_details_restaurant2.putExtra("imageUri","1");
+                    }else {
+                        to_details_restaurant2.putExtra("imageUri", selectedimage.toString());
+                    }
                     startActivity(to_details_restaurant2);
-                    Log.i("Activity Start","Activity Start");
+                    Log.i("Activity Start", "Activity Start");
                 }
             }
 
