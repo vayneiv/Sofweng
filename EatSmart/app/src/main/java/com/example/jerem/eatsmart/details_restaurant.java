@@ -32,7 +32,7 @@ import java.io.InputStream;
 public class details_restaurant extends AppCompatActivity {
     private static int RESULT_LOAD_IMAGE = 1;
     Bundle extras;
-    EditText desc,res_name,contact;
+    EditText res_name,contact;
     ImageButton next;
     Button sel_Image;
     String userName,password;
@@ -64,15 +64,11 @@ public class details_restaurant extends AppCompatActivity {
         TextView txt1 = (TextView) findViewById(R.id.textView52);
         Typeface font1 = Typeface.createFromAsset(getAssets(), "basictitlefont.ttf");
         txt1.setTypeface(font1);
-        TextView txt2 = (TextView) findViewById(R.id.textView25);
-        Typeface font2 = Typeface.createFromAsset(getAssets(), "basictitlefont.ttf");
-        txt2.setTypeface(font2);
         TextView txt3= (TextView) findViewById(R.id.textView7);
         Typeface font3 = Typeface.createFromAsset(getAssets(), "basictitlefont.ttf");
         txt3.setTypeface(font3);
         to_details_restaurant2 = new Intent(this, details_restaurant_2.class);
         res_name=(EditText)findViewById(R.id.editText4);
-        desc=(EditText)findViewById(R.id.editText6);
         contact=(EditText)findViewById(R.id.editText10);
         imageView= (ImageView) findViewById(R.id.imageView5);
         sel_Image=(Button)findViewById(R.id.button6);
@@ -88,7 +84,6 @@ public class details_restaurant extends AppCompatActivity {
 
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                String description = desc.getText().toString();
                 String resto_name = res_name.getText().toString();
                 String contactno=contact.getText().toString();
                 if(resto_name.equals(""))//add other textfields and/or checkboxes
@@ -98,7 +93,6 @@ public class details_restaurant extends AppCompatActivity {
                 else{
                     to_details_restaurant2.putExtra("Username", userName);
                     to_details_restaurant2.putExtra("Password", password);
-                    to_details_restaurant2.putExtra("desc", description);
                     to_details_restaurant2.putExtra("restau", resto_name);
                     to_details_restaurant2.putExtra("contact", contactno);
                     if(selectedimage==null){

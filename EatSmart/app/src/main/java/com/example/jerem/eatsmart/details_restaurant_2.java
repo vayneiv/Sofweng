@@ -13,7 +13,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.util.LruCache;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -31,12 +33,17 @@ public class details_restaurant_2 extends AppCompatActivity {
     RadioGroup pricerg,locrg;
     LoginDataBaseAdapter loginDataBaseAdapter;
     Bundle extras;
+    EditText desc;
     String userName,password,description,resto_name,contact,img;
-    byte[] logo;
+    byte[] logo,menupictures;
     Uri imgUri;
     int loc,price;
-    ImageButton signUp;
+    int newmenu=0;
+    ImageButton signUp,sel_Image;
     Intent back_home;
+    Bitmap yourSelectedpic;
+    private static int RESULT_LOAD_IMAGE = 1;
+    Uri menupics=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +57,6 @@ public class details_restaurant_2 extends AppCompatActivity {
             if(extras == null) {
                 userName= null;
                 password=null;
-                description=null;
                 resto_name=null;
                 contact=null;
                 img=null;
@@ -60,7 +66,6 @@ public class details_restaurant_2 extends AppCompatActivity {
             {
                 userName= extras.getString("Username");
                 password=extras.getString("Password");
-                description=extras.getString("desc");
                 resto_name=extras.getString("restau");
                 contact=extras.getString("contact");
                 img=extras.getString("imageUri");
@@ -68,6 +73,7 @@ public class details_restaurant_2 extends AppCompatActivity {
                 Log.i("Extras is","not null");
             }
         }
+
         back_home = new Intent(this, loginPage.class);
         back_home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Removes other Activities from stack
         String[] filePathColumn = { MediaStore.Images.Media.DATA };
@@ -89,6 +95,7 @@ public class details_restaurant_2 extends AppCompatActivity {
             yourSelectedImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
             logo = stream.toByteArray();
         }
+        desc=(EditText)findViewById(R.id.editText12);
         Log.i("logo is",logo.toString());
         TextView txt = (TextView) findViewById(R.id.textView24);
         Typeface font = Typeface.createFromAsset(getAssets(), "Kenzo Regular.otf");
@@ -102,6 +109,17 @@ public class details_restaurant_2 extends AppCompatActivity {
         TextView txt3 = (TextView) findViewById(R.id.textView43);
         Typeface font3 = Typeface.createFromAsset(getAssets(), "basictitlefont.ttf");
         txt3.setTypeface(font3);
+        TextView txt4 = (TextView) findViewById(R.id.textView65);
+        Typeface font4 = Typeface.createFromAsset(getAssets(), "basictitlefont.ttf");
+        txt4.setTypeface(font4);
+        sel_Image=(ImageButton)findViewById(R.id.imageButton11);
+        sel_Image.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                newmenu=1;
+                Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
         Cafe=(CheckBox)findViewById(R.id.checkBox28);
         Buffet=(CheckBox)findViewById(R.id.checkBox34);
         Dessert=(CheckBox)findViewById(R.id.checkBox29);
@@ -133,6 +151,17 @@ public class details_restaurant_2 extends AppCompatActivity {
                 boolean Fast_foodis = Fast_food.isChecked();
                 boolean Vegis = Veg.isChecked();
                 boolean Fine_diningis = Fine_dining.isChecked();
+                if(newmenu==0){
+                    Bitmap menupic= BitmapFactory.decodeResource(getResources(), R.drawable.menu_pics);
+                    ByteArrayOutputStream stream2 = new ByteArrayOutputStream();
+                    menupic.compress(Bitmap.CompressFormat.PNG, 100, stream2);
+                    menupictures = stream2.toByteArray();
+                }else{
+                    ByteArrayOutputStream stream2 = new ByteArrayOutputStream();
+                    yourSelectedpic.compress(Bitmap.CompressFormat.PNG, 100, stream2);
+                    menupictures= stream2.toByteArray();
+                }
+                description=desc.getText().toString();
                 price();
                 location();
                 loginDataBaseAdapter.insertEntryrestau(userName,
@@ -152,7 +181,8 @@ public class details_restaurant_2 extends AppCompatActivity {
                         price,
                         1,
                         contact,
-                        logo);
+                        logo,
+                        menupictures);
                 Toast.makeText(getApplicationContext(), "Account Successfully Created ", Toast.LENGTH_LONG).show();
                 startActivity(back_home);
             }
@@ -183,6 +213,19 @@ public class details_restaurant_2 extends AppCompatActivity {
         {
             radioLocation = (RadioButton)radioGroupLocation.findViewById(checkedIdLocation);
             loc = radioGroupLocation.indexOfChild(radioLocation) + 1;
+        }
+    }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
+            menupics = data.getData();
+            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+            Cursor cursor = getContentResolver().query(menupics, filePathColumn, null, null, null);
+            cursor.moveToFirst();
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close();
+            yourSelectedpic = BitmapFactory.decodeFile(picturePath);
         }
     }
     @Override

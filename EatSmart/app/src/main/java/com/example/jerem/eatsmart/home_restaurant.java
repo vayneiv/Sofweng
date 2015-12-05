@@ -35,7 +35,7 @@ public class home_restaurant extends AppCompatActivity {
     Button Save;
     KeyListener editdesc;
     Intent edit;
-    ImageView image;
+    ImageView image,menupics;
     LinearLayout Rate;
     TextView header;
     ArrayList<Integer> Ratings;
@@ -154,6 +154,10 @@ public class home_restaurant extends AppCompatActivity {
         contact=(TextView)findViewById(R.id.textView39);
         contact.setText(loginDataBaseAdapter.getrestaucontact(userName));
 
+        menupics=(ImageView)findViewById(R.id.imageView18);
+        menupics.invalidate();
+        menupics.setImageBitmap(loginDataBaseAdapter.getmenupic(userName));
+
         contact.setTypeface(font1);
         Ratings=loginDataBaseAdapter.Retrieve_Rate(userName);
         Comments=loginDataBaseAdapter.Retrieve_Comments(userName);
@@ -206,6 +210,7 @@ public class home_restaurant extends AppCompatActivity {
                 edit.putExtra("Username", userName);
                 edit.putExtra("Password", password);
                 startActivity(edit); //transfer activity
+                finish();
             }
         });
     }

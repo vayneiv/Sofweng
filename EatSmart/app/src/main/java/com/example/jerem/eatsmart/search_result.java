@@ -26,7 +26,7 @@ public class search_result extends AppCompatActivity {
     String userName, restauName;
     LoginDataBaseAdapter loginDataBaseAdapter;
     Intent to_rate_and_comment;
-    ImageView image;
+    ImageView image,menupics;
     LinearLayout Rate;
     TextView header;
     ArrayList<Integer> Ratings;
@@ -140,6 +140,10 @@ public class search_result extends AppCompatActivity {
         contact=new TextView(this);
         contact=(TextView)findViewById(R.id.textView61);
         contact.setText(loginDataBaseAdapter.getrestaucontact(restauName));
+
+        menupics=(ImageView)findViewById(R.id.imageView19);
+        menupics.invalidate();
+        menupics.setImageBitmap(loginDataBaseAdapter.getmenupic(restauName));
 
         contact.setTypeface(font1);
         Ratings=loginDataBaseAdapter.Retrieve_Rate(restauName);

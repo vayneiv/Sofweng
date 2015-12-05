@@ -31,19 +31,22 @@ import java.io.InputStream;
 
 public class resto_edit extends AppCompatActivity {
     private static int RESULT_LOAD_IMAGE = 1;
+
+    private static int RESULT_LOAD_IMAGE_2 = 2;
     Bundle extras;
     EditText desc,contact;
     CheckBox Cafe,Buffet,Bar,Grill,Lutong_Bahay,Dessert,Fast_food,Veg,Fine_dining,price1,price2,price3,price4,loc11,loc12,loc13,loc14,loc15,loc16;
     ImageButton next;
     Button sel_Image;
+    ImageButton menupics;
     String userName,password;
     RadioGroup radioGroupBudget, radioGroupLocation;
     RadioButton radioBudget, radioLocation;
-    byte[] img;
+    byte[] img,menu_pic;
     int checkedIdBudget, checkedIdLocation;
     int price;
     int loc,pack;
-    ImageView imageView;
+    ImageView imageView,menupicture;
     LoginDataBaseAdapter loginDataBaseAdapter;
     Bitmap logo;
     String description;
@@ -57,12 +60,15 @@ public class resto_edit extends AppCompatActivity {
     boolean Fast_foodis ;
     boolean Vegis ;
     boolean Fine_diningis ;
+    Bitmap yourSelectedPic;
+    Intent finished;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resto_edit);
         loginDataBaseAdapter=new LoginDataBaseAdapter(this);
         loginDataBaseAdapter=loginDataBaseAdapter.open();
+        finished=new Intent(this,home_restaurant.class);
         if (savedInstanceState == null)
         {
             //fetching extra data passed with booleanents in a Bundle type variable
@@ -92,11 +98,14 @@ public class resto_edit extends AppCompatActivity {
 
         desc=(EditText)findViewById(R.id.editText3);
         contact=(EditText)findViewById(R.id.editText11);
-        radioBudget = (RadioButton)radioGroupBudget.findViewById(radioGroupBudget.getCheckedRadioButtonId());
+        radioBudget = (RadioButton) radioGroupBudget.findViewById(radioGroupBudget.getCheckedRadioButtonId());
         radioLocation = (RadioButton)radioGroupLocation.findViewById(radioGroupLocation.getCheckedRadioButtonId());
         imageView= (ImageView) findViewById(R.id.imageView8);
         sel_Image=(Button)findViewById(R.id.button12);
 
+        imageView.setImageBitmap(loginDataBaseAdapter.getimage(userName));
+        menupicture=(ImageView)findViewById(R.id.imageView20);
+        menupicture.setImageBitmap(loginDataBaseAdapter.getmenupic(userName));
         next=(ImageButton)findViewById(R.id.imageButton6);
         sel_Image.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -105,8 +114,14 @@ public class resto_edit extends AppCompatActivity {
             }
         });
         pack=loginDataBaseAdapter.getrestapack(userName);
-        imageView.setImageBitmap(loginDataBaseAdapter.getimage(userName));
 
+        menupics=(ImageButton)findViewById(R.id.button5);
+        menupics.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(i, RESULT_LOAD_IMAGE_2);
+            }
+        });
         TextView txt1 = (TextView) findViewById(R.id.textView22);
         Typeface font1 = Typeface.createFromAsset(getAssets(), "basictitlefont.ttf");
         txt1.setTypeface(font1);
@@ -198,6 +213,10 @@ public class resto_edit extends AppCompatActivity {
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 yourSelectedImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
                 img= stream.toByteArray();
+                Bitmap yourSelectedPic = ((BitmapDrawable)menupicture.getDrawable()).getBitmap();
+                ByteArrayOutputStream stream1 = new ByteArrayOutputStream();
+                yourSelectedPic.compress(Bitmap.CompressFormat.PNG, 100, stream1);
+                menu_pic= stream1.toByteArray();
                 price();
                 location();
                 Log.i("Description contains",contact.getText().toString());
@@ -218,7 +237,12 @@ public class resto_edit extends AppCompatActivity {
                         price,
                         pack,
                         contactno,
-                        img);
+                        img,
+                        menu_pic);
+                Log.i("username is",loginDataBaseAdapter.getSingleEntryrestau(userName));
+                finished.putExtra("Username",userName);
+                finished.putExtra("Password",password);
+                startActivity(finished);
                 finish();
             }
 
@@ -265,6 +289,16 @@ public class resto_edit extends AppCompatActivity {
             cursor.close();
             Bitmap yourSelectedImage = BitmapFactory.decodeFile(picturePath);
             imageView.setImageBitmap(yourSelectedImage);
+        } else if(requestCode == RESULT_LOAD_IMAGE_2 && resultCode == RESULT_OK && null != data) {
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+            Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
+            cursor.moveToFirst();
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close();
+            yourSelectedPic = BitmapFactory.decodeFile(picturePath);
+            menupicture.setImageBitmap(yourSelectedPic);
         }
     }
     @Override

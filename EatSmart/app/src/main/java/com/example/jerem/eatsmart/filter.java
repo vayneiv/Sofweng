@@ -49,14 +49,14 @@ public class filter extends AppCompatActivity {
             }
         }
         Cafe=(CheckBox)findViewById(R.id.checkBox);
-        Buffet=(CheckBox)findViewById(R.id.checkBox2);
-        Dessert=(CheckBox)findViewById(R.id.checkBox3);
-        Bar=(CheckBox)findViewById(R.id.checkBox4);
-        Grill=(CheckBox)findViewById(R.id.checkBox5);
-        Lutong_Bahay=(CheckBox)findViewById(R.id.checkBox6);
-        Fast_food=(CheckBox)findViewById(R.id.checkBox7);
-        Veg=(CheckBox)findViewById(R.id.checkBox8);
-        Fine_dining=(CheckBox)findViewById(R.id.checkBox9);
+        Buffet=(CheckBox)findViewById(R.id.checkBox7);
+        Dessert=(CheckBox)findViewById(R.id.checkBox2);
+        Bar=(CheckBox)findViewById(R.id.checkBox3);
+        Grill=(CheckBox)findViewById(R.id.checkBox4);
+        Lutong_Bahay=(CheckBox)findViewById(R.id.checkBox8);
+        Fast_food=(CheckBox)findViewById(R.id.checkBox9);
+        Veg=(CheckBox)findViewById(R.id.checkBox6);
+        Fine_dining=(CheckBox)findViewById(R.id.checkBox5);
         TextView txt = (TextView) findViewById(R.id.textView10);
         Typeface font = Typeface.createFromAsset(getAssets(), "Kenzo Regular.otf");
         txt.setTypeface(font);

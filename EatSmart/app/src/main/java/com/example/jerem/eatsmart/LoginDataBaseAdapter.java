@@ -18,7 +18,7 @@ public class LoginDataBaseAdapter
 {
     public static int nos_calls=0;
     static final String DATABASE_NAME = "login.db";
-    static final int DATABASE_VERSION = 16;
+    static final int DATABASE_VERSION = 21;
     public static final int NAME_COLUMN = 1;
     // TODO: Create public field for each column in your table.
     // SQL Statement to create a new database.
@@ -50,7 +50,8 @@ public class LoginDataBaseAdapter
                     "price integer,"+
                     "package integer,"+
                     "contact,"+
-                    "image BLOB); ";
+                    "image BLOB,"+
+                    "pictures BLOB); ";
     // Variable to hold the database instance
     public  SQLiteDatabase db;
     // Context of the application using the database.
@@ -103,7 +104,7 @@ public class LoginDataBaseAdapter
                 Log.i("UserName",Resto_name);
                 if (Restau.equals(Resto_name)) {
                     returnVar.add(cursor.getString(cursor.getColumnIndex("Comment")));
-                    Log.i("There is a String","Yes");
+                    Log.i("There is a String", "Yes");
                 } else {
 
                 }
@@ -137,12 +138,12 @@ public class LoginDataBaseAdapter
     return returnVar;
 }
     public void updaterestaupack(String userName,int pack){
-        db.execSQL("UPDATE restau SET package="+pack+" WHERE USERNAME='"+userName+"'");
+        db.execSQL("UPDATE restau SET package=" + pack + " WHERE USERNAME='" + userName + "'");
     }
     public double Retrieve_Total_Rate(String Resto_name){
         Integer ctr=0;
             double returnVar=0;
-        Cursor cursor =  db.query("Rate_Comment", new String[]{"USERNAME Rate"}, null, null, null, null, null);
+        Cursor cursor =  db.query("Rate_Comment", new String[]{"USERNAME", "Rate"}, null, null, null, null, null);
         cursor.moveToFirst();
         while(!cursor.isAfterLast())
         {
@@ -176,7 +177,8 @@ public class LoginDataBaseAdapter
                                   int price,
                                   int pack,
                                   String contact,
-                                  byte []image)
+                                  byte []image,
+                                  byte []pictures)
     {
         Log.i(userName,"insertEntryrestau");
         ContentValues newValues = new ContentValues();
@@ -199,10 +201,33 @@ public class LoginDataBaseAdapter
         newValues.put("package",pack);
         newValues.put("contact",contact);
         newValues.put("image",image);
+        newValues.put("pictures",pictures);
 
         // Insert the row into your table
         db.insert("restau", null, newValues);
         ///Toast.makeText(context, "Reminder Is Successfully Saved", Toast.LENGTH_LONG).show();
+    }
+    public Bitmap getmenupic(String userName){
+        byte[] returnVar;
+        Bitmap img = null;
+        Cursor cursor=db.query("restau", null, " USERNAME=?", new String[]{userName}, null, null, null);
+        if(cursor.getCount()<1) // UserName Not Exist
+        {
+            cursor.close();
+            img=null;
+            return img;
+        }
+        cursor.moveToFirst();
+        returnVar = cursor.getBlob(cursor.getColumnIndex("pictures"));
+        if (returnVar.equals(null)){
+            img=null;
+        }else {
+            Log.i("logo is", returnVar.toString());
+            cursor.close();
+            img = BitmapFactory.decodeByteArray(returnVar, 0, returnVar.length);
+            Log.i("Image Accessed", "Image Accessed");
+        }
+        return img;
     }
     public void insertEntrycusto(String userName,String password)
     {
@@ -532,13 +557,12 @@ public class LoginDataBaseAdapter
                               int price,
                               int pack,
                               String contact,
-                              byte []image)
+                              byte []image,
+                              byte[] pictures)
     {
-        Log.i(userName,"insertEntryrestau");
+        Log.i(userName,"updateEntryrestau");
         ContentValues updatedValues = new ContentValues();
         // Assign values for each row.
-        updatedValues.put("USERNAME", userName);
-        updatedValues.put("PASSWORD", password);
         updatedValues.put("RESTAUNAME", RestauName);
         updatedValues.put("DESCRIPTION",Description);
         updatedValues.put("Cafe",Cafe);
@@ -555,6 +579,7 @@ public class LoginDataBaseAdapter
         updatedValues.put("package",pack);
         updatedValues.put("contact",contact);
         updatedValues.put("image",image);
+        updatedValues.put("pictures",pictures);
 
         String where="USERNAME = ?";
         db.update("restau",updatedValues, where, new String[]{userName});

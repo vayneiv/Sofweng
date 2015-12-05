@@ -21,44 +21,45 @@
         android:scaleType="fitXY"
         android:adjustViewBounds="true"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/button12"
-        android:layout_alignEnd="@+id/button12" />
-
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/imageView8"
-        android:foreground="#00ffffff"
-        android:scaleType="fitXY"
-        android:background="@null"
-        android:src="@drawable/profile_logo"
-        android:nestedScrollingEnabled="false"
-        android:longClickable="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:adjustViewBounds="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select Image"
-        android:id="@+id/button12"
-        android:layout_below="@id/imageView8"
         android:layout_centerHorizontal="true" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/scrollView3"
-        android:layout_above="@+id/imageButton6"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/button12">
+        android:layout_above="@+id/imageButton6">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/imageView8"
+                android:foreground="#00ffffff"
+                android:scaleType="fitXY"
+                android:background="@null"
+                android:src="@drawable/profile_logo"
+                android:nestedScrollingEnabled="false"
+                android:longClickable="true"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:adjustViewBounds="true"
+                android:layout_gravity="center_horizontal" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Image"
+                android:id="@+id/button12"
+                android:layout_below="@id/imageView8"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -355,6 +356,21 @@
                     android:id="@+id/radioButton49"
                     />
             </RadioGroup>
+
+            <ImageButton
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:text="Select Menu Pics"
+                android:id="@+id/button5"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/select_images" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView20"
+                android:visibility="invisible" />
+
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>
