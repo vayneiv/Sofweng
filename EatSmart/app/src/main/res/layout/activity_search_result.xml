@@ -52,7 +52,8 @@
         android:layout_gravity="right|left"
         android:layout_below="@+id/textView23"
         android:layout_alignParentRight="true"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/button13">
 
         <LinearLayout
             android:id="@+id/linearLayout2"

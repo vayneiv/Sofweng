@@ -36,8 +36,7 @@ public class resto_edit extends AppCompatActivity {
     Bundle extras;
     EditText desc,contact;
     CheckBox Cafe,Buffet,Bar,Grill,Lutong_Bahay,Dessert,Fast_food,Veg,Fine_dining,price1,price2,price3,price4,loc11,loc12,loc13,loc14,loc15,loc16;
-    ImageButton next;
-    Button sel_Image;
+    Button sel_Image,next;
     ImageButton menupics;
     String userName,password;
     RadioGroup radioGroupBudget, radioGroupLocation;
@@ -106,7 +105,7 @@ public class resto_edit extends AppCompatActivity {
         imageView.setImageBitmap(loginDataBaseAdapter.getimage(userName));
         menupicture=(ImageView)findViewById(R.id.imageView20);
         menupicture.setImageBitmap(loginDataBaseAdapter.getmenupic(userName));
-        next=(ImageButton)findViewById(R.id.imageButton6);
+        next=(Button)findViewById(R.id.button8);
         sel_Image.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);

@@ -131,8 +131,8 @@ public class details_restaurant_2 extends AppCompatActivity {
         Fine_dining=(CheckBox)findViewById(R.id.checkBox32);
         checkedIdBudget = -1;
         checkedIdLocation = -1;
-        radioGroupBudget = (RadioGroup)findViewById(R.id.radioGroup);
-        radioGroupLocation = (RadioGroup)findViewById(R.id.radioGroup2);
+        radioGroupBudget = (RadioGroup)findViewById(R.id.radioGroup2);
+        radioGroupLocation = (RadioGroup)findViewById(R.id.radioGroup);
         radioBudget = (RadioButton)radioGroupBudget.findViewById(radioGroupBudget.getCheckedRadioButtonId());
         radioLocation = (RadioButton)radioGroupLocation.findViewById(radioGroupLocation.getCheckedRadioButtonId());
 
@@ -200,6 +200,7 @@ public class details_restaurant_2 extends AppCompatActivity {
         {
             radioBudget = (RadioButton)radioGroupBudget.findViewById(checkedIdBudget);
             price = radioGroupBudget.indexOfChild(radioBudget) + 1;
+            Log.i("Price is", String.valueOf(price));
         }
     }
     public void location()
